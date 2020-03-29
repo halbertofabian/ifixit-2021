@@ -77,7 +77,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
                         <td><?php echo $value['fecha_gasto'] ?></td>
                         <td><?php echo $value['usuario'] ?></td>
                         <?php if ($_SESSION['perfil'] == "Administrador") : ?>
-                            <td><button class="btn-sm btn-danger btnBorrarGasto" idGasto="<?php echo $value['id'] ?>"><i class="fa fa-trash"></i></button></td>
+                            <!-- <td><button class="btn-sm btn-danger btnBorrarGasto" idGasto="<?php echo $value['id'] ?>"><i class="fa fa-trash"></i></button></td> -->
                         <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
