@@ -93,7 +93,7 @@
                 <?php
                 if (isset($_GET['filtro'])) {
 
-                    $servicio = ControladorServicios::ctrMostrarServicioPorFiltro($_GET['filtro'],$_SESSION['nombre']);
+                    $servicio = ControladorServicios::ctrMostrarServicioPorFiltro($_GET['filtro'], $_SESSION['nombre']);
                 } else {
                     $servicio = ControladorServicios::ctrMostrarServicio($_SESSION['nombre']);
                 }

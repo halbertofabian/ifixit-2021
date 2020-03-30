@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Options All -Indexes
 
 RewriteEngine On
@@ -10,3 +11,13 @@ RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^app.ifixitmor.com$
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # DO NOT REMOVE THIS LINE AND THE LINES ABOVE SSL_REDIRECT:app.ifixitmor.com
+=======
+Options +FollowSymLinks
+
+# Impedir que se pueda ver el listado de contenido de #directorios
+Options All -Indexes
+
+#Urls Amigables 
+RewriteEngine On
+RewriteRule ^([-a-zA-Z0-9/ÁÉÍÓÚáéíóú]+)$ index.php?ruta=$1
+>>>>>>> a2b7d5fe8559e3954b531d95a8e25a60b3f0be1f

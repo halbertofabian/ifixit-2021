@@ -9,14 +9,14 @@ if ($_SESSION['perfil'] == "Tecnico") {
 }
 ?>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Crear pedidos</h3>
   </div>
 </div>
 
 
-<!-- Main container -->
-<section class="container">
+<!-- Main container-fluid -->
+<section class="container-fluid">
 
   <!--<div class="row">
         <div class="col-md-4 float-right">

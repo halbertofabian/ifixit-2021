@@ -22,7 +22,7 @@ if ($xml) {
 
 ?>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Administrar ventas</h3>
     <div class="btn-group float-right" role="group" aria-label="Button group">
       <a href="<?php echo $url ?>crear-venta" class="btn btn-dark">
@@ -55,7 +55,7 @@ if ($xml) {
 </div>
 
 
-<section class="container">
+<section class="container-fluid">
 
   <div class="card">
 

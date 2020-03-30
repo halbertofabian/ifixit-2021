@@ -19,7 +19,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION["perfil"] == "Tecnico") {
 </nav>
 
 
-  <section class="container">
+  <section class="container-fluid">
 
     <div class="row">
 

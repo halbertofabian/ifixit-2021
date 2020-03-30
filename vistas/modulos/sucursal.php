@@ -1,8 +1,8 @@
 
 
-<div class="container mt-3">
+<div class="container mt-4">
 
-    <h2>Bienvenido (a) <?php echo $_SESSION['nombre'] ?> 🙋‍♂️ </h2>
+    <h2>Bienvenido (a) <?php echo $_SESSION['nombre'] ?> 🙋‍♂️ a la versión 3.0.1 de ifixitmor</h2>
     <h4 class="mb-3">
         Queremos mejorar la experiencia de usuario, para ello elije la sucursal a la que quieres acceder e indica la cantidad con la que inicias en caja.
     </h4>
@@ -39,7 +39,7 @@
 
                 <?php endif; ?>
 
-                <button type="submit" name="btnCargarSucursal" class="btn btn-block btn-primary">Acceder a la sucursal</button>
+                <button type="submit" name="btnCargarSucursal" class="btn btn-block btn-dark">Acceder a la sucursal</button>
 
 
 

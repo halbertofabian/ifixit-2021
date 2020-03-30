@@ -14,13 +14,13 @@
 
 ?>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Mi API</h3>
     <p class="lead">Servicios de consulta que puedes integrar en tu sitio web, como ordenes de servicio, productos</p>
   </div>
 </div>
 
-<section class="container">
+<section class="container-fluid">
 
   <div class="card">
     <div class="card-header with-border">
