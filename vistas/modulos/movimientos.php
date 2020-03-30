@@ -13,14 +13,14 @@ if ($_SESSION["perfil"] == "Vendedor" || $_SESSION['perfil'] == "Tecnico") {
 
 ?>
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
+    <div class="container-fluid">
         <h3 class="display-5">Movimientos de Caja</h3>
     </div>
 </div>
 
 
 <!-- Main content -->
-<section class="container">
+<section class="container-fluid">
     <?php $mov = ControladorCorte::ctrMostrarMovimientos();
 
     $total = ($mov['servicios'] + $mov['pedidos'] + $mov['ventas'] + $mov['ingresos']) - $mov['gastos'];

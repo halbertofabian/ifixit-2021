@@ -13,7 +13,7 @@
   </ol>
 </nav>
 
-<section class="container">
+<section class="container-fluid">
 
   <div class="row">
     <?php

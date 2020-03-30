@@ -13,7 +13,7 @@ if ($_SESSION["perfil"] == "Tecnico" || $_SESSION["perfil"] == "Vendedor") {
 
 ?>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Administración de usuarios</h3>
     <button class="btn btn-dark float-right" data-toggle="modal" data-target="#modalAgregarUsuario">
       <i class="fas fa-plus"></i>
@@ -23,7 +23,7 @@ if ($_SESSION["perfil"] == "Tecnico" || $_SESSION["perfil"] == "Vendedor") {
 </div>
 
 
-<section class="container">
+<section class="container-fluid">
 
   <div class="card">
     <div class="card-body">

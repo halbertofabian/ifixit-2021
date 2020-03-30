@@ -26,7 +26,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 </style>
 
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Servicios Precargados</h3>
     <button class="btn btn-dark float-right" data-toggle="modal" data-target="#modalAgregarServicio">
       <i class="fas fa-plus"></i>
@@ -37,12 +37,12 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 </div>
 
 
-<section class="container">
+<section class="container-fluid">
 
 
 
   <div class="conatiner">
-    <hr>
+    
 
     <div class="row">
       <div class="col-12 col-md-6">

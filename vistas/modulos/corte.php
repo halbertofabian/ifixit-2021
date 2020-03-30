@@ -9,7 +9,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
 }
 ?>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Corte de caja</h3>
 
   </div>
@@ -17,7 +17,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
 
 <!-- Main content -->
-<section class="container">
+<section class="container-fluid">
   <div class="card">
     <div class="card-header">
       <div class="row">

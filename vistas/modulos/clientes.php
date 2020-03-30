@@ -13,7 +13,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION["perfil"] == "Tecnico") {
 
 ?>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Administrar clientes</h3>
     <div class="btn-group float-right">
 
@@ -33,7 +33,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION["perfil"] == "Tecnico") {
 </div>
 
 
-<section class="container">
+<section class="container-fluid">
 
   <div class="card">
 

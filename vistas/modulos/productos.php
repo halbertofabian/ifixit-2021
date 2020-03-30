@@ -13,7 +13,7 @@
 
   ?>
  <div class="jumbotron jumbotron-fluid">
-   <div class="container">
+   <div class="container-fluid">
      <h3 class="display-5">Administrar productos</h3>
      <div class="btn-group float-right">
        <button class="btn btn-dark" data-toggle="modal" data-target="#modalAgregarProducto">
@@ -31,7 +31,7 @@
  </div>
 
 
- <section class="container">
+ <section class="container-fluid">
 
    <div class="card">
 

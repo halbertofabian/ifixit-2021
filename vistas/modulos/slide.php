@@ -5,7 +5,7 @@ $slide = ControladorSlide::ctrMostrarSlide();
 ?>
 
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-4">Gestor de slide</h3>
     <p class="lead">Este módulo te permite agregar y modificar los anuncios publicitarios que aparecerán en tu página web.</p>
   </div>

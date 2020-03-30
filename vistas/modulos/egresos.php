@@ -9,7 +9,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
 }
 ?>
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
+    <div class="container-fluid">
         <h3 class="display-5">Gastos de caja</h3>
     </div>
 </div>
@@ -17,9 +17,9 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
 
 <!-- Main content -->
-<section class="container">
+<section class="container-fluid">
     <form method="post">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-md-2">
                     <div class="form-group">
@@ -49,7 +49,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
         $gastos->ctrRegistrarGastos(); ?>
     </form>
     <br>
-    <div class="container">
+    <div class="container-fluid">
         <table class="table table-bordered table-striped dt-responsive tablas">
 
             <thead>

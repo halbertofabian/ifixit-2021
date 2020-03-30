@@ -11,6 +11,9 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == "Tecnico") {
     return;
 }
 
+    $app -> getComponents('pagina-construccion');
+    return;
+
 ?>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">

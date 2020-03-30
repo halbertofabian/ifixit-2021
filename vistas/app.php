@@ -371,7 +371,7 @@ FORO" />
 
   <?php else :
 
-    header('Location:http://localhost/softmor-pj/ifixitmor.com/')
+    header('Location:' . URL)
 
   ?>
 

@@ -12,7 +12,7 @@ if ($_SESSION["perfil"] == "Vendedor" || $_SESSION["perfil"] == "Tecnico") {
 
 ?>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Configuración de la sucursal</h3>
     <p class="lead">Aquí te permitimos que personalices tickets, logo de la empresa, redes sociales, mensajes de WhatsApp. Todo lo que tenga que ser personalizado de tu sucursal.</p>
   </div>
@@ -28,7 +28,7 @@ $zona = ControladorSucursal::getZone();
 
 
 <!-- Main content -->
-<section class="container">
+<section class="container-fluid">
   <div class="row">
 
 

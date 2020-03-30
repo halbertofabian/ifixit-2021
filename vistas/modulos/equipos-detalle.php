@@ -19,11 +19,11 @@ $correo = $array[2];
 
 ?>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h3 class="display-5">Equipo <strong><?php echo $servicio['orden']; ?></strong></h3>
   </div>
 </div>
-<section class="container">
+<section class="container-fluid">
 
   <div class="row">
     <div class="col-12 text-center col-md-2">

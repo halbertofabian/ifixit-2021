@@ -32,17 +32,17 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor")
 
 ?>
     <div class="jumbotron jumbotron-fluid">
-      <div class="container">
+      <div class="container-fluid">
         <h3 class="display-5">Modificación de servicios</h3>
       </div>
     </div>
 
 
     <!-- Main content -->
-    <section class="container">
+    <section class="container-fluid">
       <?php if ($serv['estado_corte'] != 0) : $estado_equipo = "Reparacion"; ?>
 
-        <!-- <div class="container">
+        <!-- <div class="container-fluid">
             <div class="row">
               <div class="col-12">
                 <div class="alert alert-warning">
@@ -318,12 +318,12 @@ endif; ?>
 
 
   <div class="jumbotron jumbotron-fluid">
-    <div class="container">
+    <div class="container-fluid">
       <h3 class="display-5">Servicio Precargado</h3>
     </div>
   </div>
   <!-- Main content -->
-  <section class="container">
+  <section class="container-fluid">
     <div class="row">
       <div class="col-md-4 text-success"><strong>Campos obligatorios(*)</strong>
 
@@ -840,13 +840,13 @@ endif; ?>
 
 ?>
   <div class="jumbotron jumbotron-fluid">
-    <div class="container">
+    <div class="container-fluid">
       <h3 class="display-5">Servicio presupuestado</h3>
     </div>
   </div>
 
   <!-- Main content -->
-  <section class="container">
+  <section class="container-fluid">
     <div class="row">
       <div class="col-md-4 text-success"><strong>Campos obligatorios(*)</strong>
 
@@ -1075,14 +1075,14 @@ endif; ?>
 
 <?php } else { ?>
   <div class="jumbotron jumbotron-fluid">
-    <div class="container">
+    <div class="container-fluid">
       <h3 class="display-5">Crear servicio</h3>
     </div>
   </div>
 
 
   <!-- Main content -->
-  <section class="container">
+  <section class="container-fluid">
     <div class="row">
 
       <div class="col-md-4 text-success">
