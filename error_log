@@ -1,0 +1,2 @@
+[29-Mar-2020 22:18:50 UTC] PHP Deprecated:  Non-static method ControladorServicios::ctrSumaTotalPendientes() should not be called statically in /home/u203735599/domains/ifixitmor.com/public_html/app/vistas/modulos/inicio/cajas-superiores.php on line 18
+[29-Mar-2020 22:19:19 UTC] PHP Deprecated:  Non-static method ControladorServicios::ctrSumaTotalPendientes() should not be called statically in /home/u203735599/domains/ifixitmor.com/public_html/app/vistas/modulos/inicio/cajas-superiores.php on line 18

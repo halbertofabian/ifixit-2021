@@ -21,7 +21,7 @@ require_once '../modelos/usuarios.modelo.php';
 
 <body>
 
-
+ 
 
 
     <?php
@@ -29,7 +29,6 @@ require_once '../modelos/usuarios.modelo.php';
     $start = new ControladorUsuarios();
     $res = $start->ctrIngresoUsuarioToken();
 
-    //var_dump($res);
 
     if ($res) :
     ?>
@@ -55,7 +54,7 @@ require_once '../modelos/usuarios.modelo.php';
         </div>
     <?php
         //sleep(4);
-        header('refresh:3;url=http://localhost/softmor-pj/app.ifixitmor.com/sucursal');
+        header('refresh:3;url=https://app.ifixitmor.com/sucursal');
 
     //
     else :
@@ -89,8 +88,10 @@ require_once '../modelos/usuarios.modelo.php';
 
 
     <?php
+        
+      
 
-        header('refresh:5;url=http://localhost/softmor-pj/ifixitmor.com/app-login');
+        header('refresh:5;url=https://ifixitmor.com/app-login');
 
 
     endif;

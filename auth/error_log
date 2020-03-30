@@ -1,0 +1,16 @@
+[29-Mar-2020 22:15:11 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion-softmor.php:16
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion-softmor.php(16): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/usuarios.modelo.php(49): ConexionSoftmor::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/usuarios.controlador.php(137): ModeloUsuarios::mdlMostrarUsuariosToken('187.190.161.15', 'ad01a13655c78f7...')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/auth/index.php(30): ControladorUsuarios::ctrIngresoUsuarioToken()
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion-softmor.php on line 16
+[29-Mar-2020 22:16:26 UTC] PHP Fatal error:  Uncaught PDOException: could not find driver in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion-softmor.php:12
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion-softmor.php(12): PDO->__construct('myssssql:host=l...', 'u203735599_soft', '1Q8jeQzVtmVULd5...')
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/usuarios.modelo.php(49): ConexionSoftmor::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/usuarios.controlador.php(137): ModeloUsuarios::mdlMostrarUsuariosToken('187.190.161.15', 'ad01a13655c78f7...')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/auth/index.php(30): ControladorUsuarios::ctrIngresoUsuarioToken()
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion-softmor.php on line 12
