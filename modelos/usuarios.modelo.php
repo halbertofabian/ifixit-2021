@@ -155,7 +155,7 @@ class ModeloUsuarios
 	static public function mdlIngresarUsuario($tabla, $datos)
 	{
 
-		$stmt = ConexionSoftmor::conectar()->prepare("INSERT INTO $tabla(nombre, usuario, password, perfil, foto,suscriptor) VALUES (:nombre, :usuario, :password, :perfil, :foto,:suscriptor)");
+		$stmt = ConexionSoftmor::conectar()->prepare("INSERT INTO $tabla(nombre, usuario, password, perfil, foto,suscriptor,acceso_sucursal) VALUES (:nombre, :usuario, :password, :perfil, :foto,:suscriptor,:acceso_sucursal)");
 
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
@@ -163,6 +163,9 @@ class ModeloUsuarios
 		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
 		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 		$stmt->bindParam(":suscriptor", $datos["suscriptor"], PDO::PARAM_STR);
+		$stmt->bindParam(":acceso_sucursal", $datos["acceso_sucursal"], PDO::PARAM_STR);
+
+
 		//$stmt->execute();
 
 		if ($stmt->execute()) {
@@ -186,13 +189,16 @@ class ModeloUsuarios
 	static public function mdlEditarUsuario($tabla, $datos)
 	{
 
-		$stmt = ConexionSoftmor::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, password = :password, perfil = :perfil, foto = :foto WHERE usuario = :usuario");
+		$stmt = ConexionSoftmor::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, password = :password, perfil = :perfil, foto = :foto, acceso_sucursal = :acceso_sucursal WHERE usuario = :usuario");
 
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
 		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+		$stmt->bindParam(":acceso_sucursal", $datos["acceso_sucursal"], PDO::PARAM_STR);
+
+
 
 		if ($stmt->execute()) {
 
@@ -312,6 +318,46 @@ class ModeloUsuarios
 
 
 
+
+
+		$stmt = null;
+	}
+
+	public static function mdlTotalUsuariosSuscripcion($suscriptor)
+	{
+		$stmt = ConexionSoftmor::conectar()->prepare("SELECT usuarios FROM suscripciones WHERE id = ? ");
+
+		$stmt->bindValue(1, $suscriptor, PDO::PARAM_STR);
+
+		$stmt->execute();
+		//print_r($stmt->errorInfo());
+		return $stmt->fetch();
+
+
+		$stmt = null;
+	}
+	public static function mdlTotalSucursalesSuscripcion($suscriptor)
+	{
+		$stmt = ConexionSoftmor::conectar()->prepare("SELECT sucursales FROM suscripciones WHERE id = ? ");
+
+		$stmt->bindValue(1, $suscriptor, PDO::PARAM_STR);
+
+		$stmt->execute();
+		//print_r($stmt->errorInfo());
+		return $stmt->fetch();
+
+
+		$stmt = null;
+	}
+	public static function mdlSucursalesPermisoUsuario($usuario)
+	{
+		$stmt = ConexionSoftmor::conectar()->prepare("SELECT acceso_sucursal  FROM usuarios WHERE usuario = ? ");
+
+		$stmt->bindValue(1, $usuario, PDO::PARAM_STR);
+
+		$stmt->execute();
+		//print_r($stmt->errorInfo());
+		return $stmt->fetch();
 
 
 		$stmt = null;

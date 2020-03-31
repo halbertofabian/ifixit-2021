@@ -93,12 +93,27 @@ if ($_SESSION["perfil"] == "Tecnico" || $_SESSION["perfil"] == "Vendedor") {
               echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="' . $value["usuario"] . '" estadoUsuario="1">Desactivado</button></td>';
             }
 
-            echo '<td>' . $value["ultimo_login"] . '</td>
+            if ($_SESSION['propietario'] == $value['usuario']) {
+              echo '<td>' . $value["ultimo_login"] . '</td>
                   <td>
 
                     <div class="btn-group">
                         
-                      <button class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["usuario"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-edit"></i></button>
+                      <button class="btn btn-warning btnEditarUsuario" propietario="' . $_SESSION['propietario'] . '" idUsuario="' . $value["usuario"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-edit"></i></button>
+
+
+                    </div>  
+
+                  </td>
+
+                </tr>';
+            } else {
+              echo '<td>' . $value["ultimo_login"] . '</td>
+                  <td>
+
+                    <div class="btn-group">
+                        
+                      <button class="btn btn-warning btnEditarUsuario" propietario="' . $_SESSION['propietario'] . '" idUsuario="' . $value["usuario"] . '" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-edit"></i></button>
                       <button class="btn btn-danger btnEliminarUsuario"  idUsuario="' . $value["id"] . '" fotoUsuario="' . $value["foto"] . '" usuario="' . $value["usuario"] . '"><i class="fa fa-times"></i></button>
                     
 
@@ -107,6 +122,7 @@ if ($_SESSION["perfil"] == "Tecnico" || $_SESSION["perfil"] == "Vendedor") {
                   </td>
 
                 </tr>';
+            }
           }
 
 
@@ -227,6 +243,26 @@ MODAL AGREGAR USUARIO
                 </select>
 
               </div>
+
+            </div>
+            <div class="form-group permisosSuc " id="sectionPermiso">
+
+              <label for="">Permisos de sucursal:</label><br>
+              <span>Elije la(s) sucursal(es) a las que puede accerder este usuario</span>
+
+              <?php
+
+              $nomSuc = ControladorSucursal::ctrMostrarSucursalPropietario($_SESSION['suscriptor']);
+              foreach ($nomSuc as $key => $value) :
+              ?>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="sucPermiso[]" value="<?php echo $value['nombre'] ?>" id="<?php echo $value['nombre'] ?>">
+                  <label class="form-check-label" for="<?php echo $value['nombre'] ?>">
+                    <span class="text-dark"><?php echo $value['nombre'] ?></span>
+                  </label>
+                </div>
+              <?php endforeach; ?>
 
             </div>
 
@@ -371,6 +407,29 @@ MODAL EDITAR USUARIO
                 </select>
 
               </div>
+
+            </div>
+
+
+
+            <div class="form-group permisosSuc " id="sectionPermiso">
+
+              <label for="">Permisos de sucursal:</label><br>
+              <span>Elije la(s) sucursal(es) a las que puede accerder este usuario</span>
+
+              <?php
+
+              $nomSuc = ControladorSucursal::ctrMostrarSucursalPropietario($_SESSION['suscriptor']);
+              foreach ($nomSuc as $key => $value) :
+              ?>
+
+                <div class="form-check">
+                  <input class="form-check-input chk_i" type="checkbox" name="sucPermiso[]" value="<?php echo $value['nombre'] ?>" id="suc_<?php echo str_replace(" ", "-", $value['nombre']) ?>">
+                  <label class="form-check-label" for="suc_<?php echo str_replace(" ", "-", $value['nombre']) ?>">
+                    <span class="text-dark"><?php echo $value['nombre'] ?></span>
+                  </label>
+                </div>
+              <?php endforeach; ?>
 
             </div>
 

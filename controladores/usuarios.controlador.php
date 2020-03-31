@@ -132,15 +132,15 @@ class ControladorUsuarios
 			$ipAuth = $_GET['ip'];
 			$tokenAuth = $_GET['tokenAuth'];
 
-			
 
-			$respuesta = ModeloUsuarios::mdlMostrarUsuariosToken($ipAuth,$tokenAuth);
+
+			$respuesta = ModeloUsuarios::mdlMostrarUsuariosToken($ipAuth, $tokenAuth);
 
 			//var_dump($respuesta);	
 
 			$tabla = "usuarios";
 
-			
+
 
 			if ($respuesta != false) {
 
@@ -190,7 +190,7 @@ class ControladorUsuarios
 					$_SESSION['estado_suscripcion'] =  $susc["estado_suscripcion"];
 
 					$_SESSION["perfil"] = $respuesta["perfil"];
-					
+
 
 					$_SESSION["nom_suc"] = "";
 					$_SESSION["base"] = "";
@@ -221,10 +221,6 @@ class ControladorUsuarios
 					$statusOnline = ControladorUsuarios::ctrOnlineStatus(1, $_SESSION["usuario"]);
 
 					return true;
-
-
-
-					
 				} else {
 
 					return false;
@@ -340,228 +336,30 @@ class ControladorUsuarios
 
 			$contUsuarios = ModeloUsuarios::mdlContadorSuscriptor($_SESSION["suscriptor"]);
 
+			$usuariosTotal = ModeloUsuarios::mdlTotalUsuariosSuscripcion($_SESSION["suscriptor"]);
 
-			switch ($_SESSION['tipo_suc']) {
-				case "IFIXIT PRUEBA":
-					if ($contUsuarios[0] >= 4) {
-						echo '<script>
+			if ($contUsuarios[0] >= $usuariosTotal['usuarios']) {
+
+				echo '<script>
 
 					swal({
 
 						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más usuarios!",
+						title: "Tu suscripción rebasa él limite de usuarios contratados, puedes adquirir más usuarios de así desearlo",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
 
 					}).then(function(result){
 
-						if(result.value){
-						
+						if(result.value){			
 							window.location = "usuarios";
-
 						}
-
 					});
 				
-
 				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT INDIVIDUAL":
-					if ($contUsuarios[0] >= 2) {
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más usuarios!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT INDIVIDUAL-ANUAL":
-					if ($contUsuarios[0] >= 10) {
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más usuarios!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT DUO":
-					if ($contUsuarios[0] >= 4) {
-
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más usuarios!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT DUO-ANUAL":
-					if ($contUsuarios[0] >= 12) {
-
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más usuarios!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT PRO":
-					if ($contUsuarios[0] >= 6) {
-
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más usuarios!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT PRO-ANUAL":
-					if ($contUsuarios[0] >= 14) {
-
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más usuarios!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-
-
-				default:
-					echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Tu suscripcion no se encuentra, es necesario que te comuniques con algún agente!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
-
-				</script>';
-					return;
-					break;
+				return;
 			}
+
 
 			if (
 				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
@@ -659,15 +457,22 @@ class ControladorUsuarios
 
 				$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
+				$permisoSuc = "";
+
+				foreach ($_POST['sucPermiso'] as $key => $value) {
+					$permisoSuc .= $value . ',';
+				}
+				$permisoSuc = trim($permisoSuc, ',');
 				$datos = array(
 					"nombre" => $_POST["nuevoNombre"],
 					"usuario" => $_POST["nuevoUsuario"],
 					"password" => $encriptar,
 					"perfil" => $_POST["nuevoPerfil"],
 					"foto" => $ruta,
-					"suscriptor" => $_SESSION["suscriptor"]
+					"suscriptor" => $_SESSION["suscriptor"],
+					"acceso_sucursal" => $permisoSuc
 				);
-				var_dump($datos);
+				//var_dump($datos);
 
 				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
 
@@ -775,6 +580,8 @@ class ControladorUsuarios
 				/*=============================================
 				VALIDAR IMAGEN
 				=============================================*/
+
+
 
 				$ruta = $_POST["fotoActual"];
 
@@ -913,12 +720,19 @@ class ControladorUsuarios
 					$encriptar = $_POST["passwordActual"];
 				}
 
+				$permisoSuc = "";
+
+				foreach ($_POST['sucPermiso'] as $key => $value) {
+					$permisoSuc .= $value . ',';
+				}
+				$permisoSuc = trim($permisoSuc, ',');
 				$datos = array(
 					"nombre" => $_POST["editarNombre"],
 					"usuario" => $_POST["editarUsuario"],
 					"password" => $encriptar,
 					"perfil" => $_POST["editarPerfil"],
-					"foto" => $ruta
+					"foto" => $ruta,
+					"acceso_sucursal" => $permisoSuc
 				);
 
 				$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
@@ -1199,5 +1013,11 @@ class ControladorUsuarios
 				</script>';
 			}
 		}
+	}
+
+
+	public static function ctrSucursalesPermisoUsuario($usuario)
+	{
+		return ModeloUsuarios::mdlSucursalesPermisoUsuario($usuario);
 	}
 }

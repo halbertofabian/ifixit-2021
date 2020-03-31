@@ -294,20 +294,75 @@ FORO" />
       }
     }
 
+
+
   ?>
 
     <!-- Site wrapper -->
     <div class="wrapper">
       <!-- Navbar -->
 
+      <?php
 
+      $suscripcion = SuscripcionContrlador::ctrObternerEstadoSuscripcion();
 
-      <?php $app->getComponents('navbar'); ?>
+      if ($suscripcion["estado_suscripcion"] != 0) {
+        if ($_SESSION['base'] == 2) {
+          if (isset($_GET["ruta"]) && $_GET["ruta"] == "salir") {
+            include "modulos/" . $_GET["ruta"] . ".php";
+          }
+          $_GET["ruta"] = "suscripcion";
+        } else {
+
+          if ($_SESSION['nom_suc'] == "") {
+            include "modulos/sucursal.php";
+            return;
+          }
+
+          if (isset($_SESSION['block_session'])) {
+            include "modulos/block.php";
+            return;
+          }
+          /*=============================================
+    CABEZOTE
+    =============================================*/
+          $app->getComponents('navbar');
+
+          /*=============================================
+MENU
+=============================================*/
+
+          $app->getComponents('sidebar');
+
+          /*=============================================
+CONTENIDO
+=============================================*/
+        }
+      } else {
+        if (isset($_GET["ruta"]) && $_GET["ruta"] == "salir") {
+          include "modulos/" . $_GET["ruta"] . ".php";
+        }
+        $_GET["ruta"] = "suscripcion";
+
+        /*=============================================
+CABEZOTE
+=============================================*/
+        $app->getComponents('navbar');
+
+        /*=============================================
+MENU
+=============================================*/
+
+        include "modulos/menu.php";
+      }
+      ?>
+
+      <?php //$app->getComponents('navbar'); ?>
       <!-- /.navbar -->
 
       <!-- Main Sidebar Container -->
 
-      <?php $app->getComponents('sidebar'); ?>
+      <?php //$app->getComponents('sidebar'); ?>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
