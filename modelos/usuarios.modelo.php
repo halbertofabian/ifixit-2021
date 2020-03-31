@@ -323,6 +323,28 @@ class ModeloUsuarios
 		$stmt = null;
 	}
 
+	// Contar sucursales
+
+	public static function mdlContadorSuscriptorSucursal($propietario)
+	{
+		$stmt = ConexionSoftmor::conectar()->prepare("SELECT COUNT(propietario) FROM sucursales WHERE propietario = :propietario");
+
+		$stmt->bindParam(":propietario", $propietario, PDO::PARAM_STR);
+
+
+
+		$stmt->execute();
+		//print_r($stmt->errorInfo());
+
+		return $stmt->fetch();
+
+
+
+
+
+		$stmt = null;
+	}
+
 	public static function mdlTotalUsuariosSuscripcion($suscriptor)
 	{
 		$stmt = ConexionSoftmor::conectar()->prepare("SELECT usuarios FROM suscripciones WHERE id = ? ");

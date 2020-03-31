@@ -1020,4 +1020,11 @@ class ControladorUsuarios
 	{
 		return ModeloUsuarios::mdlSucursalesPermisoUsuario($usuario);
 	}
+
+	public static function ctrSucursalesPropietario()
+	{
+		return ModeloUsuarios::mdlContadorSuscriptorSucursal($_SESSION['suscrptor']);
+	}
+
+	
 }
