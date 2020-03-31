@@ -716,28 +716,28 @@ endif; ?>
         </div>
       </div>
       <br>
-      <div class="row">
+      <div class="row ml-3">
         <div class="col-12 col-md-12">
           <div class="text-danger">
             *Seleccione al menos una opcion de estas <span class="text-success">(*)</span>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Encendido"> Encendido
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Apagado"> Apagado
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Manipulado"> Manipulado
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Mojado"> Mojado
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Roto"> Roto
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Incompleto"> Incompleto
         </div>
       </div>
@@ -967,7 +967,7 @@ endif; ?>
         </div>
       </div>
       <br>
-      <div class="row">
+      <div class="row ml-3">
 
         <div class="col-md-2">
           <div class="col-12 col-md-12">
@@ -1504,28 +1504,28 @@ endif; ?>
         </div>
       </div>
       <br>
-      <div class="row">
+      <div class="row ml-3">
         <div class="col-12 col-md-12">
           <div class="text-danger">
             *Seleccione al menos una opcion de estas <span class="text-success">(*)</span>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Encendido"> Encendido
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Apagado"> Apagado
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Manipulado"> Manipulado
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Mojado"> Mojado
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Roto"> Roto
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-12">
           <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Incompleto"> Incompleto
         </div>
       </div>
