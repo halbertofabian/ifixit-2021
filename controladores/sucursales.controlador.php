@@ -321,17 +321,19 @@ class ControladorSucursal
 			$_SESSION['tipo_suc'] =  $susc["tipo"];
 			$_SESSION['tipo_plan'] =  $susc["plan"];
 
+			$suscCount = ModeloUsuarios::mdlContadorSuscriptorSucursal($susc["id"]);
+			$suscCountTotal = ModeloUsuarios::mdlTotalSucursalesSuscripcion($susc["id"]);
 
-			echo $_SESSION['tipo_suc'];
-			switch ($_SESSION['tipo_suc']) {
-				case "IFIXIT PRUEBA":
-					if ($contSuc["COUNT(propietario)"] >= 1) {
-						echo '<script>
+			$suscCount = $contSuc["COUNT(propietario)"];
+			//if($contSuc["COUNT(propietario)"]=>)
+
+			if ($suscCount >= $suscCountTotal['sucursales']) {
+				echo '<script>
 
 					swal({
 
 						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más sucursales!",
+						title: "Tu suscripción tiene una contratación de ' . $suscCountTotal['sucursales'] . ' sucursales, si requieres más ponte en contacto con un agente",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
 
@@ -348,176 +350,8 @@ class ControladorSucursal
 
 				</script>';
 
-						return;
-					}
-					break;
-				case "IFIXIT INDIVIDUAL":
-					if ($contSuc["COUNT(propietario)"] >= 1) {
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más sucursales!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "configuraciones";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT DUO":
-					if ($contSuc["COUNT(propietario)"] >= 2) {
-
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más sucursales!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "configuraciones";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT PRO":
-					if ($contSuc["COUNT(propietario)"] >= 3) {
-
-						echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Debido a tu suscripción no puedes tener más sucursales!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "configuraciones";
-
-						}
-
-					});
-				
-
-				</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT PRO-ANUAL":
-					if ($contSuc["COUNT(propietario)"] >= 3) {
-
-						echo '<script>
-	
-						swal({
-	
-							type: "error",
-							title: "¡Debido a tu suscripción no puedes tener más sucursales!",
-							showConfirmButton: true,
-							confirmButtonText: "Cerrar"
-	
-						}).then(function(result){
-	
-							if(result.value){
-							
-								window.location = "configuraciones";
-	
-							}
-	
-						});
-					
-	
-					</script>';
-
-						return;
-					}
-					break;
-				case "IFIXIT DUO-ANUAL":
-					if ($contSuc["COUNT(propietario)"] >= 2) {
-
-						echo '<script>
-	
-						swal({
-	
-							type: "error",
-							title: "¡Debido a tu suscripción no puedes tener más sucursales!",
-							showConfirmButton: true,
-							confirmButtonText: "Cerrar"
-	
-						}).then(function(result){
-	
-							if(result.value){
-							
-								window.location = "configuraciones";
-	
-							}
-	
-						});
-					
-	
-					</script>';
-
-						return;
-					}
-					break;
-
-
-				default:
-					echo '<script>
-
-					swal({
-
-						type: "error",
-						title: "¡Tu suscripcion no se encuentra, es necesario que te comuniques con algun agente!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "configuraciones";
-
-						}
-
-					});
-				
-
-				</script>';
-					return;
-					break;
+				return;
 			}
-
 
 
 			$sucursal = array(

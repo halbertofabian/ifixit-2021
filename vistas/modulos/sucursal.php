@@ -1,3 +1,11 @@
+<?php
+
+    if($_GET['ruta']=='salir'){
+        
+    }
+
+?>
+
 <div class="container mt-4">
 
     <h2>Bienvenido (a) <?php echo $_SESSION['nombre'] ?> 🙋‍♂️ a la versión 3.0.1 de ifixitmor</h2>
