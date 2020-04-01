@@ -145,7 +145,7 @@ FORO" />
   <meta name="twitter:description" content="DESARROLLO Y DISEÑO -Aplicaciones Móviles --Aplicaciones Informativas --Tienda online y APP -Desarrollo Web --Páginas web InformátiSvas --Foros --Blogs -Aplicaciones Web y Sistemas --Sistema de reservas y sitio web Hotelero. --Sistema para Doctores. --Sistema de reserva para agencia de viajes. --Tiendas Online --Sistema Punto de Venta y Tienda Online --Sistema de bienes raíces y sitio web. --Sistema y sitio web Abogados. --Sistema administrativo. PUNTOS DE VENTA  -Punto de venta -Punto de venta + tienda online -Tienda online + aplicación VOZ Y DATOS -Instalación de redes Wifi &amp; Lan -Servidores -Cámaras IP -Cámaras CCTV -Acces point de Internet REPARACIÓN Y DESBLOQUEO -Liberación de móviles -Reparación de dispositivos móviles -Reparación de equipos de computo -Electrónica general -Desbloqueo FORO" />
 
 
-  <link rel="shortcut icon" href="<?php echo $url ?>vistas/img/app/plantilla/ifixit_x.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo $url ?>vistas/img/plantilla/ifixit_x.png" type="image/x-icon">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/fontawesome-free/css/all.min.css">
