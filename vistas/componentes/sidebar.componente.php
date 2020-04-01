@@ -13,7 +13,7 @@
 
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2 ">
             <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -32,7 +32,7 @@
 
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?php echo $url ?>mi-perfil" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Mi perfil</p>
@@ -43,7 +43,7 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Notificaciones</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?php echo $url ?>salir" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -61,7 +61,7 @@
 
 
 
-                <li class="nav-item has-treeview">
+                <!-- <li class="nav-item has-treeview">
                     <a href="<?php echo $url ?>mi-web" class="nav-link">
                         <i class="nav-icon fas fa-store"></i>
                         <p>
@@ -89,7 +89,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="<?php echo $url ?>configuraciones" class="nav-link">
                         <i class="nav-icon fa fa-cog"></i>
@@ -303,22 +303,22 @@
                 </li>
 
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?php echo $url ?>domicilio" class="nav-link">
                         <i class="nav-icon fas fa-shipping-fast"></i>
                         <p>
                             Servicio a domicilio
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a href="<?php echo $url ?>renovar" class="nav-link">
                         <i class="nav-icon fas fa-sync-alt"></i>
                         <p>
                             Renovar cuenta
                         </p>
                     </a>
-                </li>
+                </li> -->
 
 
 
