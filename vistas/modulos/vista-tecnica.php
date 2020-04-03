@@ -1,13 +1,13 @@
 <?php
 //if($_SESSION['orden']=='');
-?>
 
+?>
 
 <!-- Main content -->
 <section class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-12">
-            <form action="#" method="POST">
+            <form action="" method="POST">
                 <div class="form-group">
                     <label for="inputSearchService">Número de servicio:</label>
                     <input id="inputSearchService" class="form-control" type="text" placeholder="Escribe o scanea el número de órden del servicio" name="inputSearchService">
@@ -23,26 +23,26 @@
         </div>
     </div>
 
-    <!-- <div class="row">
-            <div class="col-12 col-md-12">
-                <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-secondary">Filtrar por</button>
-                    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="index.php?ruta=entregas&filtro=Reparacion">Reparación</a></li>
-                        <li><a href="index.php?ruta=entregas&filtro=Entregado">Entregado</a></li>
-                        <li><a href="index.php?ruta=entregas&filtro=Reparado">Reparado</a></li>
-                        <li><a href="index.php?ruta=entregas&filtro=No quedo">No quedo</a></li>
-                        <li><a href="index.php?ruta=entregas&filtro=Laboratorio">Laboratorio</a></li>
-                        <li><a href="index.php?ruta=entregas&filtro=Entregado no quedo">Entregado sin quedar</a></li>
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <div class="btn-group float-right">
+                <button type="button" class="btn btn-secondary">Filtrar por</button>
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a class="dropdown-item" href="index.php?ruta=entregas&filtro=Reparacion">Reparación</a></li>
+                    <li><a class="dropdown-item" href="index.php?ruta=entregas&filtro=Entregado">Entregado</a></li>
+                    <li><a class="dropdown-item" href="index.php?ruta=entregas&filtro=Reparado">Reparado</a></li>
+                    <li><a class="dropdown-item" href="index.php?ruta=entregas&filtro=No quedo">No quedo</a></li>
+                    <li><a class="dropdown-item" href="index.php?ruta=entregas&filtro=Laboratorio">Laboratorio</a></li>
+                    <li><a class="dropdown-item" href="index.php?ruta=entregas&filtro=Entregado no quedo">Entregado sin quedar</a></li>
 
-                    </ul>
-                </div>
+                </ul>
             </div>
-        </div> -->
+        </div>
+    </div>
     <br>
 
     <table class="table tablaServicios table-bordered table-striped dt-responsive tablas" width="100%">
@@ -61,7 +61,7 @@
                 <th>Contacto</th>
                 <th>Fecha de servicio</th>
                 <th>Fecha de entrega</th>
-                <th style="width:40px">Estado</th>
+                <th>Estado</th>
                 <th>Tipo de equipo</th>
                 <th>Equipo</th>
                 <th>Modelo</th>
@@ -97,7 +97,6 @@
             } else {
                 $servicio = ControladorServicios::ctrMostrarServicio($_SESSION['nombre']);
             }
-
 
             foreach ($servicio as $key => $value) {
 
@@ -222,33 +221,34 @@
 
                     <td><?php echo $value['fecha_reparacion']; ?></td>
                     <td><?php echo $value['fecha_entrega']; ?></td>
-                    <!-- Estado de reparacion -->
+
+
+
+
                     <?php
-                    if ($value['estado_equipo'] == "Entregado" || $value['estado_equipo'] == "Entregado no quedo") {
+                    if ($value['estado_equipo'] == "Entregado") {
                         echo '<td>
                         <strong class="text-success">' . $value['estado_equipo'] . '</td>';
+                    } elseif ($value['estado_equipo'] == "Entregado no quedo") {
+                        echo '<td>
+                        <strong class="text-danger">' . $value['estado_equipo'] . '</td>';
                     } else {
 
                         if ($value['estado_equipo'] == "Reparado" || $value['estado_equipo'] == "Entregado") {
-                            echo '<td class="bg-success">';
+                            echo '<td> <button class="btn btn-success btnCambiarEstadoOrden  btn-sm" data-toggle="modal" data-target="#estadoOrden" estadoEquipo="' . $value['estado_equipo'] . '" idServicio="' . $value['orden'] . '" importe="' . $value['importe'] . '" anticipo="' . $value['anticipo'] . '" nota="' . $value['nota'] . '" > ';
                         }
                         if ($value['estado_equipo'] == "No quedo") {
-                            echo '<td class="bg-danger">';
+                            echo '<td> <button class="btn btn-danger  btnCambiarEstadoOrden btn-sm" data-toggle="modal" data-target="#estadoOrden" estadoEquipo="' . $value['estado_equipo'] . '" idServicio="' . $value['orden'] . '" importe="' . $value['importe'] . '" anticipo="' . $value['anticipo'] . '" nota="' . $value['nota'] . '" >';
                         }
                         if ($value['estado_equipo'] == "Reparacion" || $value['estado_equipo'] == "Laboratorio") {
-                            echo '<td class="bg-warning">';
+                            echo '<td> <button class="btn btn-warning btnCambiarEstadoOrden  btn-sm" data-toggle="modal" data-target="#estadoOrden" estadoEquipo="' . $value['estado_equipo'] . '" idServicio="' . $value['orden'] . '" importe="' . $value['importe'] . '" anticipo="' . $value['anticipo'] . '" nota="' . $value['nota'] . '" >';
                         } ?>
-                        <select name="estado" class="form-control estado_equipo" anticipo="<?php echo $value['anticipo']; ?>" onchange="cambiarEstado( <?php echo $value['orden']; ?>)" id="estado_equipo" idServicio="<?php echo $value['orden'] ?>">
-
-                            <option value="<?php echo $value['estado_equipo']; ?>"><?php echo $value['estado_equipo']; ?></option>
-
-                            <option value="Reparado">Reparado</option>
-                            <option value="Reparacion">Reparacion</option>
-                            <option value="No quedo">No quedo</option>
-                            <option value="Laboratorio">Laboratorio</option>
-                        </select>
+                        <strong><?php echo $value['estado_equipo']; ?></strong>
+                        </button>
                         </td>
                     <?php } ?>
+                    <!-- Estado de reparacion -->
+
 
 
 
@@ -294,34 +294,34 @@
 
 
 <div class="modal  fade" id="modalEditarNota">
-  <div class="modal-dialog">
-    <form action="" method="post">
-      <div class="modal-content">
-        <div class="modal-header bg-dark">
-          
-          <h4 class="modal-title">Editar nota</h4>
-        </div>
-        <div class="modal-body">
-          <p>Hazle saber a tus clientes y grupo de trabajo cúal es la situación actual del servicio&hellip;</p>
-          <div class="form-group">
-            <textarea name="nota" id="textNota" cols="30" rows="10" class="form-control"></textarea>
-            <input type="hidden" id="orden" name="orden">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dafault pull-left" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-dark" name="btnEditarNota">Guardar cambios</button>
-        </div>
-      </div>
-      <?php
-      $nota = new ControladorServicios();
-      $nota->editarNota();
-      ?>
-    </form>
+    <div class="modal-dialog">
+        <form action="" method="post">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
 
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
+                    <h4 class="modal-title">Editar nota</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Hazle saber a tus clientes y grupo de trabajo cúal es la situación actual del servicio&hellip;</p>
+                    <div class="form-group">
+                        <textarea name="nota" id="textNota" cols="30" rows="10" class="form-control"></textarea>
+                        <input type="hidden" id="orden" name="orden">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dafault pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark" name="btnEditarNota">Guardar cambios</button>
+                </div>
+            </div>
+            <?php
+            $nota = new ControladorServicios();
+            $nota->editarNota();
+            ?>
+        </form>
+
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 
 <?php //include_once 'vistas/modulos/bardcode.php'
@@ -333,39 +333,128 @@
 <!-- mensaje de whatsapp  -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-dark">
-        <h5 class="modal-title" id="exampleModalLabel">Mensaje de whatsApp para: <strong id="numeroWp"></strong> </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="#" method="post">
-        <div class="modal-body">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title" id="exampleModalLabel">Mensaje de whatsApp para: <strong id="numeroWp"></strong> </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" method="post">
+                <div class="modal-body">
 
 
-          <input type="hidden" name="codigoWP" id="codigoWP">
-          <input type="hidden" name="textNumWp" id="textNumWp">
-          <input type="hidden" name="nombreWP" id="nombreWP">
-          <input type="hidden" name="codeWP" id="codeWP">
-          <input type="hidden" name="notaWP" id="notaWP">
+                    <input type="hidden" name="codigoWP" id="codigoWP">
+                    <input type="hidden" name="textNumWp" id="textNumWp">
+                    <input type="hidden" name="nombreWP" id="nombreWP">
+                    <input type="hidden" name="codeWP" id="codeWP">
+                    <input type="hidden" name="notaWP" id="notaWP">
 
 
 
-          <textarea name="textwp" id="textwp" rows="10" cols="60"></textarea>
+                    <textarea name="textwp" id="textwp" rows="10" cols="60"></textarea>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success" name="btnMandarWp">Mandar Whatsapp</button>
+                </div>
+                <?php
+                $wsp = new ControladorServicios();
+                $wsp->ctrMandarWp();
+
+                ?>
+            </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-success" name="btnMandarWp">Mandar Whatsapp</button>
-        </div>
-        <?php
-        $wsp = new ControladorServicios();
-        $wsp->ctrMandarWp();
-
-        ?>
-      </form>
     </div>
-  </div>
+</div>
+
+
+
+
+<!-- Estado orden -->
+<div class="modal fade" id="estadoOrden" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Estado de servicio <span id="text-orden"></span> </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formEstadoServicio" method="post">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="" class="text-dark">Selecciona el estado en que se encuentra este servicio</label>
+                                <select name="estado" class="form-control estado_equipo" id="estado_equipo">
+
+
+
+                                    <option value="" selected>Seleccione un estado</option> -->
+
+                                    <option value="Reparado">Reparado</option>
+                                    <option value="Entregado">Entregar</option>
+                                    <option value="Reparacion">Reparacion</option>
+                                    <option value="No quedo">No quedo</option>
+                                    <option value="Laboratorio">Laboratorio</option>
+                                    <option value="Entregado no quedo">Entregar sin quedar</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-12 notaOrdenEstado d-none">
+                            <div class="form-group">
+                                <label for="" class="text-dark">Puedes dejar una nota, especificando por que no quedo el equipo</label>
+                                <textarea name="" id="notaServicioEstado" class="form-control" cols="" rows="3"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pagoOrdenEstado d-none">
+                        <div class="col-12">
+                            <p> <strong>Liquidar servicio</strong></p>
+                            <div>
+
+                                <div class="form-group col-6">
+                                    <label for="Total">Total $</label>
+                                    <input id="total" class="form-control efectivoFormat" type="text" value="" readonly>
+                                    <label for="anticipo">Anticipo $</label>
+                                    <input id="anticipo" class="form-control efectivoFormat" type="text" value="" readonly>
+                                </div>
+                                <hr class="text-dark">
+                                <div class="form-group">
+                                    <label for="adeuda">Adeuda $</label>
+                                    <input id="adeuda" class="form-control efectivoFormat text-danger" type="text" name="adeuda" value="" readonly>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="pagaCon">Paga con $</label>
+                                <input id="pagaCon" class="form-control efectivoFormat" type="text">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="cambioDe">Su cambio $</label>
+                                <input id="cambioDe" class="form-control efectivoFormat" type="text">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

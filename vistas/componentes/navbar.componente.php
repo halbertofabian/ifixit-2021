@@ -43,15 +43,19 @@
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
-            <form class="form-inline ml-3">
+            <form class="form-inline ml-3" method="POST">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Buscar servicios" aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Buscar servicios" name="inputSearchService" aria-label="Search">
                     <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
+                        <button class="btn btn-navbar" name="btnSearchService" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </div>
+                <?php
+                $buscarServicio = new ControladorServicios();
+                $buscarServicio->ctrBucarServicioOrden();
+                ?>
             </form>
             <li class="nav-item d-none d-md-inline-block">
                 <a href="<?php echo $url ?>servicios" class="nav-link"> <i class="fas fa-screwdriver"></i> Crear Servicio </a>

@@ -10,7 +10,7 @@ require_once "../controladores/movimientos.controlador.php";
 
 
 	if (isset($_GET['orden']) && isset($_GET['estado'])) {
-		$res = ControladorServicios::ctrCambiarEstadoEquipo($_GET['estado'],$_SESSION['nombre'],$_GET['orden'],$_GET['anticipo']);
+		$res = ControladorServicios::ctrCambiarEstadoEquipo($_GET['estado'],$_SESSION['nombre'],$_GET['orden'],$_GET['anticipo'],$_GET['nota']);
 		if($res){
 			
 			header("location:../entregas");

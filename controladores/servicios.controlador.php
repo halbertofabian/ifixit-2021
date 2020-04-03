@@ -474,7 +474,7 @@ class ControladorServicios
 	 * 
 	 * */
 
-	static public function ctrCambiarEstadoEquipo($estado, $usuario, $orden, $anticipo)
+	static public function ctrCambiarEstadoEquipo($estado, $usuario, $orden, $anticipo,$nota)
 	{
 
 		$estado_corte = 0;
@@ -536,7 +536,7 @@ class ControladorServicios
 		$corte = ModeloServicios::cambiarEstadoTabla("servicios", $estado_corte, "orden", $orden);
 
 
-		$res = ModeloServicios::mdlCambiarEstado($estado, $usuario, $orden, $valor1b);
+		$res = ModeloServicios::mdlCambiarEstado($estado, $usuario, $orden, $valor1b,$nota);
 		if ($estado == "Entregado no quedo" && $anticipo != 0) {
 			if ($res) {
 				$items = array(
@@ -565,6 +565,8 @@ class ControladorServicios
 
 		return $res;
 	}
+
+	// ---------
 	static public function ctrDetalleServicio($orden)
 	{
 

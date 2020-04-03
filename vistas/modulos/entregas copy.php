@@ -215,7 +215,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
             $c1 = $cadena[0];
             if ($cadena[1] != "") {
               $c2 = '
-                <button class="btn btn-success btnMsjWsp " codigoServicio="' . $value['orden'] . '" numWp="' . $cadena[1] . '" data-toggle="modal" data-target="#exampleModal"><i class="fab fa-whatsapp" aria-hidden="true"></i></button>';
+                <button class="btn btn-success btnMsjWsp " codigoServicio="' . $value['orden'] . '" numWp="' . $cadena[1] . '" data-toggle="modal" data-target="#exampleModal">Mandar WhatsApp <i class="fab fa-whatsapp" aria-hidden="true"></i></button>';
             }
           }
           //var_dump($cadena);
@@ -232,34 +232,35 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
           <td><?php echo $value['fecha_reparacion']; ?></td>
           <td><?php echo $value['fecha_entrega']; ?></td>
-
-
-
-
+          <!-- Estado de reparacion -->
           <?php
-          if ($value['estado_equipo'] == "Entregado") {
+          if ($value['estado_equipo'] == "Entregado" || $value['estado_equipo'] == "Entregado no quedo") {
             echo '<td>
                         <strong class="text-success">' . $value['estado_equipo'] . '</td>';
-          } elseif ($value['estado_equipo'] == "Entregado no quedo") {
-            echo '<td>
-                        <strong class="text-danger">' . $value['estado_equipo'] . '</td>';
           } else {
 
             if ($value['estado_equipo'] == "Reparado" || $value['estado_equipo'] == "Entregado") {
-              echo '<td> <button class="btn btn-success btnCambiarEstadoOrden  btn-sm" data-toggle="modal" data-target="#estadoOrden" estadoEquipo="' . $value['estado_equipo'] . '" idServicio="' . $value['orden'] . '" importe="' . $value['importe'] . '" anticipo="' . $value['anticipo'] . '" nota="' . $value['nota'] . '" > ';
+              echo '<td class="bg-success">';
             }
             if ($value['estado_equipo'] == "No quedo") {
-              echo '<td> <button class="btn btn-danger  btnCambiarEstadoOrden btn-sm" data-toggle="modal" data-target="#estadoOrden" estadoEquipo="' . $value['estado_equipo'] . '" idServicio="' . $value['orden'] . '" importe="' . $value['importe'] . '" anticipo="' . $value['anticipo'] . '" nota="' . $value['nota'] . '" >';
+              echo '<td class="bg-danger">';
             }
             if ($value['estado_equipo'] == "Reparacion" || $value['estado_equipo'] == "Laboratorio") {
-              echo '<td> <button class="btn btn-warning btnCambiarEstadoOrden  btn-sm" data-toggle="modal" data-target="#estadoOrden" estadoEquipo="' . $value['estado_equipo'] . '" idServicio="' . $value['orden'] . '" importe="' . $value['importe'] . '" anticipo="' . $value['anticipo'] . '" nota="' . $value['nota'] . '" >';
+              echo '<td class="bg-warning">';
             } ?>
-            <strong><?php echo $value['estado_equipo']; ?></strong>
-            </button>
+            <select name="estado" class="form-control estado_equipo" anticipo="<?php echo $value['anticipo']; ?>" onchange="cambiarEstado( <?php echo $value['orden']; ?>)" id="estado_equipo" idServicio="<?php echo $value['orden'] ?>">
+
+              <option value="<?php echo $value['estado_equipo']; ?>"><?php echo $value['estado_equipo']; ?></option>
+
+              <option value="Reparado">Reparado</option>
+              <option value="Entregado">Entregado</option>
+              <option value="Reparacion">Reparacion</option>
+              <option value="No quedo">No quedo</option>
+              <option value="Laboratorio">Laboratorio</option>
+              <option value="Entregado no quedo">Entregado sin quedar</option>
+            </select>
             </td>
           <?php } ?>
-          <!-- Estado de reparacion -->
-
 
 
 
@@ -309,7 +310,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
     <form action="" method="post">
       <div class="modal-content">
         <div class="modal-header bg-dark">
-
+          
           <h4 class="modal-title">Editar nota</h4>
         </div>
         <div class="modal-body">
@@ -376,95 +377,6 @@ if ($_SESSION['perfil'] == "Tecnico") {
         $wsp->ctrMandarWp();
 
         ?>
-      </form>
-    </div>
-  </div>
-</div>
-
-
-
-
-<!-- Estado orden -->
-<div class="modal fade" id="estadoOrden" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Estado de servicio <span id="text-orden"></span> </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form id="formEstadoServicio" method="post">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12">
-              <div class="form-group">
-                <label for="" class="text-dark">Selecciona el estado en que se encuentra este servicio</label>
-                <select name="estado" class="form-control estado_equipo" id="estado_equipo">
-
-                  
-
-                  <option value="" selected>Seleccione un estado</option> -->
-
-                  <option value="Reparado">Reparado</option>
-                  <option value="Entregado">Entregar</option>
-                  <option value="Reparacion">Reparacion</option>
-                  <option value="No quedo">No quedo</option>
-                  <option value="Laboratorio">Laboratorio</option>
-                  <option value="Entregado no quedo">Entregar sin quedar</option>
-                </select>
-
-              </div>
-            </div>
-            <div class="col-12 notaOrdenEstado d-none">
-              <div class="form-group">
-                <label for="" class="text-dark">Puedes dejar una nota, especificando por que no quedo el equipo</label>
-                <textarea name="" id="notaServicioEstado" class="form-control" cols="" rows="3"></textarea>
-
-              </div>
-            </div>
-          </div>
-          <div class="row pagoOrdenEstado d-none">
-            <div class="col-12">
-              <p> <strong>Liquidar servicio</strong></p>
-              <div>
-
-                <div class="form-group col-6">
-                  <label for="Total">Total $</label>
-                  <input id="total" class="form-control efectivoFormat" type="text" value="" readonly>
-                  <label for="anticipo">Anticipo $</label>
-                  <input id="anticipo" class="form-control efectivoFormat" type="text" value="" readonly>
-                </div>
-                <hr class="text-dark">
-                <div class="form-group">
-                  <label for="adeuda">Adeuda $</label>
-                  <input id="adeuda" class="form-control efectivoFormat text-danger" type="text" name="adeuda" value="" readonly>
-                </div>
-              </div>
-
-
-
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="pagaCon">Paga con $</label>
-                <input id="pagaCon" class="form-control efectivoFormat" type="text">
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for="cambioDe">Su cambio $</label>
-                <input id="cambioDe" class="form-control efectivoFormat" type="text">
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        </div>
       </form>
     </div>
   </div>
