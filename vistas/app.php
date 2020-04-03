@@ -332,7 +332,7 @@ FORO" />
 MENU
 =============================================*/
 
-          $app->getComponents('sidebar');
+          $app->getComponents('sidebar',$url);
 
           /*=============================================
 CONTENIDO
@@ -362,7 +362,7 @@ MENU
 
       <!-- Main Sidebar Container -->
 
-      <?php //$app->getComponents('sidebar'); ?>
+      <?php //$app->getComponents('sidebar',$url); ?>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
