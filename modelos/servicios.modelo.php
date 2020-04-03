@@ -15,7 +15,6 @@ class ModeloServicios
 		if ($tecnico != "") {
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM servicios WHERE estado_borrado = 1 AND tecnico = :tecnico ORDER BY orden DESC ");
 			$stmt->bindParam(":tecnico", $tecnico, PDO::PARAM_STR);
-
 		} else {
 
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM servicios WHERE estado_borrado = 1 ORDER BY orden DESC ");
@@ -40,7 +39,6 @@ class ModeloServicios
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM servicios WHERE estado_equipo = :filtro  AND tecnico = :tecnico  ORDER BY orden DESC ");
 			$stmt->bindParam(":filtro", $filtro, PDO::PARAM_STR);
 			$stmt->bindParam(":tecnico", $tecnico, PDO::PARAM_STR);
-
 		} else {
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM servicios WHERE estado_equipo = :filtro   ORDER BY orden DESC ");
 			$stmt->bindParam(":filtro", $filtro, PDO::PARAM_STR);
@@ -285,19 +283,21 @@ class ModeloServicios
 		$stmt = null;
 	}
 
-	static public function mdlCambiarEstado($estado, $usuario, $orden, $fecha_entrega)
+	static public function mdlCambiarEstado($estado, $usuario, $orden, $fecha_entrega, $nota)
 	{
 
 		if ($estado == "Entregado" || $estado == "Entregado no quedo") {
-			$stmt = Conexion::conectar()->prepare("UPDATE servicios SET fecha_entrega = :fecha_entrega , estado_equipo = :estado_equipo, usuario_entrego =:usuario_entrego WHERE  orden = :orden");
+			$stmt = Conexion::conectar()->prepare("UPDATE servicios SET fecha_entrega = :fecha_entrega , estado_equipo = :estado_equipo, usuario_entrego =:usuario_entrego, nota = :nota WHERE  orden = :orden");
 			$stmt->bindParam(":fecha_entrega", $fecha_entrega);
 		} else {
-			$stmt = Conexion::conectar()->prepare("UPDATE servicios SET estado_equipo = :estado_equipo, usuario_entrego =:usuario_entrego WHERE  orden = :orden");
+			$stmt = Conexion::conectar()->prepare("UPDATE servicios SET estado_equipo = :estado_equipo, usuario_entrego =:usuario_entrego, nota = :nota WHERE  orden = :orden");
 		}
 
 
 		$stmt->bindParam(":estado_equipo", $estado, PDO::PARAM_STR);
 		$stmt->bindParam(":usuario_entrego", $usuario, PDO::PARAM_STR);
+		$stmt->bindParam(":nota", $nota, PDO::PARAM_STR);
+
 		$stmt->bindParam(":orden", $orden, PDO::PARAM_STR);
 
 
