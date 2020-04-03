@@ -37,106 +37,111 @@
 
 <nav class="main-header navbar navbar-expand navbar-dark">
 
-
-    <!-- Left navbar links -->
-    <ul class="navbar-nav mb-4">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-        </li>
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Buscar servicios" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+    <?php if ($_SESSION['perfil'] != "Tecnico") : ?>
+        <!-- Left navbar links -->
+        <ul class="navbar-nav mb-4">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+            <form class="form-inline ml-3">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Buscar servicios" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        <li class="nav-item d-none d-md-inline-block">
-            <a href="<?php echo $url ?>servicios" class="nav-link"> <i class="fas fa-screwdriver"></i> Crear Servicio </a>
-        </li>
+            </form>
+            <li class="nav-item d-none d-md-inline-block">
+                <a href="<?php echo $url ?>servicios" class="nav-link"> <i class="fas fa-screwdriver"></i> Crear Servicio </a>
+            </li>
 
-        <li class="nav-item d-none d-md-inline-block">
-            <a href="<?php echo $url ?>crear-venta" class="nav-link"> <i class="fas fa-cart-plus"></i> Crear Venta </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="fas fa-archive"></i> Entregas</a>
-            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="<?php echo $url ?>entregas" class="dropdown-item"> <i class="fas fa-screwdriver"></i> Lista de servicios </a></li>
+            <li class="nav-item d-none d-md-inline-block">
+                <a href="<?php echo $url ?>crear-venta" class="nav-link"> <i class="fas fa-cart-plus"></i> Crear Venta </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"> <i class="fas fa-archive"></i> Entregas</a>
+                <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                    <li><a href="<?php echo $url ?>entregas" class="dropdown-item"> <i class="fas fa-screwdriver"></i> Lista de servicios </a></li>
 
-                <li><a href="<?php echo $url ?>lista-pedidos" class="dropdown-item"><i class="fas fa-clipboard-list"></i> Lista de Pedidos</a></li>
-            </ul>
-        </li>
-        <li class="nav-item d-none d-md-inline-block">
-            <a href="<?php echo $url ?>agregar-servicio" class="nav-link"> <i class="far fa-address-card"></i> Servicio precargado </a>
-        </li>
-    </ul>
+                    <li><a href="<?php echo $url ?>lista-pedidos" class="dropdown-item"><i class="fas fa-clipboard-list"></i> Lista de Pedidos</a></li>
+                </ul>
+            </li>
+            <li class="nav-item d-none d-md-inline-block">
+                <a href="<?php echo $url ?>agregar-servicio" class="nav-link"> <i class="far fa-address-card"></i> Servicio precargado </a>
+            </li>
+        </ul>
+    <?php endif; ?>
 
     <!-- SEARCH FORM -->
 
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto mb-4">
+        <?php if ($_SESSION['perfil'] != "Tecnico") : ?>
 
-        <!-- <li class="nav-item d-none d-md-inline-block ">
+            <!-- <li class="nav-item d-none d-md-inline-block ">
 
 
             <a href="<?php echo $url ?>changeUser" class="nav-link"><i class="fas fa-user-friends"></i> Cambiar de usuario</a>
 
             </a>
         </li> -->
-        <?php if ($_SESSION['perfil'] == "Administrador") : ?>
-            <li class="nav-item dropdown d-none d-md-inline-block">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fa fa-university"></i>
-                    <span class=""><?php echo $_SESSION["nom_suc"]; ?></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">Cambio de sucursal</span>
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-item">
-                        <form action="#" method="post">
-                            <div class="form-group">
-                                <label for="my-input">Seleccione una sucursal</label>
-                                <select name="ingSucursal" class="form-control" id="">
-                                    <?php $susc = ControladorSucursal::ctrMostrarSucursalPropietario($_SESSION["suscriptor"]); ?>
+            <?php if ($_SESSION['perfil'] == "Administrador") : ?>
+                <li class="nav-item dropdown d-none d-md-inline-block">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fa fa-university"></i>
+                        <span class=""><?php echo $_SESSION["nom_suc"]; ?></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Cambio de sucursal</span>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <label for="my-input">Seleccione una sucursal</label>
+                                    <select name="ingSucursal" class="form-control" id="">
+                                        <?php $susc = ControladorSucursal::ctrMostrarSucursalPropietario($_SESSION["suscriptor"]); ?>
 
-                                    <?php foreach ($susc as $key => $item) : ?>
-                                        <option value="<?php echo $item['nombre'] ?>"><?php echo $item['nombre'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                        <?php foreach ($susc as $key => $item) : ?>
+                                            <option value="<?php echo $item['nombre'] ?>"><?php echo $item['nombre'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
 
-                                <button type="submit" name="btnCambiarSucursal" class="btn btn-dark  float-right mt-2 mb-2">Acceder</button>
-                            </div>
-                            <?php
+                                    <button type="submit" name="btnCambiarSucursal" class="btn btn-dark  float-right mt-2 mb-2">Acceder</button>
+                                </div>
+                                <?php
 
-                            $login = new ControladorUsuarios();
-                            $login->ctrCambiarSucursal();
+                                $login = new ControladorUsuarios();
+                                $login->ctrCambiarSucursal();
 
-                            ?>
+                                ?>
 
-                        </form>
+                            </form>
+                        </div>
+
                     </div>
+                </li>
+            <?php endif; ?>
 
-                </div>
+            <li class="nav-item ">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#mdlActualizaciones">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-success navbar-badge">0</span>
+                </a>
+            </li>
+
+            <li class="nav-item d-none d-md-inline-block">
+                <a href="<?php echo $url ?>caja" class="nav-link"><i class="fas fa-cash-register"></i> Caja</a>
             </li>
         <?php endif; ?>
 
-        <li class="nav-item ">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#mdlActualizaciones">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-success navbar-badge">0</span>
-            </a>
-        </li>
 
-        <li class="nav-item d-none d-md-inline-block">
-            <a href="<?php echo $url ?>caja" class="nav-link"><i class="fas fa-cash-register"></i> Caja</a>
-        </li>
 
         <li class="nav-item dropdown d-none d-md-inline-block">
             <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                <img src="<?php echo $_SESSION["foto"] ?>" class="img-circle elevation-2" width="30" alt="User Image"> <?php echo $_SESSION["usuario"] ?><i class="fas fa-caret-down"></i>
+                <img src="<?php echo $_SESSION["foto"] ?>" class="img-circle elevation-2" width="30" alt=""> <?php echo $_SESSION["usuario"] ?><i class="fas fa-caret-down"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- <a href="#" class="dropdown-item bg-dark">
@@ -164,6 +169,7 @@
                 </a>
             </div>
         </li>
+
 
 
     </ul>

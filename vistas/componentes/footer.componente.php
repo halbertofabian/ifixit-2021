@@ -1,6 +1,6 @@
 
-<footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
+<footer class="main-footer mt-5">
+    <div class="float-right d-none d-sm-block mt-5">
         <b>Version</b> 3.0.1
     </div>
 
