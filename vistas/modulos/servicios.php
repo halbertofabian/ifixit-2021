@@ -39,7 +39,7 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor")
 
 
     <!-- Main content -->
-    <section class="container-fluid">
+    <section class="container">
       <?php if ($serv['estado_corte'] != 0) : $estado_equipo = "Reparacion"; ?>
 
         <!-- <div class="container-fluid">
@@ -109,12 +109,16 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor")
 
               $date =  $serv['fecha_prometida'];
 
-              $fecha = array();
+              
+              if ($date != null) {
+                $fecha = array();
 
-              $fecha = explode(' ', $date);
+                $fecha = explode(' ', $date);
 
-              $fecha_prometida = $fecha[0];
-              $hora_prometida = $fecha[1];
+                $fecha_prometida = $fecha[0];
+                $hora_prometida = $fecha[1];
+              }
+
 
 
               ?>
@@ -208,7 +212,7 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor")
 
 
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 ml-4">
             <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Encendido"> Encendido
           </div>
           <div class="col-md-2">
@@ -223,7 +227,7 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor")
           <div class="col-md-2">
             <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Roto"> Roto
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 ml-4">
             <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Incompleto"> Incompleto
           </div>
         </div>
@@ -323,7 +327,7 @@ endif; ?>
     </div>
   </div>
   <!-- Main content -->
-  <section class="container-fluid">
+  <section class="container">
     <div class="row">
       <div class="col-md-4 text-success"><strong>Campos obligatorios(*)</strong>
 
@@ -755,7 +759,7 @@ endif; ?>
       <div class="row">
 
         <div class="col-md-6 mt-4">
-          
+
           <p>Pin Númerico</p>
         </div>
         <div class="col-md-6">
@@ -846,7 +850,7 @@ endif; ?>
   </div>
 
   <!-- Main content -->
-  <section class="container-fluid">
+  <section class="container">
     <div class="row">
       <div class="col-md-4 text-success"><strong>Campos obligatorios(*)</strong>
 
@@ -1082,7 +1086,7 @@ endif; ?>
 
 
   <!-- Main content -->
-  <section class="container-fluid">
+  <section class="container">
     <div class="row">
 
       <div class="col-md-4 text-success">
@@ -1636,7 +1640,7 @@ if (isset($_SESSION['presupuesto'])) {
 
         <div class="modal-header bg-dark">
 
-          
+
           <h4 class="modal-title">Agregar cliente</h4>
 
         </div>
