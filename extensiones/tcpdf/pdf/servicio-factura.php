@@ -68,17 +68,19 @@ $nota = $servicio['nota'];
 $estado_equipo = $servicio['estado_equipo'];
 
 $pagado = "";
+//var_dump($sucursal['ruta_logo']);
+$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../'.$sucursal['ruta_logo'].'"  width="100px"/>';
 
 //$logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
 
 //$ruta = !isset($_SESSION['ruta_logo']) || $_SESSION['ruta_logo']==""  ? $nombre_suc : ""; ;
 //echo $_SESSION['ruta_logo'];
 
-$logo = $nombre_suc;
 
 
 
-$qrurl = "vistas/img/qr_generator/" . md5($_SESSION['nom_suc']). '/' . $valorVenta . '.png';
+
+//$qrurl = "vistas/img/qr_generator/" . md5($_SESSION['nom_suc']). '/' . $valorVenta . '.png';
 
 if($estado_equipo=="Entregado"){
 	$adeudo = 0;
@@ -111,7 +113,6 @@ $bardcode = $pdf->serializeTCPDFtagParameters(
 	), 'N')
 );
 
-//---------------------------------------------------------
 
 $bloque1 = <<<EOF
 
@@ -128,9 +129,9 @@ $bloque1 = <<<EOF
 				<strong style="text-align:center">
 				
 				
+			
+				
 				$logo
-				
-				
 				
 				
 				</strong> 

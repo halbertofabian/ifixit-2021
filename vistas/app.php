@@ -452,8 +452,12 @@ MENU
   <script src="<?php echo $url ?>vistas/js/app/cotizaciones.js"></script>
 
   <script src="<?php echo $url ?>vistas/js/app/servicios.js"></script>
+
+  <script src="<?php echo $url ?>vistas/js/app/sucursales.js"></script>
+
   <script src="<?php echo $url ?>vistas/js/app/refacciones.js"></script>
   <script src="<?php echo $url ?>vistas/js/app/gestorSlide.js"></script>
+
 
 
   <!-- BEGIN JIVOSITE CODE {literal} -->

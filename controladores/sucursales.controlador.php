@@ -61,7 +61,7 @@ class ControladorSucursal
 
 				$directorio = "vistas/img/logo_suc/" . $fileimg;
 
-				mkdir($directorio, 0755);
+				mkdir($directorio, 0777);
 
 				/*=============================================
 					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
@@ -88,17 +88,25 @@ class ControladorSucursal
 
 				if ($_FILES["nuevaImagen"]["type"] == "image/png") {
 
+					
+					
+
+
+
 					/*=============================================
 						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-
-
 					$ruta = "vistas/img/logo_suc/" . $fileimg . "/logo_suc.png";
 
 					$origen = imagecreatefrompng($_FILES["nuevaImagen"]["tmp_name"]);
-
+				
+				
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					// Linea nueva
+					imagefill($destino, 0, 0, imagecolorallocate($destino, 255, 255, 255));
+					//
 
 					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 

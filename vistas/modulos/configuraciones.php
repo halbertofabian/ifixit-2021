@@ -39,7 +39,7 @@ $zona = ControladorSucursal::getZone();
 
           <div class="card-tools float-right">
             <!-- Collapse Button -->
-            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse" >
+            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse">
               <i class="fas fa-plus"></i>
             </button>
           </div>
@@ -73,6 +73,10 @@ $zona = ControladorSucursal::getZone();
                   <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="220px">
                 <?php else : ?>
                   <img src="<?php echo $sucursal['ruta_logo']; ?>" class="img-thumbnail previsualizar" width="220px">
+      
+                    <button type="button" class="btn  text-danger btnEliminarLogoSuc" nomSuc="<?php echo $_SESSION['nom_suc'] ?>"><i class="fas fa-trash"></i> Eliminar lógotipo</button>
+
+                 
 
 
                 <?php endif; ?>
@@ -81,10 +85,7 @@ $zona = ControladorSucursal::getZone();
 
               <div class="col-md-5">
                 <br>
-                <center>
-                  <button class="btn  text-danger"><i class="fas fa-trash"></i> Eliminar lógotipo</button>
 
-                </center>
 
 
 
@@ -155,7 +156,7 @@ $zona = ControladorSucursal::getZone();
               </div>
             </div>
             <br>
-            <span class="input-group-text"><i class="fas fa-clock"> </i>  Zona Horaria</span>
+            <span class="input-group-text"><i class="fas fa-clock"> </i> Zona Horaria</span>
             <br>
             <select id="" class="form-control" name="zona">
               <option value="<?php echo $sucursal['zona'] ?>"><?php echo $sucursal['zona'] ?></option>
@@ -282,7 +283,7 @@ $zona = ControladorSucursal::getZone();
           <h3 class="card-title">Redes sociales</h3>
           <div class="card-tools float-right">
             <!-- Collapse Button -->
-            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse" >
+            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse">
               <i class="fas fa-plus"></i>
             </button>
           </div>
@@ -346,7 +347,7 @@ $zona = ControladorSucursal::getZone();
 
           <div class="card-tools float-right">
             <!-- Collapse Button -->
-            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse" >
+            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse">
               <i class="fas fa-plus"></i>
             </button>
           </div>
@@ -397,7 +398,7 @@ $zona = ControladorSucursal::getZone();
           <h3 class="card-title">Politicas del servicio</h3>
           <div class="card-tools float-right">
             <!-- Collapse Button -->
-            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse" >
+            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse">
               <i class="fas fa-plus"></i>
             </button>
           </div>
@@ -433,7 +434,7 @@ $zona = ControladorSucursal::getZone();
           <h3 class="card-title">Politicas de venta</h3>
           <div class="card-tools float-right">
             <!-- Collapse Button -->
-            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse" >
+            <button type="button" class="btn btn-light btn-sm" data-card-widget="collapse">
               <i class="fas fa-plus"></i>
             </button>
           </div>
@@ -488,11 +489,11 @@ $zona = ControladorSucursal::getZone();
 
         <div class="modal-header bg-dark">
 
-        <h4 class="modal-title">Agregar Sucursal</h4>
+          <h4 class="modal-title">Agregar Sucursal</h4>
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          
+
 
         </div>
 
