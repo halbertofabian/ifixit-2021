@@ -10,6 +10,7 @@ class AjaxSucursal
     public function eliminarLogoAjax()
     {
         $res = ModeloSucursal::mdlEliminarLogoSuc($_SESSION['nom_suc']);
+        $_SESSION['ruta_logo'] ="";
         echo json_encode($res);
     }
 }
