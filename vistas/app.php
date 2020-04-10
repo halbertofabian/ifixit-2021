@@ -289,9 +289,13 @@ FORO" />
       $rutas = explode('/', $_GET['ruta']);
 
       if ($rutas[0] == 'sucursal') {
-        $app->getPage('sucursal');
+         $app->getPage('sucursal');
         return;
       }
+      if ($rutas[0] == 'update') {
+        $app->getPage('update');
+       return;
+     }
     }
 
 
@@ -332,7 +336,7 @@ FORO" />
 MENU
 =============================================*/
 
-          $app->getComponents('sidebar',$url);
+          $app->getComponents('sidebar', $url);
 
           /*=============================================
 CONTENIDO
@@ -357,12 +361,14 @@ MENU
       }
       ?>
 
-      <?php //$app->getComponents('navbar'); ?>
+      <?php //$app->getComponents('navbar'); 
+      ?>
       <!-- /.navbar -->
 
       <!-- Main Sidebar Container -->
 
-      <?php //$app->getComponents('sidebar',$url); ?>
+      <?php //$app->getComponents('sidebar',$url); 
+      ?>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -432,6 +438,38 @@ MENU
 
   <?php endif;  ?>
   <!-- ./wrapper -->
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUpdateSuc">
+    Launch demo modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalUpdateSuc" tabindex="-1" role="dialog" aria-labelledby="modalUpdateSucTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalUpdateSucTitle">Nueva actualización disponible</h5>
+          
+        </div>
+        <div class="modal-body">
+          <div class="row justify-content-center">
+            <div class="col-12 text-danger">
+            <p>Por favor espera a que está operación se complete correctamente. </p>
+            </div>
+            <div class="col-auto update">
+
+              <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="spinner-text">Ejecutando actualización...</span>
+              </button>
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 
   <!-- AdminLTE for demo purposes -->

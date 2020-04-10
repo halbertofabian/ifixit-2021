@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+   
+
+
+
     $(".btnEliminarLogoSuc").on("click", function () {
         var nom_suc = $(this).attr("nomSuc")
 
@@ -18,7 +22,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (respuesta) {
                 if (respuesta) {
-                    
+
                     var rutaImagen = 'vistas/img/productos/default/anonymous.png';
 
                     $(".previsualizar").attr("src", rutaImagen);
@@ -31,3 +35,13 @@ $(document).ready(function () {
         })
     })
 })
+
+function updateTable() {
+    $('#modalUpdateSuc').modal('show')
+
+
+
+
+    //$('#modalUpdateSuc').modal('dispose')
+
+}

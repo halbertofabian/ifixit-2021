@@ -84,7 +84,8 @@ $pdf->setPrintFooter(false);
 $pdf->AddPage('P', $formato);
 
 // $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
-$logo = $nombre_suc;
+$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../'.$sucursal['ruta_logo'].'"  width="100px"/>';
+
 //---------------------------------------------------------
 
 $bloque1 = <<<EOF
