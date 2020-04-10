@@ -34,7 +34,6 @@
         font-size: 24px;
     }
 </style>
-
 <nav class="main-header navbar navbar-expand navbar-dark">
 
     <?php if ($_SESSION['perfil'] != "Tecnico") : ?>

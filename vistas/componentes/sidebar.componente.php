@@ -1,7 +1,21 @@
+
 <aside class="main-sidebar elevation-4 sidebar-light-danger">
     <!-- Brand Logo -->
     <a href="<?php echo $url ?>" class="brand-link">
-        <img src="<?php echo $url ?>vistas/img/plantilla/ifixit_x.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <?php
+        if (isset($_SESSION['ruta_logo'])) {
+           
+            if ($_SESSION['ruta_logo'] != "") {
+                echo '<img src="' . $url. $_SESSION['ruta_logo'] . '" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
+            } else {
+                echo '<img src="'.$url.'vistas/img/plantilla/ifixit_x.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
+            }
+        } else {
+            echo '<img src="'.$url.'vistas/img/plantilla/ifixit_x.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
+        }
+
+        ?>
+        <!-- <img src="<?php echo $url ?>vistas/img/plantilla/ifixit_x.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
         <span class="brand-text font-weight-light">
             <img src="<?php echo $url ?>vistas/img/plantilla/ifixit.png" width="80" alt="">
         </span>
