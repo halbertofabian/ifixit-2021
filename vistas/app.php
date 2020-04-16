@@ -289,94 +289,54 @@ FORO" />
       $rutas = explode('/', $_GET['ruta']);
 
       if ($rutas[0] == 'sucursal') {
-         $app->getPage('sucursal');
+        $app->getPage('sucursal');
         return;
       }
       if ($rutas[0] == 'update') {
         $app->getPage('update');
-       return;
-     }
+        return;
+      }
     }
 
-
+    $app->getComponents('navbar');
+    $app->getComponents('sidebar');
 
   ?>
-
     <!-- Site wrapper -->
     <div class="wrapper">
       <!-- Navbar -->
 
+
       <?php
 
-      $suscripcion = SuscripcionContrlador::ctrObternerEstadoSuscripcion();
 
-      if ($suscripcion["estado_suscripcion"] != 0) {
-        if ($_SESSION['base'] == 2) {
-          if (isset($_GET["ruta"]) && $_GET["ruta"] == "salir") {
-            include "modulos/" . $_GET["ruta"] . ".php";
-          }
-          $_GET["ruta"] = "suscripcion";
-        } else {
+      $sucursal = SuscripcionModelo::mdlObetnerEstadoSucursal($_SESSION['suscriptor'], $_SESSION['nom_suc']);
 
-          if ($_SESSION['nom_suc'] == "") {
-            include "modulos/sucursal.php";
-            return;
-          }
-
-          if (isset($_SESSION['block_session'])) {
-            include "modulos/block.php";
-            return;
-          }
-          /*=============================================
-    CABEZOTE
-    =============================================*/
-          $app->getComponents('navbar');
-
-          /*=============================================
-MENU
-=============================================*/
-
-          $app->getComponents('sidebar', $url);
-
-          /*=============================================
-CONTENIDO
-=============================================*/
-        }
-      } else {
-        if (isset($_GET["ruta"]) && $_GET["ruta"] == "salir") {
-          include "modulos/" . $_GET["ruta"] . ".php";
-        }
-        $_GET["ruta"] = "suscripcion";
-
-        /*=============================================
-CABEZOTE
-=============================================*/
-        $app->getComponents('navbar');
-
-        /*=============================================
-MENU
-=============================================*/
-
-        include "modulos/menu.php";
+      
+      if ($sucursal["estado"] == 0 || $sucursal["base"] == 2) {
+        $app->getPage('suscripcion-1', $rutas);
+        return;
       }
-      ?>
 
-      <?php //$app->getComponents('navbar'); 
-      ?>
-      <!-- /.navbar -->
+      if (isset($_SESSION['block_session'])) {
+        $app->getPage('block');
+        return;
+      }
+      if (isset($_GET["ruta"]) && $_GET["ruta"] == "salir") {
+        $app->getPage('salir');
+      }
 
-      <!-- Main Sidebar Container -->
-
-      <?php //$app->getComponents('sidebar',$url); 
       ?>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
 
+
         <!-- Aqui van las paginas -->
         <?php
 
         if (isset($_GET['ruta'])) {
+
           //Traer la lista blanca de paginas adminitas
           $whiteList = ControladorPlantilla::getWhiteList();
 
@@ -439,9 +399,6 @@ MENU
   <?php endif;  ?>
   <!-- ./wrapper -->
 
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUpdateSuc">
-    Launch demo modal
-  </button>
 
   <!-- Modal -->
   <div class="modal fade" id="modalUpdateSuc" tabindex="-1" role="dialog" aria-labelledby="modalUpdateSucTitle" aria-hidden="true">
@@ -449,12 +406,12 @@ MENU
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalUpdateSucTitle">Nueva actualización disponible</h5>
-          
+
         </div>
         <div class="modal-body">
           <div class="row justify-content-center">
             <div class="col-12 text-danger">
-            <p>Por favor espera a que está operación se complete correctamente. </p>
+              <p>Por favor espera a que está operación se complete correctamente. </p>
             </div>
             <div class="col-auto update">
 
@@ -462,11 +419,11 @@ MENU
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 <span class="spinner-text">Ejecutando actualización...</span>
               </button>
-              
+
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>

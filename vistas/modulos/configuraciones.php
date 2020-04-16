@@ -169,13 +169,13 @@ $zona = ControladorSucursal::getZone();
 
             </select>
             <br>
-            <span class="input-group-text"><i class="fa fa-print"></i> Tipo de impresion</span>
+            <span class="input-group-text"><i class="fa fa-print"></i> Seleccione su tipo de impresion</span>
             <div class="btn-group btn-group-toggle my-3 " data-toggle="buttons">
 
               <?php $tipo_impresora = $sucursal['tipo_impresora'];
               if ($tipo_impresora == "") :
               ?>
-                <label for="">Debe seleccionar el tipo de impresión adecuada a su impresora de tiket</label><br>
+                
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="58mm"> 58mm
                 </label>
