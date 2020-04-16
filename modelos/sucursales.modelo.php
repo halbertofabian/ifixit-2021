@@ -173,4 +173,44 @@ class ModeloSucursal
 			$pps = null;
 		}
 	}
+
+	public static function activarTokenSuc($suc, $token)
+	{
+
+		try {
+			$sql = "UPDATE sucursales SET token_suc = ?, estado = 1  WHERE nombre = ? ";
+
+			$pps = ConexionSoftmor::conectar()->prepare($sql);
+
+			$pps->bindValue(1, $token);
+			$pps->bindValue(2, $suc);
+
+			$pps->execute();
+
+			return $pps->rowCount() > 0;
+		} catch (\PDOException $th) {
+			//throw $th;
+			return false;
+		} finally {
+			$pps = null;
+		}
+	}
+
+	public static function activarBD($suc, $base)
+	{
+
+		try {
+			$sql = "UPDATE sucursales SET base = ?  WHERE nombre = ? ";
+			$pps = ConexionSoftmor::conectar()->prepare($sql);
+			$pps->bindValue(1, $base);
+			$pps->bindValue(2, $suc);
+			$pps->execute();
+			return $pps->rowCount() > 0;
+		} catch (\PDOException $th) {
+			//throw $th;
+			return false;
+		} finally {
+			$pps = null;
+		}
+	}
 }

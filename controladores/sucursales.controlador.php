@@ -88,8 +88,8 @@ class ControladorSucursal
 
 				if ($_FILES["nuevaImagen"]["type"] == "image/png") {
 
-					
-					
+
+
 
 
 
@@ -100,8 +100,8 @@ class ControladorSucursal
 					$ruta = "vistas/img/logo_suc/" . $fileimg . "/logo_suc.png";
 
 					$origen = imagecreatefrompng($_FILES["nuevaImagen"]["tmp_name"]);
-				
-				
+
+
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
 					// Linea nueva
@@ -445,5 +445,50 @@ class ControladorSucursal
 			'America/Toronto', 'America/Tortola', 'America/Vancouver', 'America/Whitehorse',
 			'America/Winnipeg', 'America/Yakutat', 'America/Yellowknife'
 		);
+	}
+
+	public  function ctrActivarTokenSuc()
+	{
+		if (isset($_POST['btnActivarTokenSuc'])) {
+
+			$activar = ModeloSucursal::activarTokenSuc($_SESSION['nom_suc'], uniqid("pk_suc"));
+
+			if ($activar) {
+
+				echo '<script>
+
+					swal({
+						  type: "success",
+						  title: "Gracias por activar el token suc",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result) {
+							if (result.value) {
+
+							window.location = "./";
+
+							}
+						})
+
+			  	</script>';
+			} else {
+				echo '<script>
+
+					swal({
+						  type: "error",
+						  title: "¡No se pudo gurdar el token suc, por favor intenta de nuevo!",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result) {
+							if (result.value) {
+
+							window.location = "configuraciones";
+
+							}
+						})
+
+			  	</script>';
+			}
+		}
 	}
 }

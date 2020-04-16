@@ -11,10 +11,20 @@ $slide = ControladorSlide::ctrMostrarSlide();
   </div>
 </div>
 
+
 <section class="container-fluid">
 
-
-  <div class="card">
+  <div class="row">
+    <div class="col-12">
+      <form method="post" id="formSucUpdate">
+        <?php
+        $update = new  ControladorUpdateDB();
+        $update->alterTable();
+        ?>
+      </form>
+    </div>
+  </div>
+  <div class="card mt-3">
 
     <div class="card-header with-border">
 

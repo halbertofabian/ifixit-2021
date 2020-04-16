@@ -22,6 +22,7 @@ require_once "controladores/ingresos.controlador.php";
 require_once "controladores/movimientos.controlador.php";
 require_once "controladores/traspasos.controlador.php";
 require_once "controladores/slide.controlador.php";
+require_once "controladores/updateDB.controlador.php";
 
 
 
@@ -41,7 +42,7 @@ require_once "modelos/ingresos.modelo.php";
 require_once "modelos/movimientos.modelo.php";
 require_once "modelos/traspasos.modelo.php";
 require_once "modelos/slide.modelo.php";
-
+require_once "modelos/updateDB.modelo.php";
 
 //U@U+5FBb$$gZ
 require_once "extensiones/vendor/autoload.php";

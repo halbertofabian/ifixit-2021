@@ -77,7 +77,8 @@ class ControladorPlantilla
 			'refacciones',
 			'salir',
 			'mi-web',
-			'slide'
+			'slide',
+			'suscripcion-1'
 		);
 
 		return $whitList;
