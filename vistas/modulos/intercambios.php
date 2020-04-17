@@ -165,7 +165,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
                 <div class="modal-header bg-dark">
 
-                    
+
 
                     <h4 class="modal-title">Traspaso de mercancia</h4>
 
@@ -183,8 +183,9 @@ if ($_SESSION['perfil'] == "Tecnico") {
                         <!-- ENTRADA PARA SELECCIONAR CATEGORÍA -->
 
                         <div class="form-group">
-
+                            <label for="">Categoría</label>
                             <div class="input-group">
+
 
                                 <span class="input-group-text"><i class="fa fa-th"></i></span>
 
@@ -201,7 +202,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
                         <!-- ENTRADA PARA EL CÓDIGO -->
 
                         <div class="form-group">
-
+                            <label for="">Código</label>
                             <div class="input-group">
 
                                 <span class="input-group-text"><i class="fa fa-code"></i></span>
@@ -215,10 +216,11 @@ if ($_SESSION['perfil'] == "Tecnico") {
                         <!-- ENTRADA PARA LA DESCRIPCIÓN -->
 
                         <div class="form-group">
+                            <label for="">Descripción</label>
 
                             <div class="input-group">
 
-                                <span class="input-group-text"><i class="fa fa-product-hunt"></i></span>
+
 
                                 <input type="text" class="form-control input-lg" id="editarDescripcion" name="editarDescripcion" required readonly>
 
@@ -230,6 +232,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
 
                         <div class="form-group">
+                            <label for="">Elija la sucursal a que va a traspasar la mercancia</label>
 
                             <div class="input-group">
 
@@ -253,13 +256,14 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
                         </div>
                         <div class="form-group">
+                            <label for="">Ingrese la cantidad a traspasar</label>
 
                             <div class="input-group">
 
                                 <span class="input-group-text"><i class="fa fa-check"></i></span>
 
                                 <input type="number" class="form-control input-lg" id="editarStock" name="editarStock" min="0" required readonly>
-                                <input type="number" class="form-control input-lg" id="editarStock1" name="editarStock1" min="0" required placeholder="Ingrese la cantidad a traspasar">
+                                <input type="number" class="form-control input-lg" id="editarStock1" name="editarStock1" min="0" required placeholder="Cantidad a traspasar">
                             </div>
 
                         </div>
@@ -270,13 +274,15 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
                         <div class="form-group row">
 
-                            <div class="col-xs-6">
+                            <div class="col-md-6 col-12">
+                                <label for="">Costo del producto</label>
 
                                 <div class="input-group">
 
+
                                     <span class="input-group-text"><i class="fa fa-arrow-up"></i></span>
 
-                                    <input type="number" class="form-control input-lg" id="editarPrecioCompra" name="editarPrecioCompra" step="any" min="0" required>
+                                    <input type="text" class="form-control input-lg efectivoFormat" step="any" min="0" id="editarPrecioCompra" name="editarPrecioCompra" step="any" min="0" required>
 
                                 </div>
 
@@ -284,13 +290,15 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
                             <!-- ENTRADA PARA PRECIO VENTA -->
 
-                            <div class="col-xs-6">
-
+                            <div class="col-md-6 col-12">
+                                <label for="">Precio de venta</label>
                                 <div class="input-group">
+
+
 
                                     <span class="input-group-text"><i class="fa fa-arrow-down"></i></span>
 
-                                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step="any" min="0" required>
+                                    <input type="text" class="form-control input-lg efectivoFormat" id="editarPrecioVenta" step="any" min="0" name="editarPrecioVenta" step="any" min="0" required>
 
                                 </div>
 
@@ -298,35 +306,27 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
                                 <!-- CHECKcard PARA PORCENTAJE -->
 
-                                <div class="col-xs-6">
 
-                                    <div class="form-group">
-
-                                        <label>
-
-                                            <input type="checkcard" class="minimal porcentaje">
-                                            Utilizar procentaje
-                                        </label>
-
-                                    </div>
-
-                                </div>
 
                                 <!-- ENTRADA PARA PORCENTAJE -->
 
-                                <div class="col-xs-6" style="padding:0">
 
-                                    <div class="input-group">
-
-                                        <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
-
-                                        <span class="input-group-text"><i class="fa fa-percent"></i></span>
-
-                                    </div>
-
-                                </div>
 
                             </div>
+
+                            <div class="col-md-6">
+                                <label for="">Precio de venta a mayoreo</label>
+
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text"><i class="fa fa-arrow-down"></i></span>
+
+                                    <input type="text" class="form-control input-lg efectivoFormat" id="editarPrecioMayoreo" name="editarPrecioMayoreo" step="any" min="0" placeholder="Precio de venta a mayoreo">
+
+                                </div>
+                            </div>
+
 
                         </div>
 

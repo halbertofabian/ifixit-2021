@@ -11,8 +11,8 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == "Tecnico") {
     return;
 }
 
-    $app -> getComponents('pagina-construccion');
-    return;
+    // $app -> getComponents('pagina-construccion');
+    // return;
 
 ?>
 <div class="jumbotron jumbotron-fluid">
@@ -560,5 +560,6 @@ MODAL AGREGAR CLIENTE
     </div>
 
 </div>
+
 
 <script src="vistas/js/app/caja.js"></script>

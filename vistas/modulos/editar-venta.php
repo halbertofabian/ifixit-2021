@@ -60,6 +60,8 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
                     $vendedor = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
 
+                   
+
                     $itemCliente = "id";
                     $valorCliente = $venta["id_cliente"];
 
@@ -78,9 +80,9 @@ if ($_SESSION['perfil'] == "Tecnico") {
                 
                   <div class="input-group">
                     
-                    <span class="input-group-text"><i class="fa fa-user"></i></span> 
+                    <!-- <span class="input-group-text"><i class="fa fa-user"></i></span>  -->
 
-                    <input type="text" class="form-control" id="nuevoVendedor" value="<?php echo $vendedor["nombre"]; ?>" readonly>
+                    <!-- <input type="text" class="form-control" id="nuevoVendedor" value="<?php //echo $vendedor["nombre"]; ?>" readonly> -->
 
                     <input type="hidden" name="idVendedor" value="<?php echo $vendedor["id"]; ?>">
 
@@ -528,4 +530,4 @@ MODAL AGREGAR CLIENTE
   </div>
 
 </div>
-<script src="vistas/js/app/ventas.js"></script>
+<script src="vistas/js/app/ventas2.js"></script>

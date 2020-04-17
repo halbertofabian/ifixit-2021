@@ -196,9 +196,6 @@ MODAL AGREGAR PRODUCTO
 
                <input type="text" class="form-control input-lg" data-role="tagsinput" name="nuevaDescripcion" placeholder="Ingresar descripción" required>
 
-
-
-
              </div>
 
              <!-- ENTRADA PARA STOCK -->

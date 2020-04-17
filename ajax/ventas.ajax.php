@@ -39,7 +39,7 @@ class AjaxVentas
             $salida .= '
             <div class="col-md-4 col-xs-4">
                 <div class="card">
-                        <img class="card-img-top" src="'. $value['imagen'] . '" width="100" alt="Card image cap">
+                        <img class="card-img-top" src="'. $value['imagen'] . '" width="100" alt="'. $value['imagen'] . '">
                     <div class="card-body text-center">
                         <h5 class="card-title"><strong> $' . $value["precio_venta"] . ' </strong></h5>
                         <p class="card-text text-primary">' . $value['codigo'] . '</p>

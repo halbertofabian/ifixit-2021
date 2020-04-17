@@ -128,9 +128,14 @@ class ControladorTraspasos
                                            "stock" => $_POST["editarStock1"],
                                            "precio_compra" => $_POST["editarPrecioCompra"],
                                            "precio_venta" => $_POST["editarPrecioVenta"],
-                                           "imagen" => $ruta);
+                                           "imagen" => $ruta,
+                                           'precio_mayoreo' => $_POST['editarPrecioMayoreo']
+                                        
+                                        );
             
                             $respuesta = ModeloTraspasos::mdlIngresarProducto($db_info,$tabla, $datos);
+
+                            var_dump($respuesta);
             
                             if($respuesta == "ok"){
             

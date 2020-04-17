@@ -29,8 +29,7 @@ class ConexionTraspaso
         //$link = new PDO("mysql:host=localhost;dbname=u203735599_ifxt",
         //	            "u203735599_alber",
         //	            "EjST6ovOU76s");
-        $link = new PDO(
-            "mysql:host=localhost;dbname=" . strtolower($dbname),
+        $link = new PDO("mysql:host=localhost;dbname=" . strtolower($dbname),
             strtolower($username),
             $password
         );
