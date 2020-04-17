@@ -131,7 +131,7 @@
             <li class="nav-item ">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#mdlActualizaciones">
                     <i class="far fa-bell"></i>
-                    <span class="badge badge-success navbar-badge">0</span>
+                    <span class="badge badge-danger navbar-badge">1</span>
                 </a>
             </li>
 
@@ -184,7 +184,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h3 class="modal-title" id="exampleModalLabel">Hay 0 Actualizaciones </h3>
+                <h3 class="modal-title" id="exampleModalLabel">Hay 1 Actualización </h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -209,9 +209,9 @@
                                 </div>
 
                             </div>
-                            <ul class="list-group list-group-flush">
+                            <ul class="list-group list-group-flush mt-2">
 
-                                <!-- <li class="list-group-item">Ticket en formato media carta y carta entera</li> -->
+                                <li class="list-group-item text-dark"><i class="fas fa-check text-success"></i> Caja rapida ya funciona de manera correcta <a href="<?php echo $url?>caja">ir a caja</a> </li>
 
 
                             </ul>
@@ -221,9 +221,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="text-center text-info">Estamos actualizando el sistema cada semana para ofrecerte un servicio de calidad, gracias por las sugerencias que nos has hecho. Si tienes una observación u otra sugerencia con mucho gusto nos gustaría escucharte</p>
+                <div class="row justify-content-center">
+                    <div class="col-auto ">
+                        <p class="text-center text-dark">Estamos actualizando el sistema cada semana para ofrecerte un servicio de calidad, gracias por las sugerencias que nos has hecho. Si tienes una observación u otra sugerencia con mucho gusto nos gustaría escucharte</p>
+                        
                         <h5 class="" style="text-align: left"> <strong>¿Te gustaría dejarnos una reseña?</strong></h5>
                         <form action="" id="form-calif" method="post">
                             <textarea name="resena_text" id="resena_text" cols="30" rows="5" class="form-control" placeholder="Escribe aquí tu reseña, nos ayudarías mucho a crecer 😚"></textarea>
@@ -260,6 +261,7 @@
 
                             ?>
                         </form>
+                       
                     </div>
                 </div>
 
