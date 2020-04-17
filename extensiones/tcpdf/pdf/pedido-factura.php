@@ -7,81 +7,86 @@ require_once "../../../modelos/sucursales.modelo.php";
 
 
 
-class imprimirFactura{
+class imprimirFactura
+{
 
-public $orden;
+	public $orden;
 
-public function traerImpresionFactura(){
+	public function traerImpresionFactura()
+	{
 
-//TRAEMOS LA INFORMACIÓN DE LA VENTA
+		//TRAEMOS LA INFORMACIÓN DE LA VENTA
 
-	$sucursal = ControladorSucursal::ctrMostrarSucursal();
-	$direccion = $sucursal['direccion'];
-	$nombre_suc = strtoupper($sucursal['nombre']);
-	$telefono_suc = $sucursal['telefono'];
-	$web = $sucursal['sitio_web'];
+		$sucursal = ControladorSucursal::ctrMostrarSucursal();
+		if ($sucursal['margenes'] != "") {
+			$margen = explode(",", $sucursal['margenes']);
+		} else {
+			$margen = explode(",", '1,8,0');
+		}
+		$direccion = $sucursal['direccion'];
+		$nombre_suc = strtoupper($sucursal['nombre']);
+		$telefono_suc = $sucursal['telefono'];
+		$web = $sucursal['sitio_web'];
 
-	 $tipo_impresion = $sucursal['tipo_impresora'];
+		$tipo_impresion = $sucursal['tipo_impresora'];
 
-	$impresion = $tipo_impresion == '58mm' ? 135  : 160;
-	$impresions2 = ($impresion/2);
-	$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
+		$impresion = $tipo_impresion == '58mm' ? 135  : 160;
+		$impresions2 = ($impresion / 2);
+		$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
 
-$itemVenta = "orden";
-$valorVenta = $this->orden;
-
-
-$servicio = ControladorPedidos::detallePedido($valorVenta);
-
-
-$fecha = $servicio['fecha_pedido'];
-$importe = $servicio['importe'];
-$anticipo = $servicio['anticipo'];
-$adeudo = $servicio['total'];
-$cliente = $servicio['nombre'];
-$contacto = $servicio['contacto'];
-$usuario = $servicio['usuario_recibio'];
-$encargo = $servicio['encargo'];
-
-$marca = $servicio['marca'];
-$modelo = $servicio['modelo'];
+		$itemVenta = "orden";
+		$valorVenta = $this->orden;
 
 
-$estado = $servicio['estado'];
-
-$pagado = "";
-
-if($estado=="Entregado"){
-	$adeudo = 0;
-	$anticipo = $importe;
-	$pagado = "PAGADO";
-}
+		$servicio = ControladorPedidos::detallePedido($valorVenta);
 
 
+		$fecha = $servicio['fecha_pedido'];
+		$importe = $servicio['importe'];
+		$anticipo = $servicio['anticipo'];
+		$adeudo = $servicio['total'];
+		$cliente = $servicio['nombre'];
+		$contacto = $servicio['contacto'];
+		$usuario = $servicio['usuario_recibio'];
+		$encargo = $servicio['encargo'];
 
-//REQUERIMOS LA CLASE TCPDF
+		$marca = $servicio['marca'];
+		$modelo = $servicio['modelo'];
 
-require_once('tcpdf_include.php');
 
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$estado = $servicio['estado'];
 
-if($impresion == '58'){
-	$pdf->SetMargins(2, 4, 4);
+		$pagado = "";
 
-}
-$pdf->setPrintHeader(false);
-$pdf->setPrintFooter(false);
+		if ($estado == "Entregado") {
+			$adeudo = 0;
+			$anticipo = $importe;
+			$pagado = "PAGADO";
+		}
 
-$pdf->AddPage('P', $formato);
 
-// $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
-$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../'.$sucursal['ruta_logo'].'"  width="100px"/>';
 
-//---------------------------------------------------------
+		//REQUERIMOS LA CLASE TCPDF
 
-$bloque1 = <<<EOF
+		require_once('tcpdf_include.php');
 
-<table style="font-size:8px;">
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+
+		$pdf->SetMargins($margen['0'], $margen['1'], $margen['2']);
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+
+		$pdf->AddPage('P', $formato);
+
+		// $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
+		$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../' . $sucursal['ruta_logo'] . '"  width="100px"/>';
+
+		//---------------------------------------------------------
+
+		$bloque1 = <<<EOF
+
+<table style="font-size:9px;">
 	
 
 	<tr>
@@ -121,7 +126,8 @@ $bloque1 = <<<EOF
 				
 				
 				
-				<div style="text-align:left;border: .1px solid #000;">
+				
+				<div style="text-align:center;border: .1px solid #000; background-color:#000; height:80px; color:#fff; font-size:10px;">
 				<strong> ENCARGO #$valorVenta</strong>
 				</div>
 				
@@ -185,21 +191,21 @@ $bloque1 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque1, false, false, false, false, '');
+		$pdf->writeHTML($bloque1, false, false, false, false, '');
 
-// ---------------------------------------------------------
-
-
+		// ---------------------------------------------------------
 
 
 
 
 
-// ---------------------------------------------------------
 
-$bloque3 = <<<EOF
 
-<table style="font-size:8px; text-align:right">
+		// ---------------------------------------------------------
+
+		$bloque3 = <<<EOF
+
+<table style="font-size:9px; text-align:right">
 
 	
 	
@@ -272,20 +278,16 @@ $bloque3 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque3, false, false, false, false, '');
+		$pdf->writeHTML($bloque3, false, false, false, false, '');
 
-// ---------------------------------------------------------
-//SALIDA DEL ARCHIVO 
+		// ---------------------------------------------------------
+		//SALIDA DEL ARCHIVO 
 
-//$pdf->Output('factura.pdf', 'D');
-$pdf->Output('pedido-'.$valorVenta.'.pdf');
-
-}
-
+		//$pdf->Output('factura.pdf', 'D');
+		$pdf->Output('pedido-' . $valorVenta . '.pdf');
+	}
 }
 
 $factura = new imprimirFactura();
-$factura -> orden = $_GET["codigo"];
-$factura -> traerImpresionFactura();
-
-?>
+$factura->orden = $_GET["codigo"];
+$factura->traerImpresionFactura();

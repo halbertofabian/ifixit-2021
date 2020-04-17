@@ -114,6 +114,7 @@ class ControladorSucursal
 				}
 			}
 
+			$margenes = $_POST['ml'] . ',' . $_POST['mt'] . ',' . $_POST['mr'];
 
 			$datos = array(
 				'nombre' => $_SESSION["nom_suc"],
@@ -122,7 +123,8 @@ class ControladorSucursal
 				'sitio_web' => $_POST["sitio_web"],
 				'tipo_impresora' => $_POST['impresion'],
 				'zona' => $_POST['zona'],
-				'ruta_logo' => $ruta
+				'ruta_logo' => $ruta,
+				'margenes' => $margenes
 			);
 			$modificar = ModeloSucursal::mdlModificarInformación($datos);
 			if ($modificar) {

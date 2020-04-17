@@ -16,107 +16,120 @@ require_once "../../../modelos/productos.modelo.php";*/
 
 
 
-class imprimirFactura{
+class imprimirFactura
+{
 
-public $orden;
+	public $orden;
 
-public function traerImpresionFactura(){
+	public function traerImpresionFactura()
+	{
 
-//TRAEMOS LA INFORMACIÓN DE LA VENTA
-	$sucursal = ControladorSucursal::ctrMostrarSucursal();
-	$direccion = $sucursal['direccion'];
-	$nombre_suc = strtoupper($sucursal['nombre']);
+		//TRAEMOS LA INFORMACIÓN DE LA VENTA
+		$sucursal = ControladorSucursal::ctrMostrarSucursal();
 
-	$telefono_suc = $sucursal['telefono'];
-	$politicas = $sucursal['politicas'];
-	$web = $sucursal['sitio_web'];
+		
 
-	$tipo_impresion = $sucursal['tipo_impresora'];
+		
 
-$impresion = $tipo_impresion == '58mm' ? 135  : 160;
-	$impresions2 = ($impresion/2);
-	$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
-
-$itemVenta = "orden";
-$valorVenta = $this->orden;
-
-if($valorVenta==0){
-	$valorVenta = ControladorServicios::orden();
-}
-$servicio = ControladorServicios::ctrDetalleServicio($valorVenta);
+		if ($sucursal['margenes'] != "") {
+			$margen = explode(",", $sucursal['margenes']);
+		} else {
+			$margen = explode(",", '1,8,0');
+		}
 
 
-$fecha = $servicio['fecha_reparacion'];
-$importe = $servicio['importe'];
-$anticipo = $servicio['anticipo'];
-$adeudo = $servicio['total'];
-$cliente = $servicio['nombre'];
-$usuario = $servicio['usuario_recibio'];
-$problema = $servicio['problema'];
-$solucion = $servicio['solucion'];
-$marca = $servicio['marca'];
-$modelo = $servicio['modelo'];
-$observacion = $servicio['observaciones'];
-$estetica = $servicio['estetica'];
-$estado_fisico = $servicio['estado_fisico'];
-$color = $servicio['color'];
-$codigo = $servicio['codigo_cliente'];
-$contacto = $servicio['contacto'];
-$imei = $servicio['imei'];
-$nota = $servicio['nota'];
+		$direccion = $sucursal['direccion'];
+		$nombre_suc = strtoupper($sucursal['nombre']);
 
-$estado_equipo = $servicio['estado_equipo'];
+		$telefono_suc = $sucursal['telefono'];
+		$politicas = $sucursal['politicas'];
+		$web = $sucursal['sitio_web'];
 
-$pagado = "";
-//var_dump($sucursal['ruta_logo']);
-$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../'.$sucursal['ruta_logo'].'"  width="100px"/>';
+		$tipo_impresion = $sucursal['tipo_impresora'];
 
-//$logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
+		$impresion = $tipo_impresion == '58mm' ? 135  : 160;
+		$impresions2 = ($impresion / 2);
+		$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
 
-//$ruta = !isset($_SESSION['ruta_logo']) || $_SESSION['ruta_logo']==""  ? $nombre_suc : ""; ;
-//echo $_SESSION['ruta_logo'];
+		$itemVenta = "orden";
+		$valorVenta = $this->orden;
+
+		if ($valorVenta == 0) {
+			$valorVenta = ControladorServicios::orden();
+		}
+		$servicio = ControladorServicios::ctrDetalleServicio($valorVenta);
 
 
+		$fecha = $servicio['fecha_reparacion'];
+		$importe = $servicio['importe'];
+		$anticipo = $servicio['anticipo'];
+		$adeudo = $servicio['total'];
+		$cliente = $servicio['nombre'];
+		$usuario = $servicio['usuario_recibio'];
+		$problema = $servicio['problema'];
+		$solucion = $servicio['solucion'];
+		$marca = $servicio['marca'];
+		$modelo = $servicio['modelo'];
+		$observacion = $servicio['observaciones'];
+		$estetica = $servicio['estetica'];
+		$estado_fisico = $servicio['estado_fisico'];
+		$color = $servicio['color'];
+		$codigo = $servicio['codigo_cliente'];
+		$contacto = $servicio['contacto'];
+		$imei = $servicio['imei'];
+		$nota = $servicio['nota'];
+
+		$estado_equipo = $servicio['estado_equipo'];
+
+		$pagado = "";
+		//var_dump($sucursal['ruta_logo']);
+		$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../' . $sucursal['ruta_logo'] . '"  width="100px"/>';
+
+		//$logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
+
+		//$ruta = !isset($_SESSION['ruta_logo']) || $_SESSION['ruta_logo']==""  ? $nombre_suc : ""; ;
+		//echo $_SESSION['ruta_logo'];
 
 
 
-//$qrurl = "vistas/img/qr_generator/" . md5($_SESSION['nom_suc']). '/' . $valorVenta . '.png';
-
-if($estado_equipo=="Entregado"){
-	$adeudo = 0;
-	$anticipo = $importe;
-	$pagado = "PAGADO";
-}
-
-//REQUERIMOS LA CLASE TCPDF
-
-require_once('tcpdf_include.php');
-
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-if($impresion == '58'){
-	$pdf->SetMargins(2, 4, 4);
-
-}
-$pdf->setPrintHeader(false);
-$pdf->setPrintFooter(false);
-
-$pdf->AddPage('P', $formato);
-
-$bardcode = $pdf->serializeTCPDFtagParameters(
-	array($valorVenta, 'C128', '', '', 0, 0, 0.5, array(
-		'position' => 'S',
-		'border' => false, 'padding' => 0,
-		'fgcolor' => array(0, 0, 0),
-		'bgcolor' => array(255, 255, 255),
-		'text' => true, 'font' => 'helvetica',
-		'fontsize' => 7, 'stretchtext' => 6
-	), 'N')
-);
 
 
-$bloque1 = <<<EOF
+		//$qrurl = "vistas/img/qr_generator/" . md5($_SESSION['nom_suc']). '/' . $valorVenta . '.png';
 
-<table style="font-size:8px;">
+		if ($estado_equipo == "Entregado") {
+			$adeudo = 0;
+			$anticipo = $importe;
+			$pagado = "PAGADO";
+		}
+
+		//REQUERIMOS LA CLASE TCPDF
+
+		require_once('tcpdf_include.php');
+
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+		$pdf->SetMargins($margen['0'], $margen['1'], $margen['2']);
+
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+
+		$pdf->AddPage('P', $formato);
+
+		$bardcode = $pdf->serializeTCPDFtagParameters(
+			array($valorVenta, 'C128', '', '', 0, 0, 0.5, array(
+				'position' => 'S',
+				'border' => false, 'padding' => 0,
+				'fgcolor' => array(0, 0, 0),
+				'bgcolor' => array(255, 255, 255),
+				'text' => true, 'font' => 'helvetica',
+				'fontsize' => 7, 'stretchtext' => 6
+			), 'N')
+		);
+
+
+		$bloque1 = <<<EOF
+
+<table style="font-size:9px;">
 	
 
 	<tr>
@@ -160,7 +173,7 @@ $bloque1 = <<<EOF
 				
 				
 				
-				<div style="text-align:left;border: .1px solid #000;">
+				<div style="text-align:center;border: .1px solid #000; background-color:#000; height:80px; color:#fff; font-size:10px;">
 				<strong> SERVICIO #$valorVenta</strong>
 				</div>
 				
@@ -283,21 +296,21 @@ $bloque1 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque1, false, false, false, false, '');
+		$pdf->writeHTML($bloque1, false, false, false, false, '');
 
-// ---------------------------------------------------------
-
-
+		// ---------------------------------------------------------
 
 
 
 
 
-// ---------------------------------------------------------
 
-$bloque3 = <<<EOF
 
-<table style="font-size:8px; text-align:right;">
+		// ---------------------------------------------------------
+
+		$bloque3 = <<<EOF
+
+<table style="font-size:9px; text-align:right;">
 
 	<tr>
 	
@@ -362,7 +375,7 @@ $bloque3 = <<<EOF
 		<td style="text-align:center;">
 		
 			 
-			 <strong>Firma de equipo entregado</strong>
+			 <strong> Firma de equipo entregado </strong>
 		</td>
 	</tr>
 
@@ -374,8 +387,8 @@ $bloque3 = <<<EOF
 				}
 			 </style>
 
-			 <strong>Politicas</strong>
-			 <p style="font-size:6px;" >
+			 <div style="text-align:center;"> <strong> Politicas </strong></div>
+			 <p align="justify" style="font-size:6.9px;" >
 				$politicas
 			 </p>
 			 <br>
@@ -408,11 +421,11 @@ $bloque3 = <<<EOF
 	
 	<tr>
 	
-		<td style="width:$impresion px; font-size:8px; text-align: center;" >
+		<td style="width:$impresion px; font-size:9px; text-align: center;" >
 			
 			Muchas gracias por su elección
 		
-			<div style="font-size:6px;">
+			<div style="font-size:6.9px;">
 			Consulta el estado de tu servicio en la siguiente url 
 			<br>
 			<strong>softmormx.com/consulta</strong>
@@ -427,7 +440,7 @@ $bloque3 = <<<EOF
 	</tr>
 	<tr>
 	<td style="width:$impresion px; font-size:8px; text-align: center;">
-		<div style="font-size:6px;">
+		<div style="font-size:6.9px;">
 			$nota
 		</div>
 		<br>
@@ -449,18 +462,16 @@ $bloque3 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque3, false, false, false, false, '');
+		$pdf->writeHTML($bloque3, false, false, false, false, '');
 
-// ---------------------------------------------------------
-//SALIDA DEL ARCHIVO 
+		// ---------------------------------------------------------
+		//SALIDA DEL ARCHIVO 
 
-//$pdf->Output('factura.pdf', 'D');
-$pdf->Output('servicio-'.$valorVenta.'factura.pdf');
-
-}
-
+		//$pdf->Output('factura.pdf', 'D');
+		$pdf->Output('servicio-' . $valorVenta . 'factura.pdf');
+	}
 }
 
 $factura = new imprimirFactura();
-$factura -> orden = $_GET["codigo"];
-$factura -> traerImpresionFactura();
+$factura->orden = $_GET["codigo"];
+$factura->traerImpresionFactura();

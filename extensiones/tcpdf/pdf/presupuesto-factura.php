@@ -16,75 +16,80 @@ require_once "../../../modelos/productos.modelo.php";*/
 
 
 
-class imprimirFactura{
+class imprimirFactura
+{
 
-public $orden;
+	public $orden;
 
-public function traerImpresionFactura(){
+	public function traerImpresionFactura()
+	{
 
-//TRAEMOS LA INFORMACIÓN DE LA VENTA
-	 //Consulta
-     $sucursal = ControladorSucursal::ctrMostrarSucursal();
-	$direccion = $sucursal['direccion'];
-	$nombre_suc = strtoupper($sucursal['nombre']);
-	$telefono_suc = $sucursal['telefono'];
-	$politicas = $sucursal['politicas'];
-    $web = $sucursal['sitio_web'];
+		//TRAEMOS LA INFORMACIÓN DE LA VENTA
+		//Consulta
+		$sucursal = ControladorSucursal::ctrMostrarSucursal();
 
-    $tipo_impresion = $sucursal['tipo_impresora'];
+		if ($sucursal['margenes'] != "") {
+			$margen = explode(",", $sucursal['margenes']);
+		} else {
+			$margen = explode(",", '1,8,0');
+		}
+		$direccion = $sucursal['direccion'];
+		$nombre_suc = strtoupper($sucursal['nombre']);
+		$telefono_suc = $sucursal['telefono'];
+		$politicas = $sucursal['politicas'];
+		$web = $sucursal['sitio_web'];
 
-$impresion = $tipo_impresion == '58mm' ? 135  : 160;
-	$impresions2 = ($impresion/2);
-	$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
-       
+		$tipo_impresion = $sucursal['tipo_impresora'];
 
-$itemVenta = "orden";
-$valorVenta = $this->orden;
-
-if($valorVenta==0){
-	$valorVenta = ControladorPresupuestos::presupuesto();
-}
-$servicio = ControladorPresupuestos::ctrDetallePresupuesto($valorVenta);
+		$impresion = $tipo_impresion == '58mm' ? 135  : 160;
+		$impresions2 = ($impresion / 2);
+		$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
 
 
-$fecha = $servicio['fecha_cotizacion'];
-$importe = $servicio['costo_estimado'];
+		$itemVenta = "orden";
+		$valorVenta = $this->orden;
 
-$cliente = $servicio['nombre'];
-$usuario = $servicio['usuario_recibio'];
-$problema = $servicio['diagnostico'];
+		if ($valorVenta == 0) {
+			$valorVenta = ControladorPresupuestos::presupuesto();
+		}
+		$servicio = ControladorPresupuestos::ctrDetallePresupuesto($valorVenta);
 
-$contacto = $servicio['contacto'];
-$marca = $servicio['marca'];
-$modelo = $servicio['modelo'];
-$observacion = $servicio['observaciones'];
-$estetica = $servicio['estetica'];
-$estado_fisico = $servicio['estado_fisico'];
-$color = $servicio['color'];
-$imei = $servicio['imei'];
 
-//REQUERIMOS LA CLASE TCPDF
+		$fecha = $servicio['fecha_cotizacion'];
+		$importe = $servicio['costo_estimado'];
 
-require_once('tcpdf_include.php');
+		$cliente = $servicio['nombre'];
+		$usuario = $servicio['usuario_recibio'];
+		$problema = $servicio['diagnostico'];
 
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-if($impresion == '58'){
-	$pdf->SetMargins(2, 4, 4);
+		$contacto = $servicio['contacto'];
+		$marca = $servicio['marca'];
+		$modelo = $servicio['modelo'];
+		$observacion = $servicio['observaciones'];
+		$estetica = $servicio['estetica'];
+		$estado_fisico = $servicio['estado_fisico'];
+		$color = $servicio['color'];
+		$imei = $servicio['imei'];
 
-}
-$pdf->setPrintHeader(false);
-$pdf->setPrintFooter(false);
+		//REQUERIMOS LA CLASE TCPDF
 
-$pdf->AddPage('P', $formato);
+		require_once('tcpdf_include.php');
 
-// $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
-$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../'.$sucursal['ruta_logo'].'"  width="100px"/>';
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$pdf->SetMargins($margen['0'], $margen['1'], $margen['2']);
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
 
-//---------------------------------------------------------
+		$pdf->AddPage('P', $formato);
 
-$bloque1 = <<<EOF
+		// $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
+		$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../' . $sucursal['ruta_logo'] . '"  width="100px"/>';
 
-<table style="font-size:8px;">
+		//---------------------------------------------------------
+
+		$bloque1 = <<<EOF
+
+<table style="font-size:9px;">
 	
 
 	<tr>
@@ -121,11 +126,9 @@ $bloque1 = <<<EOF
 				<strong> Le atendio:</strong> $usuario 
 				</div>
 				 
-				
-				
-				
-				<div style="text-align:left;border: .1px solid #000;">
-				<strong> COTIZACION #$valorVenta </strong>
+			
+				<div style="text-align:center;border: .1px solid #000; background-color:#000; height:80px; color:#fff; font-size:10px;">
+				<strong> COTIZACION #$valorVenta</strong>
 				</div>
 				
 				<div style="text-align:center">
@@ -239,21 +242,21 @@ $bloque1 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque1, false, false, false, false, '');
+		$pdf->writeHTML($bloque1, false, false, false, false, '');
 
-// ---------------------------------------------------------
-
-
+		// ---------------------------------------------------------
 
 
 
 
 
-// ---------------------------------------------------------
 
-$bloque3 = <<<EOF
 
-<table style="font-size:8px; text-align:right">
+		// ---------------------------------------------------------
+
+		$bloque3 = <<<EOF
+
+<table style="font-size:9px; text-align:right">
 
 	
 	<tr>
@@ -299,14 +302,10 @@ $bloque3 = <<<EOF
 				}
 			 </style>
 
-			 <strong>Politicas</strong>
-			 <p style="font-size:6px;" >
+			 <div style="text-align:center;"> <strong> Politicas </strong></div>
+			 <p align="justify" style="font-size:6.9px;" >
 				$politicas
 			 </p>
-
-			
-			 
-
 
 		</td>
 	</tr>
@@ -328,20 +327,16 @@ $bloque3 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque3, false, false, false, false, '');
+		$pdf->writeHTML($bloque3, false, false, false, false, '');
 
-// ---------------------------------------------------------
-//SALIDA DEL ARCHIVO 
+		// ---------------------------------------------------------
+		//SALIDA DEL ARCHIVO 
 
-//$pdf->Output('factura.pdf', 'D');
-$pdf->Output('Cotizacion-'.$valorVenta.'.pdf');
-
-}
-
+		//$pdf->Output('factura.pdf', 'D');
+		$pdf->Output('Cotizacion-' . $valorVenta . '.pdf');
+	}
 }
 
 $factura = new imprimirFactura();
-$factura -> orden = $_GET["codigo"];
-$factura -> traerImpresionFactura();
-
-?>
+$factura->orden = $_GET["codigo"];
+$factura->traerImpresionFactura();

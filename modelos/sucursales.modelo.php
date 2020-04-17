@@ -54,7 +54,7 @@ class ModeloSucursal
 
 	public static function mdlModificarInformación($datos)
 	{
-		$stmt = ConexionSoftmor::conectar()->prepare("UPDATE sucursales SET direccion = :direccion, sitio_web = :sitio_web, telefono = :telefono , tipo_impresora =:tipo_impresora, zona = :zona, ruta_logo = :ruta_logo WHERE nombre = :nombre");
+		$stmt = ConexionSoftmor::conectar()->prepare("UPDATE sucursales SET direccion = :direccion, sitio_web = :sitio_web, telefono = :telefono , tipo_impresora =:tipo_impresora, zona = :zona, ruta_logo = :ruta_logo, margenes = :margenes WHERE nombre = :nombre");
 		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
 		$stmt->bindParam(":sitio_web", $datos["sitio_web"], PDO::PARAM_STR);
 		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
@@ -62,6 +62,8 @@ class ModeloSucursal
 		$stmt->bindParam(":tipo_impresora", $datos["tipo_impresora"], PDO::PARAM_STR);
 		$stmt->bindParam(":zona", $datos["zona"], PDO::PARAM_STR);
 		$stmt->bindParam(":ruta_logo", $datos["ruta_logo"], PDO::PARAM_STR);
+		$stmt->bindParam(":margenes", $datos["margenes"], PDO::PARAM_STR);
+
 
 
 		return $stmt->execute();
