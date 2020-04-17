@@ -15,7 +15,7 @@ class  ModeloTraspasos
 
         return $stmt->fetch();
 
-        $stmt->close();
+        
 
         $stmt = null;
     }
@@ -41,7 +41,7 @@ class  ModeloTraspasos
        
        print_r($stmt->errorInfo());
 
-        $stmt->close();
+        
 
         $stmt = null;
     }
@@ -49,10 +49,10 @@ class  ModeloTraspasos
 
     static public function mdlIngresarProducto($db_info,$tabla, $datos){
 
-		$stmt =$stmt = ConexionTraspaso::conectar(
+		$stmt = ConexionTraspaso::conectar(
             $db_info['db_name'],
             $db_info['user_name'],
-            $db_info['password_db'])->prepare("INSERT INTO $tabla(id_categoria, codigo, descripcion, imagen, stock, precio_compra, precio_venta) VALUES (:id_categoria, :codigo, :descripcion, :imagen, :stock, :precio_compra, :precio_venta)");
+            $db_info['password_db'])->prepare("INSERT INTO $tabla(id_categoria, codigo, descripcion, imagen, stock, precio_compra, precio_venta,precio_mayoreo) VALUES (:id_categoria, :codigo, :descripcion, :imagen, :stock, :precio_compra, :precio_venta,:precio_mayoreo)");
 
 		$stmt->bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_INT);
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);
@@ -60,19 +60,24 @@ class  ModeloTraspasos
 		$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
 		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio_compra", $datos["precio_compra"], PDO::PARAM_STR);
-		$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
+        $stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
+		$stmt->bindParam(":precio_mayoreo", $datos["precio_mayoreo"], PDO::PARAM_STR);
+        
 
-		if($stmt->execute()){
+        $stmt -> execute();
 
-			return "ok";
+        return $stmt -> rowCount()>0;
+		// if($stmt->execute()){
 
-		}else{
+		// 	return "ok";
 
-			return "error";
+		// }else{
+
+		// 	return "error";
 		
-		}
+		// }
 
-		$stmt->close();
+		
 		$stmt = null;
 
     }
@@ -96,7 +101,7 @@ class  ModeloTraspasos
 		
 		}
 
-		$stmt->close();
+		
 		$stmt = null;
 
 	}

@@ -45,7 +45,7 @@ function buscar_datos(productos) {
 
     })
         .done(function (respuesta) {
-            // console.log(respuesta);
+            // 
             $("#contentProductos").html(respuesta);
         })
         .fail(function () {
@@ -53,7 +53,7 @@ function buscar_datos(productos) {
         })
 }
 
-$(document).on('change', '#box-searchP', function () {
+$(document).on('change', '#card-searchP', function () {
     var valor = $(this).val();
     if (valor != "") {
         buscar_datos(valor)
@@ -90,9 +90,9 @@ $(document).on('change', '#GDcategoriaSearch', function () {
 $(document).on('submit', '#formularioBusqueda', function (e) {
 
     e.preventDefault();
-    var codigo_barra = $('#box-searchP').val();
+    var codigo_barra = $('#card-searchP').val();
 
-    console.log(codigo_barra);
+    
 
     var datos = new FormData();
     datos.append("idBarras", codigo_barra);
@@ -108,7 +108,7 @@ $(document).on('submit', '#formularioBusqueda', function (e) {
         success: function (respuesta) {
 
 
-			console.log(respuesta);
+			
 
            
 
@@ -132,7 +132,7 @@ $(document).on('submit', '#formularioBusqueda', function (e) {
 			}
             // var precio = respuesta['precio_venta'];
 
-            console.log(respuesta);
+            
 
             if (idProducto == undefined) {
                 swal("¡Error!", "No existe el producto en el inventario", "error");
@@ -223,7 +223,7 @@ $(document).on('submit', '#formularioBusqueda', function (e) {
 
                     $(".nuevoPrecioProducto").number(true, 2);
                     $("#nuevoTotalVenta").number(true, 2);
-                    $('#box-searchP').val("");
+                    $('#card-searchP').val("");
 
 
 
@@ -295,7 +295,7 @@ $(document).on('submit', '#formularioBusqueda', function (e) {
             $(".nuevoPrecioProducto").number(true, 2);
             $("#nuevoTotalVenta").number(true, 2);
             $("##nuevoTotalVentaSin").number(true, 2);
-            $('#box-searchP').val("");
+            $('#card-searchP').val("");
         }
 
     })
@@ -726,7 +726,7 @@ function sumarTotalPrecios(){
 	$("#totalVenta").val(sumaTotalPrecio);
 	$("#nuevoTotalVenta").attr("total",sumaTotalPrecio);
 
-	$('#box-searchP').val("");
+	$('#card-searchP').val("");
 
 	if ($("#nuevoMetodoPago").val() == 'Efectivo') {
 
