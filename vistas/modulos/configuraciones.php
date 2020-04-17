@@ -73,10 +73,10 @@ $zona = ControladorSucursal::getZone();
                   <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="220px">
                 <?php else : ?>
                   <img src="<?php echo $sucursal['ruta_logo']; ?>" class="img-thumbnail previsualizar" width="220px">
-      
-                    <button type="button" class="btn  text-danger btnEliminarLogoSuc" nomSuc="<?php echo $_SESSION['nom_suc'] ?>"><i class="fas fa-trash"></i> Eliminar lógotipo</button>
 
-                 
+                  <button type="button" class="btn  text-danger btnEliminarLogoSuc" nomSuc="<?php echo $_SESSION['nom_suc'] ?>"><i class="fas fa-trash"></i> Eliminar lógotipo</button>
+
+
 
 
                 <?php endif; ?>
@@ -175,7 +175,7 @@ $zona = ControladorSucursal::getZone();
               <?php $tipo_impresora = $sucursal['tipo_impresora'];
               if ($tipo_impresora == "") :
               ?>
-                
+
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="58mm"> 58mm
                 </label>
@@ -188,6 +188,7 @@ $zona = ControladorSucursal::getZone();
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="M-CARTA"> M-CARTA
                 </label>
+
               <?php endif; ?>
 
               <?php if ($tipo_impresora == "58mm") : ?>
@@ -203,6 +204,7 @@ $zona = ControladorSucursal::getZone();
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="M-CARTA"> M-CARTA
                 </label>
+
               <?php endif; ?>
               <?php if ($tipo_impresora == "80mm") : ?>
                 <label class="btn btn-secondary">
@@ -218,9 +220,9 @@ $zona = ControladorSucursal::getZone();
                   <input type="radio" name="impresion" value="M-CARTA"> M-CARTA
                 </label>
 
-
               <?php endif; ?>
-              <?php if ($tipo_impresora == "T-CARTA") : ?>
+              <!-- <?php //if ($tipo_impresora == "T-CARTA") : 
+                    ?>
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="58mm"> 58mm
                 </label>
@@ -233,8 +235,10 @@ $zona = ControladorSucursal::getZone();
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="M-CARTA"> M-CARTA
                 </label>
-              <?php endif; ?>
-              <?php if ($tipo_impresora == "M-CARTA") : ?>
+              <?php //endif; 
+              ?> -->
+              <!-- <?php // if ($tipo_impresora == "M-CARTA") : 
+                    ?>
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="58mm"> 58mm
                 </label>
@@ -248,10 +252,39 @@ $zona = ControladorSucursal::getZone();
                   <input type="radio" name="impresion" value="M-CARTA" checked> M-CARTA
                 </label>
 
-              <?php endif; ?>
+              <?php // endif; 
+              ?> -->
 
 
 
+
+            </div>
+            <div class="row margenes-input">
+              <?php 
+              
+              if($sucursal['margenes']!=""){
+                $margen = explode(",",$sucursal['margenes']);
+            
+              }else{
+                $margen = explode(",",'1,8,0');
+              }        
+              ?>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-4">
+                    <input type="number" class="form-control" value="<?php echo $margen[0] ?>" name="ml" id="ml" placeholder="Margén derecho">
+                    <label for="">Margen izquiero</label>
+                  </div>
+                  <div class="col-4">
+                    <input type="number" class="form-control" value="<?php echo $margen[1] ?>" name="mt" id="ml" placeholder="Margén de arriba">
+                    <label for="">Margen de arriba</label>
+                  </div>
+                  <div class="col-4">
+                    <input type="number" class="form-control" value="<?php echo $margen[2] ?>" name="mr" id="ml" placeholder="Margén de izquierdo">
+                    <label for="">Margen derecho</label>
+                  </div>
+                </div>
+              </div>
 
             </div>
             <br>

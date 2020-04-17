@@ -17,78 +17,84 @@ require_once "../../../modelos/sucursales.modelo.php";
 
 
 
-class imprimirFactura{
+class imprimirFactura
+{
 
-public $codigo;
+	public $codigo;
 
-public function traerImpresionFactura(){
+	public function traerImpresionFactura()
+	{
 
-//TRAEMOS LA INFORMACIÓN DE LA VENTA
+		//TRAEMOS LA INFORMACIÓN DE LA VENTA
 
-	$sucursal = ControladorSucursal::ctrMostrarSucursal();
-	$direccion = $sucursal['direccion'];
-	$nombre_suc = strtoupper($sucursal['nombre']);
-	$telefono_suc = $sucursal['telefono'];
-	$web = $sucursal['sitio_web'];
-	$tipo_impresion = $sucursal['tipo_impresora'];
-	$politicas_ventas = $sucursal['politicas_accesorios'];
+		$sucursal = ControladorSucursal::ctrMostrarSucursal();
 
-	$impresion = $tipo_impresion == '58mm' ? 135  : 160;
-	$impresions2 = ($impresion/2);
-	$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
+		if ($sucursal['margenes'] != "") {
+			$margen = explode(",", $sucursal['margenes']);
+		} else {
+			$margen = explode(",", '1,8,0');
+		}
 
-$itemVenta = "codigo";
-$valorVenta = $this->codigo;
+		$direccion = $sucursal['direccion'];
+		$nombre_suc = strtoupper($sucursal['nombre']);
+		$telefono_suc = $sucursal['telefono'];
+		$web = $sucursal['sitio_web'];
+		$tipo_impresion = $sucursal['tipo_impresora'];
+		$politicas_ventas = $sucursal['politicas_accesorios'];
 
-$respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
+		$impresion = $tipo_impresion == '58mm' ? 135  : 160;
+		$impresions2 = ($impresion / 2);
+		$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
 
-$fecha = substr($respuestaVenta["fecha"],0,-8);
-$productos = json_decode($respuestaVenta["productos"], true);
-$neto = number_format($respuestaVenta["neto"],2);
-$impuesto = number_format($respuestaVenta["impuesto"],2);
-$total = number_format($respuestaVenta["total"],2);
+		$itemVenta = "codigo";
+		$valorVenta = $this->codigo;
 
-//TRAEMOS LA INFORMACIÓN DEL CLIENTE
+		$respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
 
-$itemCliente = "id";
-$valorCliente = $respuestaVenta["id_cliente"];
+		$fecha = substr($respuestaVenta["fecha"], 0, -8);
+		$productos = json_decode($respuestaVenta["productos"], true);
+		$neto = number_format($respuestaVenta["neto"], 2);
+		$impuesto = number_format($respuestaVenta["impuesto"], 2);
+		$total = number_format($respuestaVenta["total"], 2);
 
-$respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+		//TRAEMOS LA INFORMACIÓN DEL CLIENTE
 
-//TRAEMOS LA INFORMACIÓN DEL VENDEDOR
+		$itemCliente = "id";
+		$valorCliente = $respuestaVenta["id_cliente"];
 
-$itemVendedor = "usuario";
-$valorVendedor = $respuestaVenta["id_vendedor"];
+		$respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
 
-$respuestaVendedor = ControladorUsuarios::ctrMostrarUsuarios($itemVendedor, $valorVendedor);
+		//TRAEMOS LA INFORMACIÓN DEL VENDEDOR
 
-//REQUERIMOS LA CLASE TCPDF
+		$itemVendedor = "usuario";
+		$valorVendedor = $respuestaVenta["id_vendedor"];
 
-require_once('tcpdf_include.php');
+		$respuestaVendedor = ControladorUsuarios::ctrMostrarUsuarios($itemVendedor, $valorVendedor);
 
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		//REQUERIMOS LA CLASE TCPDF
 
-//$pdf->setPrintHeader(false);
-//$pdf->setPrintFooter(false);
-if($impresion == '58'){
-	$pdf->SetMargins(2, 4, 4);
+		require_once('tcpdf_include.php');
 
-}
-//$pdf->SetHeaderMargin(0);
-//$pdf->SetFooterMargin(0);
-//$pdf->setCellPaddings(0,0,0,0);
-//$pdf->SetAutoPageBreak(TRUE, 0);
-$pdf->setPrintHeader(false); //no imprime la cabecera ni la linea 
-$pdf->setPrintFooter(false);
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-$pdf->AddPage('P', $formato);
+		//$pdf->setPrintHeader(false);
+		//$pdf->setPrintFooter(false);
+		$pdf->SetMargins($margen['0'], $margen['1'], $margen['2']);
+		//$pdf->SetHeaderMargin(0);
+		//$pdf->SetFooterMargin(0);
+		//$pdf->setCellPaddings(0,0,0,0);
+		//$pdf->SetAutoPageBreak(TRUE, 0);
+		$pdf->setPrintHeader(false); //no imprime la cabecera ni la linea 
+		$pdf->setPrintFooter(false);
 
-// $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
-$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../'.$sucursal['ruta_logo'].'"  width="100px"/>';
+		$pdf->AddPage('P', $formato);
 
-//---------------------------------------------------------
+		// $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
+		$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../' . $sucursal['ruta_logo'] . '"  width="100px"/>';
 
-$bloque1 = <<<EOF
+		//---------------------------------------------------------
+
+		$bloque1 = <<<EOF
 
 <table style="font-size:9px;">
 
@@ -131,7 +137,10 @@ $bloque1 = <<<EOF
 				Vendedor: $respuestaVendedor[nombre]
 
 				<br>
-				Venta: <strong>$valorVenta</strong>
+				<div style="text-align:center;border: .1px solid #000; background-color:#000; height:80px; color:#fff; font-size:10px;">
+				<strong> VENTA #$valorVenta</strong>
+				</div>
+				
 
 			</div>
 
@@ -144,18 +153,18 @@ $bloque1 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque1, false, false, false, false, '');
+		$pdf->writeHTML($bloque1, false, false, false, false, '');
 
-// ---------------------------------------------------------
+		// ---------------------------------------------------------
 
 
-foreach ($productos as $key => $item) {
+		foreach ($productos as $key => $item) {
 
-$valorUnitario = number_format($item["precio"], 2);
+			$valorUnitario = number_format($item["precio"], 2);
 
-$precioTotal = number_format($item["total"], 2);
+			$precioTotal = number_format($item["total"], 2);
 
-$bloque2 = <<<EOF
+			$bloque2 = <<<EOF
 
 <table style="font-size:9px;">
 
@@ -180,13 +189,12 @@ $bloque2 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque2, false, false, false, false, '');
+			$pdf->writeHTML($bloque2, false, false, false, false, '');
+		}
 
-}
+		// ---------------------------------------------------------
 
-// ---------------------------------------------------------
-
-$bloque3 = <<<EOF
+		$bloque3 = <<<EOF
 
 <table style="font-size:9px; text-align:right">
 
@@ -235,14 +243,11 @@ $bloque3 = <<<EOF
 	</tr>
 	<tr>
 	
-		<td style="width:$impresion px; text-align:center">
-		<style>
-		.p{
-			font-size:4px;
-		}
-	 	</style>
-			
-		<p><strong>$politicas_ventas</strong></p>
+		<td style="width:$impresion px;"> 
+		 
+			 <p align="justify" style="font-size:6.9px;" >
+			  	<strong>$politicas_ventas</strong>
+			 </p>
 		</td>
 
 	</tr>
@@ -250,7 +255,6 @@ $bloque3 = <<<EOF
 	<tr>
 	
 		<td style="width:$impresion px; text-align:center">
-			
 			
 			Muchas gracias por su compra
 		</td>
@@ -263,20 +267,16 @@ $bloque3 = <<<EOF
 
 EOF;
 
-$pdf->writeHTML($bloque3, false, false, false, false, '');
+		$pdf->writeHTML($bloque3, false, false, false, false, '');
 
-// ---------------------------------------------------------
-//SALIDA DEL ARCHIVO 
+		// ---------------------------------------------------------
+		//SALIDA DEL ARCHIVO 
 
-//$pdf->Output('factura.pdf', 'D');
-$pdf->Output('factura.pdf');
-
-}
-
+		//$pdf->Output('factura.pdf', 'D');
+		$pdf->Output('factura.pdf');
+	}
 }
 
 $factura = new imprimirFactura();
-$factura -> codigo = $_GET["codigo"];
-$factura -> traerImpresionFactura();
-
-?>
+$factura->codigo = $_GET["codigo"];
+$factura->traerImpresionFactura();
