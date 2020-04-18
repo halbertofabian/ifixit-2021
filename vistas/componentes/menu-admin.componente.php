@@ -108,7 +108,7 @@
         <li class="nav-item">
             <a href="<?php echo $url ?>egresos" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Gatos</p>
+                <p>Gastos</p>
             </a>
         </li>
         <li class="nav-item">
@@ -237,6 +237,14 @@
         </li>
 
     </ul>
+<li class="nav-item">
+    <a href="<?php echo $url ?>modulos" class="nav-link">
+        <i class=" nav-icon fas fa-server"></i>
+        <p>
+            Módulos
+        </p>
+    </a>
+</li>
 </li>
 
 
