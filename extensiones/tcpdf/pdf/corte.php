@@ -30,7 +30,7 @@ class imprimirFactura
 		$nombre_suc = $sucursal['nombre'];
 		$telefono_suc = $sucursal['telefono'];
 		$tipo_impresion = $sucursal['tipo_impresora'];
-		$impresion = $tipo_impresion == '58mm' ? 135  : 160;
+		$impresion = $tipo_impresion == '58mm' ? 135  : 190;
 		$impresions2 = ($impresion / 2);
 		$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
 
@@ -77,7 +77,7 @@ class imprimirFactura
 		$pdf->AddPage('P', $formato);
 
 		// $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
-		$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../' . $sucursal['ruta_logo'] . '"  width="100px"/>';
+		$logo = $sucursal['ruta_logo'] == "" ? $nombre_suc : '<img src="../../../' . $sucursal['ruta_logo'] . '"  width="50px"/>';
 
 		//---------------------------------------------------------
 
