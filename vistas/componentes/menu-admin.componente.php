@@ -237,14 +237,14 @@
         </li>
 
     </ul>
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a href="<?php echo $url ?>modulos" class="nav-link">
         <i class=" nav-icon fas fa-server"></i>
         <p>
             Módulos
         </p>
     </a>
-</li>
+</li> -->
 </li>
 
 
