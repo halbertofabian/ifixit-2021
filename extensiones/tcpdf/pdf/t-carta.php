@@ -73,13 +73,22 @@ class imprimirFactura
 
         $pagado = "";
 
-        //$logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
+        // $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
+        $logo = $sucursal['ruta_logo'] == "" ? '<strong style="font-size:18px">' . $nombre_suc . '</strong>' : '<img src="../../../' . $sucursal['ruta_logo'] . '"  width="70px"/>';
 
         //$ruta = !isset($_SESSION['ruta_logo']) || $_SESSION['ruta_logo']==""  ? $nombre_suc : ""; ;
         //echo $_SESSION['ruta_logo'];
 
-        $logo = $nombre_suc;
 
+       
+        //echo $contacto.'<br>';
+        $array = array();
+        $array = explode("/", $contacto);
+        //echo $array[0].'<br>';
+        $wp =  $array[1];
+        $array = explode(" ", $array[0]);
+        $tel  = $array[0] . $array[1];
+        $correo = $array[2];
 
 
 
@@ -119,121 +128,189 @@ class imprimirFactura
 
         $bloque1 = <<<EOF
 
-        <table>
+    <table style="font-size:9px;">
         <thead>
-    
             <tr>
-                <th>
-    
-                </th>
-                <th style="text-align:center;">
-                    <span style=" font-size:18px"> <strong> $nombre_suc </strong></span>
-                </th>
-                <th>
+                <td style="text-align:left;width:20%">
+                    $logo
+                </td>
+                <td style="text-align:center;width:50%">
+                    <p>$direccion </p>
+                    <p>$telefono_suc</p>
+                    <p>$web</p>
 
-                <span style="text-align:center; font-size:14px"> <strong> Nª $valorVenta</strong></span>
-
-                </th>
+                </td>
+                <td style="text-align:right;width:30%">
+                <tcpdf style="width:50px; text-align:center;" method="write1DBarcode" params="$bardcode" />
+                </td>
             </tr>
-    
         </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <img src="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-9/59788286_1129363577266456_3306299832011849728_o.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=V1ywcp11sYwAX9nk_do&_nc_ht=scontent.fgdl3-1.fna&oh=0baed69d3ca48be6924b01d806de9750&oe=5E965DD5" width="120" />
-                </td>
-                <td style="font-size:8px;text-align:center;">
-                <br>
-                <br>
-                $direccion <br>
-                $web <br>
-                $telefono_suc
-                
-                </td>
-                <td>
-                    <tcpdf style="width:$impresion px; text-align:center;" method="write1DBarcode" params="$bardcode" />
-                    $fecha
-                </td>
-    
-            </tr>
-
-            <tr>
-                <td style="" >
-                   <strong>Cliente:</strong><br>
-
-                   <strong>Nombre:</strong> <span style="font-size:8px;"> $cliente </span> <br>
-                   <strong>Teléfono:</strong> <span style="font-size:8px;"> $cliente </span> <br>
-                   <strong>Correo:</strong> <span style="font-size:8px;"> $cliente </span> <br>
-                   <strong>WhatsApp:</strong> <span style="font-size:8px;"> $cliente </span> <br>
-
-                   <strong>Equipo:</strong><br>
-
-                   <strong>Marca:</strong> <span style="font-size:8px;"> $marca </span> <br>
-                   <strong>Modelo:</strong> <span style="font-size:8px;"> $modelo </span> <br>
-                   <strong>Estado Fisico:</strong> <span style="font-size:8px;"> $estado_fisico </span> <br>
-
-
-
-
-
-
-
-                </td>
-                <td>
-                
-                <strong>Atendio / Técnico:</strong><br>
-
-                <strong>Nombre:</strong> <span style="font-size:8px;"> $usuario </span> <br>
-
-
-                <strong>Serie / IMEI :</strong> <span style="font-size:8px;"> $imei </span> <br>
-                <strong>Estetica:</strong> <span style="font-size:8px;"> $estetica </span> <br>
-                <strong>Observaciones:</strong> <span style="font-size:8px;"> $observacion </span> <br>
-
-                
-                </td>
-                <td>
-                <strong>Patron / PIN desbloqueo:</strong>
-                <br>
-                <center>
-                <img src="https://1.bp.blogspot.com/_8pbaW8STJyM/R0TJ8EEyZ6I/AAAAAAAAADU/jponpWl5vg4/w1200-h630-p-k-no-nu/9+PUNTOS.JPG" style="width:100px;">
-                <strong>PIN:</strong> <span style="font-size:8px;"> $pin </span> <br>
-                
-                </center>
-
-                </td>
-    
-            </tr>
-            <tr>
-                <td>
-                <strong>Problema:</strong><br>
-                <span style="font-size:8px;"> $problema </span> <br>
-                
-                </td>
-                <td>
-                <strong>Solución:</strong><br>
-                <span style="font-size:8px;"> $solucion </span> <br>
-                
-                </td>
-                <td>
-                <strong>Total:</strong><br>
-                <span style="font-size:8px;"> $importe </span> <br>
-                <strong>Anticipo:</strong><br>
-                <span style="font-size:8px;"> $anticipo </span> <br>
-                <strong>Resta:</strong><br>
-                <span style="font-size:8px;"> $adeudo </span> <br>
-                
-                </td>
-            </tr>
-    
-        </tbody>
+        
     </table>
-<div>
+   
+    <table style="font-size:9px;border: 1px solid #000; padding-bottom:4px">
+    <thead>
+        
+        
+        <tr>
+            <td style="text-align:left;width:33.3%;">
+                <p>
+                <strong>Nombre del cliente</strong><br>
+                    $cliente
+                </p>
+            </td>
+            <td style="text-align:center;width:33.3%">
+                <p>
+                <strong>Contacto</strong><br>
+                    $tel <br>
+                    $correo <br>
+                    $wp
+                </p>
+            </td>    
+            <td style="text-align:center;width:33.3%">
+                <p>
+                <strong>Fecha recepción</strong><br>
+                    $fecha <br>
+                    <strong>Le atendio</strong> <br>
+                    $usuario
+                </p>
+            </td>
+        </tr>
+    </thead>
+    
+    </table>
+    <table style="font-size:9px;border: 1px solid #000; padding-bottom:4px">
+    <thead>
+    <tr>
+            <td style="text-align:center;">
+                <strong>Datos del equipo</strong>
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="text-align:left;width:33.3%;">
+                <p>
+                <strong>Marca</strong><br>
+                    $marca
+                </p>
+                <p>
+                <strong>Problema</strong><br>
+                    $problema
+                </p>
+                <p>
+                <strong>Estetica</strong><br>
+                    $estetica
+                </p>
+                <p style="text-align:center">
+                <strong>Patron</strong><br>
+                    <img src="../../../vistas/img/logo_suc/patron.jpg"  width="100px"/>
+                </p>
+                
+            </td>
+            <td style="text-align:center;width:33.3%">
+                <p>
+                <strong>Modelo</strong><br>
+                    $modelo
+                </p>
+                <p>
+                <strong>Solución</strong><br>
+                    $solucion
+                </p>
+                <p>
+                <strong>Estado fisico</strong><br>
+                    $estado_fisico
+                </p>
+                <p>
+                <strong>Total:</strong><br>
+                </p>
+                <p>
+                <strong>Anticipo:</strong><br>
+                </p>
+                <p>
+                <strong>Adeudo:</strong><br>
+                </p>
+            </td>    
+            <td style="text-align:center;width:33.3%">
+                <p>
+                <strong>IMEI/SERIE</strong><br>
+                    $imei
+                </p>
+                <p>
+                <strong>Observaciones</strong><br>
+                    $observacion
+                </p>
+                <p>
+                <strong></strong><br>
+                   
+                </p>
+                <p>
+                   $ $importe
+                </p>
+                
+                <p>
+                  $  $anticipo
+                </p>
+                ---------------------------------
+                <p>
+                  $  $adeudo
+                </p>
+                <strong>$pagado</strong> 
+            </td>
+        </tr>
+    </thead>
+    
+</table>
+<table style="font-size:9px;padding-top:10px">
+<thead>
+    <tr>
+        <td style="text-align:center;width:67.7.3%">
+            
+            <div style="text-align:center;"> <strong> Politicas </strong></div>
+            <p align="justify" style="font-size:6.9px;" >
+                $politicas
+                <br>
+                <br>
+                <hr>
+                <p align="center">Yo $cliente acepto las politicas de este establecimiento</p>
+            </p>
 
+            
 
+        </td>
+        <td style="text-align:center;width:33.3%">
 
-</div>
+            <strong> Firma de equipo entregado </strong><br><br>
+            <hr>
+        </td>
+    </tr>
+</thead>
 
+</table>
+
+<table style="font-size:9px;">
+        <thead>
+            <tr>
+                <td style="text-align:center;width:100%">
+                    Muchas gracias por su elección
+                    <div style="font-size:8px;">
+                        Consulta el estado de tu servicio en la siguiente url 
+                        <br>
+                        <strong>https://softmormx.com/consulta</strong>
+                        <br>
+                        Codigo: <strong>$codigo</strong>
+                        <div style="font-size:7px;">
+                            $nota
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+        </thead>
+        
+    </table>
+    
+
+    
 
 
 
@@ -242,7 +319,7 @@ EOF;
         $pdf->writeHTML($bloque1, false, false, false, false, '');
         // $pdf->writeHTML($bloque1, false, false, false, false, '');
 
-        $pdf->AddPage();
+
 
 
 
@@ -257,6 +334,3 @@ EOF;
 $factura = new imprimirFactura();
 $factura->orden = $_GET["codigo"];
 $factura->traerImpresionFactura();
-
-?>
-
