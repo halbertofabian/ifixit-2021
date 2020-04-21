@@ -164,10 +164,24 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
               <?php endif; ?>
 
-              <button class="btn btn-secondary btnImprimirTiket" idServicio="<?php echo $value['orden']; ?>">
+              <!-- <button class="btn btn-secondary btnImprimirTiket" idServicio="<?php echo $value['orden']; ?>"> -->
 
-                <i class="fa fa-print"></i>
+                
               </button>
+
+              
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-print"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/servicio-factura.php?codigo=<?php echo $value['orden'] ?>" target="_blank">Predeterminado</a>             
+                    <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/t-carta.php?codigo=<?php echo $value['orden'] ?>" target="_blank">T-CARTA</a>
+
+
+                  </div>
+                </div>
+             
 
 
             </div>
@@ -402,7 +416,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
                 <label for="" class="text-dark">Selecciona el estado en que se encuentra este servicio</label>
                 <select name="estado" class="form-control estado_equipo" id="estado_equipo">
 
-                  
+
 
                   <option value="" selected>Seleccione un estado</option> -->
 

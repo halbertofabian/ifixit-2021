@@ -43,14 +43,30 @@
         </p>
     </a>
 </li>
-<li class="nav-item">
-    <a href="<?php echo $url ?>usuarios" class="nav-link">
-        <i class="nav-icon fa fa-user"></i>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-id-card-alt"></i>
         <p>
-            Usuarios
+            Perfiles
+            <i class="right fas fa-angle-left"></i>
         </p>
     </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="<?php echo $url ?>usuarios" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Usuarios</p>
+            </a>
+        </li>
+        <!-- <li class="nav-item">
+            <a href="<?php echo $url ?>acceso" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Roles de acceso</p>
+            </a>
+        </li> -->
+    </ul>
 </li>
+
 <li class="nav-item">
     <a href="<?php echo $url ?>categorias" class="nav-link">
         <i class="nav-icon fa fa-th"></i>
@@ -237,7 +253,7 @@
         </li>
 
     </ul>
-<!-- <li class="nav-item">
+    <!-- <li class="nav-item">
     <a href="<?php echo $url ?>modulos" class="nav-link">
         <i class=" nav-icon fas fa-server"></i>
         <p>

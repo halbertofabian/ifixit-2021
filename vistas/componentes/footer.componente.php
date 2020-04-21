@@ -9,10 +9,14 @@
     Todos los derechos reservados.
     <?php
 
-    date_default_timezone_set($_SESSION["zona"]);
-    $fecha = date('Y-m-d');
-    $hora = date('H:i:s');
+            date_default_timezone_set($_SESSION["zona"]);
+            $fecha = date('Y-m-d');
+            $hora = date('H:i:s');
 
-    echo $fechaActual = $fecha . ' ' . $hora; ?>
+        echo $fechaActual = $fecha . ' ' . $hora;
+     
+    
+     
+     ?>
 
 </footer>

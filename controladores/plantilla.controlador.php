@@ -79,7 +79,8 @@ class ControladorPlantilla
 			'mi-web',
 			'slide',
 			'suscripcion-1',
-			'modulos'
+			'modulos',
+			'acceso'
 		);
 
 		return $whitList;
