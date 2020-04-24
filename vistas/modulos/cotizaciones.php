@@ -15,7 +15,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
 </div>
 
 <!-- Main container-fluid -->
-<section class="container-fluid">
+<section class="container">
 
   <form action="" method="post">
     <div class="row">
@@ -95,13 +95,13 @@ if ($_SESSION['perfil'] == "Tecnico") {
       </div>
     </div>
     <br>
-    <div class="row">
+    <div class="row ml-5">
       <div class="col-12 col-md-12">
         <div class="text-danger">
           *Seleccione al menos una opcion de estas <span class="text-success">(*)</span></label>
         </div>
       </div>
-      <div class="col-md-2 col-12">
+      <div class="col-md-2  col-12">
         <input type="checkbox" class="form-check-input" name="estado_fisico[]" value="Encendido"> Encendido
       </div>
       <div class="col-md-2 col-12">
