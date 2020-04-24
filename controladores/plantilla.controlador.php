@@ -104,7 +104,7 @@ class ControladorPlantilla
 		$tamaño = 10; //Tamaño de Pixel
 		$level = 'H'; //Precisión Máxima
 		$framSize = 3; //Tamaño en blanco
-		$contenido = 'http://localhost/softmor-pj/ifixitmor.com/s/' . $nom_suc . '/consulta-s/' . $valor; //Texto
+		$contenido = 'https://ifixitmor.com/s/' . $nom_suc . '/consulta-s/' . $valor; //Texto
 
 		//Enviamos los parametros a la Función para generar código QR 
 		return QRcode::png($contenido, $filename, $level, $tamaño, $framSize);
