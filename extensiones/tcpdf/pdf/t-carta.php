@@ -76,7 +76,7 @@ class imprimirFactura
 
         ControladorPlantilla::generarQR($codigo);
 
-        $nom_suc =  strtolower(str_replace('-', ' ', trim($sucursal['nombre'])));
+        $nom_suc =  strtolower(str_replace(' ', '-', trim($sucursal['nombre'])));
         $qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.png" width="70px"></img>';
 
 
