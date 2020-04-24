@@ -33,7 +33,7 @@ class imprimirFactura
 			echo '
 			<script>
 				window.location.href="'.ControladorPlantilla::getRute().'extensiones/tcpdf/pdf/t-carta.php?codigo='.$this->orden.'"
-			</script>
+				</script>
 			';
 		}
 
@@ -101,7 +101,7 @@ class imprimirFactura
 		ControladorPlantilla::generarQR($codigo);
 
 		$nom_suc =  strtolower(str_replace(' ', '-', trim($sucursal['nombre'])));
-		$qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.jpg" width="70px" style=""></img>';
+		$qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.jpg" width="50px" style=""></img>';
 
 
 
@@ -122,7 +122,7 @@ class imprimirFactura
 
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-		$pdf->SetMargins($margen['0'], $margen['1'], $margen['2']);
+		$pdf->SetMargins($margen['0'], $margen['1'], $margen['2'],0);
 
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
@@ -428,42 +428,11 @@ EOF;
 			 <strong>Firma aceptación</strong>
 		</td>
 	</tr>
-		
-		
-		
-			
-	
-	
-	<tr>
-	
-		<td style="width:$impresion px; font-size:9px; text-align: center;" >
-			
-			Muchas gracias por su elección
-		
-			<div style="font-size:6.9px;">
-			Consulta el estado de tu servicio en la siguiente url 
-			<br>
-			<strong>softmormx.com/consulta</strong>
-			<br>
-			Codigo: <strong>$codigo</strong>
-			<br>
-			$qr
-		</td>
 
-		
-
-	</tr>
 	</table>
 	
 	<table>
-	<tr>
-	<td style="width:$impresion px; font-size:8px; text-align: center;">
-		<div style="font-size:6.9px;">
-			$nota
-		</div>
-		<br>
-	</td>	
-	</tr>
+	
 	
 </table>
     
@@ -473,8 +442,54 @@ EOF;
 
 EOF;
 
+$qrType = <<<EOF
+
+<table>
+<tr>
+	
+<td style="width:$impresions2 px; font-size:9px; text-align: center;" >
+	
+	Muchas gracias por su elección
+
+	<div style="font-size:6.9px;">
+	Consulta el estado de tu servicio en la siguiente url 
+	<br>
+	<strong>softmormx.com/consulta</strong>
+	<br>
+	Codigo: <strong>$codigo</strong>
+	</div>
+	
+</td>
+<td style="width:$impresions2 px; font-size:9px; text-align: center;" >
+
+
+	<div style="font-size:6.9px;">
+	
+	$qr
+	
+</td>
+
+
+
+</tr>
+<tr>
+	<td style="width:$impresion px; font-size:8px; text-align: center;">
+		<div style="font-size:6.9px;">
+			$nota
+		</div>
+		<br>
+	</td>	
+	</tr>
+</table>
+
+EOF;
+
+		
+
 		$pdf->writeHTML($bloque3, false, false, false, false, '');
 
+
+		$pdf->writeHTML($qrType, false, false, false, false, '');
 		// ---------------------------------------------------------
 		//SALIDA DEL ARCHIVO 
 

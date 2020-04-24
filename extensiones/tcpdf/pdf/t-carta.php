@@ -80,7 +80,7 @@ class imprimirFactura
         ControladorPlantilla::generarQR($codigo);
 
         $nom_suc =  strtolower(str_replace(' ', '-', trim($sucursal['nombre'])));
-        $qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.jpg" width="70px"></img>';
+        $qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.jpg" width="50px"></img>';
 
 
 
@@ -281,14 +281,12 @@ class imprimirFactura
         <td style="text-align:center;width:100%">
             
             <div style="text-align:center;"> <strong> Politicas </strong></div>
-            <p align="justify" style="font-size:6.9px;" >
+            <p align="justify" style="font-size:6.0px;" >
                 $politicas
                 <br>
                 <br>
                 <hr>
                 <span align="center">Yo $cliente acepto las politicas de este establecimiento</span>
-                <br>
-                <br>
             </p>
 
             
@@ -312,7 +310,7 @@ class imprimirFactura
             
                 </td>
                 <td style="text-align:right;">
-                
+             
                     Muchas gracias por su elección
                     <div style="font-size:8px;">
                         Consulta el estado de tu servicio en la siguiente url 
@@ -320,11 +318,12 @@ class imprimirFactura
                         <strong>https://softmormx.com/consulta</strong>
                         <br>
                         Codigo: <strong>$codigo</strong>
+                        
                         <div style="font-size:7px;">
                             $nota
+                            
                         </div>
-
-                    </div>
+                        $qr
                 </td>
                 
             </tr>
@@ -332,9 +331,6 @@ class imprimirFactura
         </thead>
         
     </table>
-    <div style="text-align:rigth">
-    $qr
-    </div>
     
 
    
