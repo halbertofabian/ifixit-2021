@@ -27,6 +27,9 @@ class imprimirFactura
 
         //TRAEMOS LA INFORMACIÓN DE LA VENTA
         $sucursal = ControladorSucursal::ctrMostrarSucursal();
+
+        
+
         $direccion = $sucursal['direccion'];
         $nombre_suc = strtoupper($sucursal['nombre']);
 
@@ -77,7 +80,7 @@ class imprimirFactura
         ControladorPlantilla::generarQR($codigo);
 
         $nom_suc =  strtolower(str_replace(' ', '-', trim($sucursal['nombre'])));
-        $qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.png" width="70px"></img>';
+        $qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.jpg" width="70px"></img>';
 
 
 

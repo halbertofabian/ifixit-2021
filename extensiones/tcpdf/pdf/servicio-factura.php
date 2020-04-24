@@ -1,8 +1,10 @@
 <?php session_start();
-
+require_once '../../../lib/phpqrcode/qrlib.php';
 require_once "../../../controladores/servicios.controlador.php";
 require_once "../../../modelos/servicios.modelo.php";
 require_once "../../../controladores/sucursales.controlador.php";
+require_once "../../../modelos/sucursales.modelo.php";
+require_once "../../../controladores/plantilla.controlador.php";
 require_once "../../../modelos/sucursales.modelo.php";
 /*
 require_once "../../../controladores/clientes.controlador.php";
@@ -27,9 +29,15 @@ class imprimirFactura
 		//TRAEMOS LA INFORMACIÓN DE LA VENTA
 		$sucursal = ControladorSucursal::ctrMostrarSucursal();
 
-		
+		if($sucursal['tipo_impresora']=="T-CARTA"){
+			echo '
+			<script>
+				window.location.href="'.ControladorPlantilla::getRute().'extensiones/tcpdf/pdf/t-carta.php?codigo='.$this->orden.'"
+			</script>
+			';
+		}
 
-		
+
 
 		if ($sucursal['margenes'] != "") {
 			$margen = explode(",", $sucursal['margenes']);
@@ -90,6 +98,12 @@ class imprimirFactura
 		//$ruta = !isset($_SESSION['ruta_logo']) || $_SESSION['ruta_logo']==""  ? $nombre_suc : ""; ;
 		//echo $_SESSION['ruta_logo'];
 
+		ControladorPlantilla::generarQR($codigo);
+
+		$nom_suc =  strtolower(str_replace(' ', '-', trim($sucursal['nombre'])));
+		$qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.jpg" width="70px" style=""></img>';
+
+
 
 
 
@@ -133,6 +147,7 @@ class imprimirFactura
 	
 
 	<tr>
+	
 		<td style="width:$impresion px;">
 	
 			<div>
@@ -431,13 +446,16 @@ EOF;
 			<strong>softmormx.com/consulta</strong>
 			<br>
 			Codigo: <strong>$codigo</strong>
-
-			</div>
+			<br>
+			$qr
 		</td>
 
 		
 
 	</tr>
+	</table>
+	
+	<table>
 	<tr>
 	<td style="width:$impresion px; font-size:8px; text-align: center;">
 		<div style="font-size:6.9px;">
@@ -446,17 +464,10 @@ EOF;
 		<br>
 	</td>	
 	</tr>
-	<tr>
 	
-		<td style="width:$impresion px; text-align:center; font-size:7px;">
-
-		<tcpdf style="width:$impresion px; text-align:center;" method="write1DBarcode" params="$bardcode" />
-		
-		
-		</td>
-
-	</tr>
 </table>
+    
+
 
 
 
@@ -475,3 +486,16 @@ EOF;
 $factura = new imprimirFactura();
 $factura->orden = $_GET["codigo"];
 $factura->traerImpresionFactura();
+/**
+ * 
+ * <tr>
+	
+		<td style="width:$impresion px; text-align:center; font-size:7px;">
+
+		<tcpdf style="width:$impresion px; text-align:center;" method="write1DBarcode" params="$bardcode" />
+		
+		
+		</td>
+
+	</tr>
+ */

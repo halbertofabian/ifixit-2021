@@ -12,7 +12,7 @@ class ControladorPlantilla
 
 	static function getRute()
 	{
-		return APP_URL;
+		return 'http://localhost/softmor-pj/app.ifixitmor.com/';
 	}
 
 
@@ -99,7 +99,7 @@ class ControladorPlantilla
 
 		//Declaramos la ruta y nombre del archivo a generar
 
-		$filename = $dir . "/s" .   '.png';
+		$filename = $dir . "/s" .   '.jpg';
 
 		$tamaño = 10; //Tamaño de Pixel
 		$level = 'H'; //Precisión Máxima
