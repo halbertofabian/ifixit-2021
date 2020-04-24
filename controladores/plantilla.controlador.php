@@ -85,4 +85,28 @@ class ControladorPlantilla
 
 		return $whitList;
 	}
+
+	public static function generarQR($valor)
+	{
+
+
+		$nom_suc =  strtolower(str_replace(' ', '-', trim($_SESSION['nom_suc'])));
+
+		$dir = '../../../vistas/img/qr_generator/' . $nom_suc . '';
+		//Si no existe la carpeta la creamos
+		if (!file_exists($dir))
+			mkdir($dir, 0777, true);
+
+		//Declaramos la ruta y nombre del archivo a generar
+
+		$filename = $dir . "/s" .   '.png';
+
+		$tamaño = 10; //Tamaño de Pixel
+		$level = 'H'; //Precisión Máxima
+		$framSize = 3; //Tamaño en blanco
+		$contenido = 'http://localhost/softmor-pj/ifixitmor.com/s/' . $nom_suc . '/consulta-s/' . $valor; //Texto
+
+		//Enviamos los parametros a la Función para generar código QR 
+		return QRcode::png($contenido, $filename, $level, $tamaño, $framSize);
+	}
 }

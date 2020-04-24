@@ -180,7 +180,7 @@ class ControladorServicios
 				// $url = ControladorPlantilla::getRute();
 				// //Enviamos los parametros a la Función para generar código QR 
 				// QRcode::png($url . 'consulta/?sucursal=' . md5($_SESSION['nom_suc']) . '&codigo=' . $codigo_cliente . '&apikey=' . $_SESSION['suscriptor'], $filename, $level, $tamaño, $framSize);
-
+				//$qr = ControladorPlantilla::generarQR();
 
 				if (strlen($wspp) > 0) {
 
@@ -453,11 +453,11 @@ class ControladorServicios
 
 		return $respuesta;
 	}
-	static public function ctrMostrarServicioPorFiltro($filtro,$tecnico = "")
+	static public function ctrMostrarServicioPorFiltro($filtro, $tecnico = "")
 	{
 
 
-		$respuesta = ModeloServicios::MdlMostrarServciosPorFiltro($filtro,$tecnico);
+		$respuesta = ModeloServicios::MdlMostrarServciosPorFiltro($filtro, $tecnico);
 
 		return $respuesta;
 	}
@@ -474,7 +474,7 @@ class ControladorServicios
 	 * 
 	 * */
 
-	static public function ctrCambiarEstadoEquipo($estado, $usuario, $orden, $anticipo,$nota)
+	static public function ctrCambiarEstadoEquipo($estado, $usuario, $orden, $anticipo, $nota)
 	{
 
 		$estado_corte = 0;
@@ -536,7 +536,7 @@ class ControladorServicios
 		$corte = ModeloServicios::cambiarEstadoTabla("servicios", $estado_corte, "orden", $orden);
 
 
-		$res = ModeloServicios::mdlCambiarEstado($estado, $usuario, $orden, $valor1b,$nota);
+		$res = ModeloServicios::mdlCambiarEstado($estado, $usuario, $orden, $valor1b, $nota);
 		if ($estado == "Entregado no quedo" && $anticipo != 0) {
 			if ($res) {
 				$items = array(

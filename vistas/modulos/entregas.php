@@ -166,22 +166,22 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
               <!-- <button class="btn btn-secondary btnImprimirTiket" idServicio="<?php echo $value['orden']; ?>"> -->
 
-                
+
               </button>
 
-              
-                <div class="btn-group" role="group">
-                  <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+              <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-print"></i>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/servicio-factura.php?codigo=<?php echo $value['orden'] ?>" target="_blank">Predeterminado</a>             
-                    <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/t-carta.php?codigo=<?php echo $value['orden'] ?>" target="_blank">T-CARTA</a>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/servicio-factura.php?codigo=<?php echo $value['orden'] ?>" target="_blank">Predeterminado</a>
+                  <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/t-carta.php?codigo=<?php echo $value['orden'] ?>" target="_blank">T-CARTA</a>
 
 
-                  </div>
                 </div>
-             
+              </div>
+
 
 
             </div>
@@ -212,26 +212,23 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
           <td><?php echo $value['nombre']; ?></td>
           <?php
-          $cadena =  $value['contacto'];
-          $cadena = explode("/", $cadena);
 
-          //if($cadena[1]==null){
-          //$cadena[1]= "";
-          //}
-          $lng = count($cadena);
-          $c1 = "";
-          $c2 = "";
-          //var_dump($lng);
-          if ($lng == 1) {
-            $c1 = $cadena[0];
-          }
-          if ($lng == 2) {
-            $c1 = $cadena[0];
-            if ($cadena[1] != "") {
-              $c2 = '
-                <button class="btn btn-success btnMsjWsp " codigoServicio="' . $value['orden'] . '" numWp="' . $cadena[1] . '" data-toggle="modal" data-target="#exampleModal"><i class="fab fa-whatsapp" aria-hidden="true"></i></button>';
-            }
-          }
+          $contacto = $value['contacto'];
+          //echo $contacto.'<br>';
+          $array = array();
+          $array = explode("/", $contacto);
+          //echo $array[0].'<br>';
+          $wp =  $array[1];
+          $array = explode(" ", $array[0]);
+          $tel  = $array[0] . $array[1];
+          $correo = $array[2];
+
+          $c1 = $tel . '<br>' . $correo;
+          $c2 = '
+                <button class="btn btn-success btnMsjWsp " codigoServicio="' . $value['orden'] . '" numWp="' . $wp . '" data-toggle="modal" data-target="#exampleModal"><i class="fab fa-whatsapp" aria-hidden="true"></i></button>';
+
+
+
           //var_dump($cadena);
           //var_dump($cadena);
           // $contacto = $cadena[0];
@@ -240,7 +237,13 @@ if ($_SESSION['perfil'] == "Tecnico") {
           ?>
           <td>
             <?php echo $c1 ?> <br>
-            <?php echo $c2 ?>
+            <div class="btn-group">
+              <?php echo $c2 ?>
+              <a href="#" class="btn btn-primary" >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+
 
           </td>
 

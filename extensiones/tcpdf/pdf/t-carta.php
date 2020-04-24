@@ -1,9 +1,10 @@
 <?php session_start();
-
+require_once '../../../lib/phpqrcode/qrlib.php';
 require_once "../../../controladores/servicios.controlador.php";
 require_once "../../../modelos/servicios.modelo.php";
 require_once "../../../controladores/sucursales.controlador.php";
 require_once "../../../modelos/sucursales.modelo.php";
+require_once "../../../controladores/plantilla.controlador.php";
 /*
 require_once "../../../controladores/clientes.controlador.php";
 require_once "../../../modelos/clientes.modelo.php";
@@ -71,6 +72,16 @@ class imprimirFactura
 
         $estado_equipo = $servicio['estado_equipo'];
 
+        // Genrar QR
+
+        ControladorPlantilla::generarQR($codigo);
+
+        $nom_suc =  strtolower(str_replace('-', ' ', trim($sucursal['nombre'])));
+        $qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.png" width="70px"></img>';
+
+
+
+
         $pagado = "";
 
         // $logo = isset($_SESSION['ruta_logo']) && $_SESSION['ruta_logo']!="" ? '<img src="../../../'.$_SESSION['ruta_logo'].'"  width="100px"/>' : $nombre_suc;
@@ -80,7 +91,7 @@ class imprimirFactura
         //echo $_SESSION['ruta_logo'];
 
 
-       
+
         //echo $contacto.'<br>';
         $array = array();
         $array = explode("/", $contacto);
@@ -93,7 +104,7 @@ class imprimirFactura
 
 
 
-        $qrurl = "vistas/img/qr_generator/" . md5($_SESSION['nom_suc']) . '/' . $valorVenta . '.png';
+        //$qrurl = "vistas/img/qr_generator/" . md5($_SESSION['nom_suc']) . '/' . $valorVenta . '.png';
 
         if ($estado_equipo == "Entregado") {
             $adeudo = 0;
@@ -256,6 +267,7 @@ class imprimirFactura
                 </p>
                 <strong>$pagado</strong> 
             </td>
+            
         </tr>
     </thead>
     
@@ -263,7 +275,7 @@ class imprimirFactura
 <table style="font-size:9px;padding-top:10px">
 <thead>
     <tr>
-        <td style="text-align:center;width:67.7.3%">
+        <td style="text-align:center;width:100%">
             
             <div style="text-align:center;"> <strong> Politicas </strong></div>
             <p align="justify" style="font-size:6.9px;" >
@@ -271,26 +283,33 @@ class imprimirFactura
                 <br>
                 <br>
                 <hr>
-                <p align="center">Yo $cliente acepto las politicas de este establecimiento</p>
+                <span align="center">Yo $cliente acepto las politicas de este establecimiento</span>
+                <br>
+                <br>
             </p>
 
             
 
         </td>
-        <td style="text-align:center;width:33.3%">
-
-            <strong> Firma de equipo entregado </strong><br><br>
-            <hr>
-        </td>
+        
     </tr>
+    
 </thead>
 
 </table>
 
+
 <table style="font-size:9px;">
         <thead>
             <tr>
-                <td style="text-align:center;width:100%">
+            <td style="text-align:left;">
+
+                    <strong> Firma de equipo entregado </strong><br><br>
+                <hr>
+            
+                </td>
+                <td style="text-align:right;">
+                
                     Muchas gracias por su elección
                     <div style="font-size:8px;">
                         Consulta el estado de tu servicio en la siguiente url 
@@ -304,11 +323,18 @@ class imprimirFactura
 
                     </div>
                 </td>
+                
             </tr>
+
         </thead>
         
     </table>
+    <div style="text-align:rigth">
+    $qr
+    </div>
     
+
+   
 
     
 
@@ -330,6 +356,7 @@ EOF;
         $pdf->Output('t-carta' . $valorVenta . 'factura.pdf');
     }
 }
+
 
 $factura = new imprimirFactura();
 $factura->orden = $_GET["codigo"];
