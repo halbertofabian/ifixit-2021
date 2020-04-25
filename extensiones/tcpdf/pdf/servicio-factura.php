@@ -402,7 +402,7 @@ EOF;
 				}
 			 </style>
 
-			 <div style="text-align:center;"> <strong> Politicas </strong></div>
+			 <div style="text-align:center;"> <strong> Políticas </strong></div>
 			 <p align="justify" style="font-size:6.9px;" >
 				$politicas
 			 </p>
