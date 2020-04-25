@@ -142,7 +142,7 @@ class imprimirFactura
 
         $bloque1 = <<<EOF
 
-    <table style="font-size:9px;">
+    <table style="font-size:7.5px;">
         <thead>
             <tr>
                 <td style="text-align:left;width:20%">
@@ -162,7 +162,7 @@ class imprimirFactura
         
     </table>
    
-    <table style="font-size:9px;border: 1px solid #000; padding-bottom:4px">
+    <table style="font-size:7.5px; padding-bottom:4px">
     <thead>
         
         
@@ -193,7 +193,7 @@ class imprimirFactura
     </thead>
     
     </table>
-    <table style="font-size:9px;border: 1px solid #000; padding-bottom:4px">
+    <table style="font-size:7.5px; padding-bottom:4px">
     <thead>
     <tr>
         <td style="text-align:center;">
@@ -278,13 +278,20 @@ class imprimirFactura
     </thead>
     
 </table>
-<table style="font-size:9px;padding-top:10px">
+EOF;
+
+        
+        // $pdf->writeHTML($bloque1, false, false, false, false, '');
+
+$bloque2 = <<<EOF
+
+<table style="font-size:7.5px;padding-top:40px">
 <thead>
     <tr>
         <td style="text-align:center;width:100%">
             
             <strong style="text-align:center;"> Políticas </strong>
-            <p align="justify" style="font-size:6.9px;" >
+            <p align="justify" style="font-size:6.7.5px;" >
                 $politicas
                 <br>
                 <br>
@@ -303,7 +310,7 @@ class imprimirFactura
 </table>
 
 
-<table style="font-size:9px;">
+<table style="font-size:7.5px;">
         <thead>
             <tr>
             <td style="text-align:center;">
@@ -334,19 +341,15 @@ class imprimirFactura
         </thead>
         
     </table>
-    
-
-   
-
-    
-
-
-
 EOF;
 
-        $pdf->writeHTML($bloque1, false, false, false, false, '');
-        // $pdf->writeHTML($bloque1, false, false, false, false, '');
+$pdf->writeHTML($bloque1, false, false, false, false, '');
+$pdf->writeHTML("<hr>", true, false, false, false, '');
 
+$pdf->writeHTML($bloque1, false, false, false, false, '');
+$pdf->AddPage();
+$pdf->writeHTML($bloque2, false, false, false, false, '');
+$pdf->writeHTML($bloque2, false, false, false, false, '');
 
 
 

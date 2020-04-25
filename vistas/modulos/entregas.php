@@ -177,6 +177,8 @@ if ($_SESSION['perfil'] == "Tecnico") {
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                   <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/servicio-factura.php?codigo=<?php echo $value['orden'] ?>" target="_blank">Predeterminado</a>
                   <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/t-carta.php?codigo=<?php echo $value['orden'] ?>" target="_blank">T-CARTA</a>
+                  <a class="dropdown-item" href="<?php echo $url ?>extensiones/tcpdf/pdf/t-m-carta.php?codigo=<?php echo $value['orden'] ?>" target="_blank">T-M-CARTA</a>
+
 
 
                 </div>
