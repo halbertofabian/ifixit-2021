@@ -229,8 +229,6 @@ if ($_SESSION['perfil'] == "Tecnico") {
           $c2 = '
                 <button class="btn btn-success btnMsjWsp " codigoServicio="' . $value['orden'] . '" numWp="' . $wp . '" data-toggle="modal" data-target="#exampleModal"><i class="fab fa-whatsapp" aria-hidden="true"></i></button>';
 
-
-
           //var_dump($cadena);
           //var_dump($cadena);
           // $contacto = $cadena[0];
@@ -241,9 +239,9 @@ if ($_SESSION['perfil'] == "Tecnico") {
             <?php echo $c1 ?> <br>
             <div class="btn-group">
               <?php echo $c2 ?>
-              <a href="#" class="btn btn-primary">
+              <button class="btn btn-primary btnMsjCorreo " codigoServicio="<?php echo $value['orden'] ?>" correo="<?php echo $correo ?>" data-toggle="modal" data-target="#mdlEmailStatus">
                 <i class="fas fa-envelope"></i>
-              </a>
+              </button>
             </div>
 
 
@@ -383,7 +381,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
 
           <div class="row mb-4">
-            
+
             <div class="col-12">
               <label for="">Número</label>
               <input type="number" name="textNumWp" class="form-control" id="textNumWp">
@@ -400,6 +398,51 @@ if ($_SESSION['perfil'] == "Tecnico") {
         <?php
         $wsp = new ControladorServicios();
         $wsp->ctrMandarWp();
+
+        ?>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="mdlEmailStatus" tabindex="-1" role="dialog" aria-labelledby="mdlEmailStatusLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title" id="mdlEmailStatusLabel">Correo para para: <strong id="correoMsj"></strong> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" id="formSendStatusEmail">
+        <div class="modal-body">
+
+
+          <input type="hidden" name="codigoEM" id="codigoEM">
+          <!-- <input type="hidden" name="textNumEM" id="textNumEM"> -->
+          <input type="hidden" name="nombreEM" id="nombreEM">
+          <input type="hidden" name="codeEM" id="codeEM">
+          <input type="hidden" name="notaEM" id="notaEM">
+
+
+          <div class="row mb-4">
+
+            <div class="col-12">
+              <label for="">Correo</label>
+              <input type="email" name="correo_des" class="form-control" id="correo_des">
+            </div>
+          </div>
+          <textarea name="textcorreo" id="textcorreo" class="form-control" rows="10" cols="60"></textarea>
+
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary btnMandarCorreo" name="btnMandarCorreo">Mandar Correo</button>
+        </div>
+        <?php
+        // $wsp = new ControladorServicios();
+        // $wsp->ctrMandarCorreo();
 
         ?>
       </form>

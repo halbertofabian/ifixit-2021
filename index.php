@@ -53,5 +53,10 @@ require_once "extensiones/vendor/autoload.php";
 //Require Librerias
 require_once 'lib/phpqrcode/qrlib.php';
 
+
+require_once 'lib/phpMailer/Exception.php';
+require_once 'lib/phpMailer/PHPMailer.php';
+require_once 'lib/phpMailer/SMTP.php';
+
 $plantilla = new ControladorPlantilla();
 $plantilla->ctrPlantilla();

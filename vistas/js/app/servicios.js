@@ -301,6 +301,110 @@ $(".tablas tbody").on("click", ".btnMsjWsp", function () {
 
 
 })
+$(".tablas tbody").on("click", ".btnMsjCorreo", function () {
+	$("#textcorreo").val("Cargando...")
+	var codigo = $(this).attr("codigoServicio");
+	var correo = $(this).attr("correo");
+
+
+	var datos = new FormData();
+	datos.append("idServicio", codigo);
+
+	// console.log(idServicio);
+	$.ajax({
+		url: "ajax/servicios.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function (respuesta) {
+
+			var estado = respuesta.estado_equipo;
+			$("#correoMsj").text(respuesta.nombre + " " + correo)
+
+
+
+			var datos = new FormData();
+			datos.append("atributo", estado)
+			datos.append("btnObtenerEstado", estado)
+
+			$.ajax({
+				url: "ajax/configuraciones.ajax.php",
+				method: "POST",
+				data: datos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function (res) {
+
+
+					$("#textcorreo").val(res.valor)
+					$("#codigoEM").val(codigo)
+					$("#correo_des").val(correo)
+					$("#nombreEM").val(respuesta.nombre)
+					$("#codeEM").val(respuesta.codigo_cliente)
+					$("#notaEM").val(respuesta.nota)
+
+
+				}
+			})
+
+
+
+
+
+
+
+		}
+	})
+
+
+
+
+
+
+})
+
+$(document).on("submit", "#formSendStatusEmail", function (e) {
+	e.preventDefault();
+	$(".btnMandarCorreo").html("Enviando correo...")
+	$(".btnMandarCorreo").attr("disabled", true);
+
+	var data = new FormData(this);
+	data.append("btnMandarCorreo", true);
+
+	$.ajax({
+		url: "ajax/servicios.ajax.php",
+		method: "POST",
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function (respuesta) {
+
+			$(".btnMandarCorreo").html("Mandar correo")
+			$(".btnMandarCorreo").attr("disabled", false);
+			$('#mdlEmailStatus').modal('hide')
+
+
+			if (respuesta) {
+				toastr.success('Correo enviado', 'Muy bien')
+			} else {
+				toastr.error('No se pudo mandar el correo', 'Error')
+
+			}
+		}
+	})
+
+
+
+
+})
+
 
 
 $(".tablas tbody").on("click", ".btnEditarServicio", function () {
