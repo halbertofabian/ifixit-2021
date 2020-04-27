@@ -1,5 +1,8 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class ControladorServicios
 {
 
@@ -1144,6 +1147,72 @@ class ControladorServicios
 				window.open("https://wa.me/' . $wspp . '?text=' . $text . '", "_blank");
 				</script>
 			';
+		}
+	}
+	public function ctrMandarCorreo()
+	{
+		if (isset($_POST['btnMandarCorreo'])) {
+
+			$correo = $_POST['correo_des'];
+
+			$suc = ControladorSucursal::ctrMostrarSucursal();
+			$url  = ControladorPlantilla::getRuteIndex();
+			//$nom_suc =  strtolower(str_replace(' ', '-', trim($_SESSION['nom_suc'])));
+			$ruta = $url . 'lib/tcpdf/pdf/t-carta.php?codigo=' . $_POST['codeEM'] . '&nom_suc=' . $_SESSION['nom_suc'];
+
+			$text = $_POST['textcorreo'];
+			//echo $text;
+			$text = str_replace('[NOMBRE]', $_POST['nombreEM'], $text);
+			$text = str_replace('[ORDEN]', $_POST['codigoEM'], $text);
+			$text = str_replace('[NOTA-S]', $_POST['notaEM'], $text);
+			$text = str_replace('[TICKET-S]', '<a href="' . $ruta . '">Descargar</a>', $text);
+
+
+			$text = str_replace('[FACEBOOK]', '<a href="https://www.facebook.com/' . $suc['facebook'] . '">FACEBOOK</a> <br>', $text);
+			$text = str_replace('[INSTAGRAM]', '<a href="https://www.instagram.com/' . $suc['instagram'] . '">INSTAGRAM</a> <br>', $text);
+			$text = str_replace('[TWITTER]', '<a href="https://twitter.com/' . $suc['twitter'] . '">TWITTER</a> <br>', $text);
+			$text = str_replace('[YOUTUBE]', '<a href="https://www.youtube.com/channel/' . $suc['youtube'] . '">YOUTUBE</a> <br>', $text);
+			$text = str_replace('[SUCURSAL]', $_SESSION['nom_suc'], $text);
+			$text = str_replace('[CODIGO]', $_POST['codeEM'], $text);
+			$text = str_replace('[SITO-WB]', '<a href="' . $suc['sitio_web'] . '">Sitio web</a> <br>',  $text);
+			$text = str_replace('[TEL]', $suc['whatsapp'], $text);
+			$text = str_replace('*', "", $text);
+
+
+
+
+			try {
+
+
+				$mail = new PHPMailer(true);
+
+				$mail->CharSet = "UTF-8";
+
+				$mail->SMTPDebug = 0;                      // Enable verbose debug output
+				$mail->isSMTP();                                            // Send using SMTP
+				$mail->Host       = 'smtp.hostinger.mx';                    // Set the SMTP server to send through
+				$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+				$mail->Username   = 'status@ifixitmor.com';                     // SMTP username
+				$mail->Password   = '199720031230';                               // SMTP password
+				$mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+				$mail->Port       = 587;                                    // TCP port to connect to
+
+				//Recipients
+				$mail->setFrom('status@ifixitmor.com', $_SESSION['nom_suc']);
+				$mail->addAddress($correo, '');
+				// Optional name
+
+				// Content
+				$mail->isHTML(true);                                  // Set email format to HTML
+				$mail->Subject = 'Estado de tu servicio';
+				$mail->Body  = $text;
+				$mail->send();
+
+				return true;
+			} catch (PHPMailer $th) {
+				throw $th;
+				return false;
+			}
 		}
 	}
 	public function ctrBucarServicioOrden()
