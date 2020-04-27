@@ -119,6 +119,7 @@ class ModeloSucursal
 
 		$stmt = null;
 	}
+
 	public static function mdlAgregarSucursal($datos)
 	{
 		$stmt = ConexionSoftmor::conectar()->prepare("INSERT INTO sucursales(nombre,propietario,base) VALUES (:nombre_suc,:propietario,2)");
@@ -215,4 +216,24 @@ class ModeloSucursal
 			$pps = null;
 		}
 	}
+	// Actualizar actualizaciones sucursal 
+
+	public static function  mdlActSuc($token_suc)
+	{
+		try {
+			$sql = "UPDATE sucursales set estado_act = 1 WHERE token_suc = ? ";
+			$pps = ConexionSoftmor::conectar()->prepare($sql);
+
+			$pps->bindValue(1, $token_suc);
+			$pps->execute();
+			return $pps->rowCount() > 0;
+		} catch (\Throwable $th) {
+			throw $th;
+			return false;
+		} finally {
+			$pps = null;
+		}
+	}
+
+	
 }

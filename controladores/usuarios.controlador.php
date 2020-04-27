@@ -247,6 +247,8 @@ class ControladorUsuarios
 			$_SESSION['base'] =  $sucu["base"];
 			$_SESSION['password_db'] =  $sucu["password_db"];
 			$_SESSION['ruta_logo'] =  $sucu["ruta_logo"];
+			$_SESSION['token_suc'] =  $sucu["token_suc"];
+
 
 
 

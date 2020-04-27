@@ -28,7 +28,7 @@ class imprimirFactura
         //TRAEMOS LA INFORMACIÓN DE LA VENTA
         $sucursal = ControladorSucursal::ctrMostrarSucursal();
 
-        
+
 
         $direccion = $sucursal['direccion'];
         $nombre_suc = strtoupper($sucursal['nombre']);

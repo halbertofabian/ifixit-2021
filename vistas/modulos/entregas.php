@@ -241,7 +241,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
             <?php echo $c1 ?> <br>
             <div class="btn-group">
               <?php echo $c2 ?>
-              <a href="#" class="btn btn-primary" >
+              <a href="#" class="btn btn-primary">
                 <i class="fas fa-envelope"></i>
               </a>
             </div>
@@ -376,17 +376,24 @@ if ($_SESSION['perfil'] == "Tecnico") {
 
 
           <input type="hidden" name="codigoWP" id="codigoWP">
-          <input type="hidden" name="textNumWp" id="textNumWp">
+          <!-- <input type="hidden" name="textNumWp" id="textNumWp"> -->
           <input type="hidden" name="nombreWP" id="nombreWP">
           <input type="hidden" name="codeWP" id="codeWP">
           <input type="hidden" name="notaWP" id="notaWP">
 
 
-
-          <textarea name="textwp" id="textwp" rows="10" cols="60"></textarea>
-
+          <div class="row mb-4">
+            
+            <div class="col-12">
+              <label for="">Número</label>
+              <input type="number" name="textNumWp" class="form-control" id="textNumWp">
+            </div>
+          </div>
+          <textarea name="textwp" id="textwp" class="form-control" rows="10" cols="60"></textarea>
+          <a class="btn btn-link float-left" href="<?php $url ?>textos">Personzalizar mensaje</a>
         </div>
         <div class="modal-footer">
+
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-success" name="btnMandarWp">Mandar Whatsapp</button>
         </div>

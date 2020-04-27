@@ -43,6 +43,8 @@ require_once "modelos/movimientos.modelo.php";
 require_once "modelos/traspasos.modelo.php";
 require_once "modelos/slide.modelo.php";
 require_once "modelos/updateDB.modelo.php";
+require_once "modelos/configuracion.modelo.php";
+
 
 //U@U+5FBb$$gZ
 require_once "extensiones/vendor/autoload.php";
