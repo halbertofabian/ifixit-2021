@@ -70,6 +70,7 @@ $(".tablas tbody").on("click", ".btnCambiarEstadoOrden", function () {
 
 
 	var estadoServicio = $(this).attr('estadoEquipo')
+
 	var estado = "";
 	var idServicio = $(this).attr('idServicio')
 
@@ -84,7 +85,7 @@ $(".tablas tbody").on("click", ".btnCambiarEstadoOrden", function () {
 	$(".estado_equipo").val("");
 
 
-	
+
 
 
 
@@ -113,7 +114,7 @@ $(".tablas tbody").on("click", ".btnCambiarEstadoOrden", function () {
 	}
 
 	$(".estado_equipo").change(function () {
-		
+
 
 		estadoServicio = $(this).val();
 
@@ -134,7 +135,7 @@ $(".tablas tbody").on("click", ".btnCambiarEstadoOrden", function () {
 			var adeuda = importe - anticipo;
 			$("#adeuda").val(adeuda)
 
-		
+
 			// $("#pagaCon").val(adeuda)
 			// $("#cambioDe").val(0)
 
@@ -235,6 +236,7 @@ $(".tablas tbody").on("click", ".btnEliminarServicio", function () {
 	});
 })
 $(".tablas tbody").on("click", ".btnMsjWsp", function () {
+	$("#textwp").val("Cargando...")
 	var codigo = $(this).attr("codigoServicio");
 	var numWp = $(this).attr("numWp");
 
@@ -256,28 +258,35 @@ $(".tablas tbody").on("click", ".btnMsjWsp", function () {
 			var estado = respuesta.estado_equipo;
 			$("#numeroWp").text(respuesta.nombre + " " + numWp)
 
-			var mensaje = "";
 
-			if (estado == 'Reparacion') {
-				mensaje = "Hola querido(a) *[NOMBRE]*, gracias por tu preferencia 😊. Te mantendremos informado sobre la situación actual de tu servicio con número de orden *[ORDEN]*. No olvides visitar nuestras redes sociales: *[FACEBOOK]* *[INSTAGRAM]* *[TWITTER]* *[YOUTUBE]* También puedes consultar el estado actual de tu servicio en este enlace: *https://softmormx.com/consulta/* con la siguiente información, Sucursal: *[SUCURSAL]* Código: *[CODIGO]*. Nuestro sitio web es *[SITO-WB]*. Cualquier duda o aclaración no dudes en llamarnos *[TEL]*. Gracias nuevamente y saludos."
-			} else if (estado == 'Reparado') {
-				mensaje = "Hola querido(a) *[NOMBRE]*, por medio de este mensaje te notificamos que tu servicio con número de orden *[ORDEN]* ha sido ✅ *REPARADO* con *éxito* 🤩, se te hace la invitación a que pases por tu equipo, no olvides tu comprobante  🧾 . No olvides visitar nuestras redes sociales: *[FACEBOOK]* *[INSTAGRAM]* *[TWITTER]* *[YOUTUBE]* nuestro sitio web es *[SITO-WB]*. Cualquier duda o aclaración no dudes en llamarnos *[TEL]*. Gracias  saludos."
-			} else if (estado == 'Entregado') {
-				mensaje = "Hola querido(a) *[NOMBRE]*, tu servicio con número de orden *[ORDEN]* ha sido *ENTREGADO* con *éxito*, *GRACIAS POR CONFIAR EN NOSOTROS*, estamos seguros de que te ofrecimos un servicio de calidad, no olvides recomendarnos y compartir  nuestras redes sociales: *[FACEBOOK]* *[INSTAGRAM]* *[TWITTER]* *[YOUTUBE]* nuestro sitio web es *[SITO-WB]*. Cualquier duda o aclaración no dudes en llamarnos *[TEL]*. Gracias nuevamente  saludos."
-			} else if (estado == 'No quedo') {
-				mensaje = "Hola querido(a) *[NOMBRE]*, mala noticia  😞 por medio de este mensaje te notificamos que tu servicio con número de orden *[ORDEN]* no ha sido REPARADO con éxito debido ha: [NOTA], se te hace la invitación a que pases por tu equipo, no olvides tu comprobante  🧾 . Puedes visitar nuestras redes sociales: *[FACEBOOK]* *[INSTAGRAM]* *[TWITTER]* *[YOUTUBE]*. También puedes consultar el estado actual de tu servicio en este enlace: *https://softmormx.com/consulta/* con la siguiente información, Sucursal: *[SUCURSAL]* Código: *[CODIGO]*. Nuestro sitio web es *[SITO-WB]*. Cualquier duda o aclaración no dudes en llamarnos *[TEL]*. Gracias saludos.";
-			} else if (estado == 'Entregado no quedo') {
-				mensaje = "Hola querido(a) *[NOMBRE]*, tu servicio con número de orden *[ORDEN]* ha sido *ENTREGADO* con *éxito*, lamentamos que tu equipo no haya tenido solución 😞  *GRACIAS POR CONFIAR EN NOSOTROS*, estamos seguros de que te ofrecimos un servicio de calidad, no olvides visitar nuestras redes sociales: *[FACEBOOK]* *[INSTAGRAM]* *[TWITTER]* *[YOUTUBE]* nuestro sitio web es *[SITO-WB]*. Cualquier duda o aclaración no dudes en llamarnos *[TEL]*. Gracias nuevamente, saludos.";
-			} else if (estado == 'Laboratorio') {
-				mensaje = "Hola querido(a) *[NOMBRE]*, por medio de este mensaje te notificamos que tu servicio con número de orden *[ORDEN]* está en el laboratorio 🔬, nuestros técnicos expertos 👩🏻‍🔧👨🏻‍🔧 están trabajando en tu equipo, te mantendremos informado sobre la situación actual. No olvides visitar nuestras redes sociales: *[FACEBOOK]* *[INSTAGRAM]* *[TWITTER]* *[YOUTUBE]* También puedes consultar el estado actual de tu servicio en este enlace: *https://softmormx.com/consulta/* con la siguiente información, Sucursal: *[SUCURSAL]* Código: *[CODIGO]*. Nuestro sitio web es *[SITO-WB]*. Cualquier duda o aclaración no dudes en llamarnos *[TEL]*. Gracias nuevamente y saludos."
-			}
 
-			$("#textwp").val(mensaje)
-			$("#codigoWP").val(codigo)
-			$("#textNumWp").val(numWp)
-			$("#nombreWP").val(respuesta.nombre)
-			$("#codeWP").val(respuesta.codigo_cliente)
-			$("#notaWP").val(respuesta.nota)
+			var datos = new FormData();
+			datos.append("atributo", estado)
+			datos.append("btnObtenerEstado", estado)
+
+			$.ajax({
+				url: "ajax/configuraciones.ajax.php",
+				method: "POST",
+				data: datos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function (res) {
+
+
+					$("#textwp").val(res.valor)
+					$("#codigoWP").val(codigo)
+					$("#textNumWp").val(numWp)
+					$("#nombreWP").val(respuesta.nombre)
+					$("#codeWP").val(respuesta.codigo_cliente)
+					$("#notaWP").val(respuesta.nota)
+
+
+				}
+			})
+
+
 
 
 

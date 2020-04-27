@@ -147,6 +147,10 @@ FORO" />
 
   <link rel="shortcut icon" href="<?php echo $url ?>vistas/img/plantilla/ifixit_x.png" type="image/x-icon">
 
+    <!-- toastr -->
+  <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/toastr-master/toastr.min.css">
+
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -196,6 +200,9 @@ FORO" />
 
   <!-- bootstrap slider -->
   <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/bootstrap-slider/slider.css">
+
+
+
 
 
 
@@ -268,6 +275,9 @@ FORO" />
   <script src="<?php echo $url ?>vistas/plugins/bootstrap-slider/bootstrap-slider.js"></script>
 
   <script src="<?php echo $url ?>vistas/plugins/select2/js/select2.min.js"></script>
+  <!-- toastr -->
+  <script src="<?php echo $url ?>vistas/plugins//toastr-master/toastr.min.js"></script>
+
 
 
 
@@ -312,9 +322,15 @@ FORO" />
 
       $sucursal = SuscripcionModelo::mdlObetnerEstadoSucursal($_SESSION['suscriptor'], $_SESSION['nom_suc']);
 
-      
+
       if ($sucursal["estado"] == 0 || $sucursal["base"] == 2) {
         $app->getPage('suscripcion-1', $rutas);
+        return;
+      }
+      if ($sucursal["estado_act"] == 0) {
+        echo '<div class="content-wrapper">';
+        $app->getPage('instalacion', $rutas);
+        echo '</div>';
         return;
       }
 
@@ -452,6 +468,8 @@ FORO" />
 
   <script src="<?php echo $url ?>vistas/js/app/refacciones.js"></script>
   <script src="<?php echo $url ?>vistas/js/app/gestorSlide.js"></script>
+  <script src="<?php echo $url ?>vistas/js/app/configuracion.js"></script>
+
 
 
 

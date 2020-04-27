@@ -27,13 +27,28 @@
                         </li>
                     </ul>
                 </li> -->
-<li class="nav-item">
-    <a href="<?php echo $url ?>configuraciones" class="nav-link">
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
         <i class="nav-icon fa fa-cog"></i>
         <p>
             Personalizar
+            <i class="right fas fa-angle-left"></i>
         </p>
     </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="<?php echo $url ?>configuraciones" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Configuración de la sucursal</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?php echo $url ?>textos" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Personalizar mensajes</p>
+            </a>
+        </li>
+    </ul>
 </li>
 <li class="nav-item">
     <a href="<?php echo $url ?>api" class="nav-link">

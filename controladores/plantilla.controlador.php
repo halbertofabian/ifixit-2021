@@ -14,6 +14,10 @@ class ControladorPlantilla
 	{
 		return 'https://app.ifixitmor.com/';
 	}
+	static function getRuteIndex()
+	{
+		return 'http://localhost/softmor-pj/ifixitmor.com/';
+	}
 
 
 	//function que trae los componentes
@@ -80,7 +84,9 @@ class ControladorPlantilla
 			'slide',
 			'suscripcion-1',
 			'modulos',
-			'acceso'
+			'acceso',
+			'textos',
+			'instalacion'
 		);
 
 		return $whitList;

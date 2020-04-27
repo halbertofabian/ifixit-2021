@@ -78,4 +78,57 @@ class ModeloUpdateDB
             $pps = null;
         }
     }
+
+    public static function mdlObtenerActualizacionesInstaladas($id_suc)
+    {
+        try {
+            $sql = "SELECT * FROM detalle_actualizacion WHERE id_suc = ?";
+            $con = ConexionSoftmor::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $id_suc);
+            $pps->execute();
+            return $pps->fetchAll();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return false;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
+    public static function mdlObtenerActualizaciones()
+    {
+        try {
+            $sql = "SELECT * FROM lista_actualizaciones";
+            $con = ConexionSoftmor::conectar();
+            $pps = $con->prepare($sql);
+            $pps->execute();
+            return $pps->fetchAll();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return false;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
+
+    public static function mdlCrearDetalleAct($detalle)
+    {
+        try {
+            $sql = "INSERT INTO detalle_actualizacion (id_suc,id_actualizacion,fecha_actualizacion) 
+                VALUES(?,?,?)";
+            $pps = ConexionSoftmor::conectar()->prepare($sql);
+            $pps->bindValue(1, $detalle['id_suc']);
+            $pps->bindValue(2, $detalle['id_actualizacion']);
+            $pps->bindValue(3, $detalle['fecha_actualizacion']);
+            $pps->execute();
+            return $pps->errorInfo();
+        } catch (\PDOException $th) {
+            //throw $th;
+            return false;
+        } finally {
+            $pps = null;
+        }
+    }
 }

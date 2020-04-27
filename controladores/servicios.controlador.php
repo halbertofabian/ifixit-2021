@@ -1117,11 +1117,17 @@ class ControladorServicios
 			$wspp = $_POST['textNumWp'];
 
 			$suc = ControladorSucursal::ctrMostrarSucursal();
+			$url  = ControladorPlantilla::getRuteIndex();
+			$nom_suc =  strtolower(str_replace(' ', '-', trim($_SESSION['nom_suc'])));
+			$ruta = $url . 's/' . $nom_suc . '/d/' . $_POST['codeWP'];
+
 			$text = $_POST['textwp'];
 			//echo $text;
 			$text = str_replace('[NOMBRE]', $_POST['nombreWP'], $text);
 			$text = str_replace('[ORDEN]', $_POST['codigoWP'], $text);
-			$text = str_replace('[NOTA]', $_POST['notaWP'], $text);
+			$text = str_replace('[NOTA-S]', $_POST['notaWP'], $text);
+			$text = str_replace('[TICKET-S]', $ruta, $text);
+
 
 			$text = str_replace('[FACEBOOK]', "https://www.facebook.com/" . $suc['facebook'], $text);
 			$text = str_replace('[INSTAGRAM]', "https://www.instagram.com/" . $suc['instagram'], $text);
