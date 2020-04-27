@@ -373,6 +373,12 @@ $(document).on("submit", "#formSendStatusEmail", function (e) {
 	$(".btnMandarCorreo").html("Enviando correo...")
 	$(".btnMandarCorreo").attr("disabled", true);
 
+	if ($("#correo_des").val() == "") {
+		toastr.warning('El campo correo debe ser valido', 'Advertencia')
+		$(".btnMandarCorreo").html("Mandar correo")
+		$(".btnMandarCorreo").attr("disabled", false);
+	}
+
 	var data = new FormData(this);
 	data.append("btnMandarCorreo", true);
 
