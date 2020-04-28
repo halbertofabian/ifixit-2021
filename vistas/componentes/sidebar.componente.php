@@ -1,17 +1,16 @@
-
 <aside class="main-sidebar elevation-4 sidebar-light-danger">
     <!-- Brand Logo -->
     <a href="<?php echo $url ?>" class="brand-link">
         <?php
         if (isset($_SESSION['ruta_logo'])) {
-           
+
             if ($_SESSION['ruta_logo'] != "") {
-                echo '<img src="' . $url. $_SESSION['ruta_logo'] . '" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
+                echo '<img src="' . $url . $_SESSION['ruta_logo'] . '" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
             } else {
-                echo '<img src="'.$url.'vistas/img/plantilla/ifixit_x.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
+                echo '<img src="' . $url . 'vistas/img/plantilla/ifixit_x.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
             }
         } else {
-            echo '<img src="'.$url.'vistas/img/plantilla/ifixit_x.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
+            echo '<img src="' . $url . 'vistas/img/plantilla/ifixit_x.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">';
         }
 
         ?>
@@ -94,3 +93,297 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<!-- Modal -->
+
+<?php
+
+if ($_SESSION['perfil'] == 'Administrador') : ?>
+    <div class="modal fade" id="mdlAddSale" tabindex="-1" role="dialog" aria-labelledby="mdlAddSaleLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mdlAddSaleLabel">Nueva compra</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" id="formNewSale">
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="my-input">Busque el producto</label><br>
+
+
+                                    <select name="inputSaleSelectedCode" id="inputSaleSelectedCode" class="form-control mySelect2">
+                                        <option value="1" selected>Seleccione un producto</option>
+                                    </select>
+                                    <br>
+                                    <label class="load-product"></label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-8 col-12">
+                                <div class="form-group">
+                                    <label for="inputSaleCode">Código</label>
+                                    <input id="inputSaleCode" class="form-control" type="text" name="inputSaleCode" readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-12">
+                                <div class="form-group">
+                                    <label for="inputSaleStock" data-toggle="tooltip" data-placement="top" title="Se sumarán con las piezas existentes">Nuevas piezas</label>
+                                    <input id="inputSaleStock" class="form-control" min="1" type="number" name="inputSaleStock">
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-1">
+                                <label for="">¿Mismo costo?</label>
+
+                                <input type="text" name="inputSalePriceProduct" id="inputSalePriceProduct" class="form-control efectivoFormat" placeholder="Dejar en blanco si no quieres cambiar el costo de producto">
+                            </div>
+                            <div class="col-12 mb-1">
+                                <label for="">¿Mismo precio venta?</label>
+
+                                <input type="text" name="inputSalePriceSale" id="inputSalePriceSale" class="form-control efectivoFormat" placeholder="Dejar en blanco si no quieres cambiar el precio de venta">
+                            </div>
+                            <div class="col-12 mb-1">
+                                <label for="">¿Mismo precio mayoreo?</label>
+
+                                <input type="text" name="inputSalePriceMayoreo" id="inputSalePriceMayoreo" class="form-control efectivoFormat" placeholder="Dejar en blanco si no quieres cambiar el precio de mayoreo">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-dark btnGuardarP">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<?php elseif ($_SESSION['perfil'] == 'Vendedor') : ?>
+    <div class="modal fade" id="mdlAddSaleV" tabindex="-1" role="dialog" aria-labelledby="mdlAddSaleVLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mdlAddSaleVLabel">Nueva compra</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" id="formNewSale">
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="my-input">Busque el producto</label><br>
+
+
+                                    <select name="inputSaleSelectedCode" id="inputSaleSelectedCode" class="form-control mySelect2">
+                                        <option value="1" selected>Seleccione un producto</option>
+                                    </select>
+                                    <br>
+                                    <label class="load-product"></label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-8 col-12">
+                                <div class="form-group">
+                                    <label for="inputSaleCode">Código</label>
+                                    <input id="inputSaleCode" class="form-control" type="text" name="inputSaleCode" readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-12">
+                                <div class="form-group">
+                                    <label for="inputSaleStock" data-toggle="tooltip" data-placement="top" title="Se sumarán con las piezas existentes">Nuevas piezas</label>
+                                    <input id="inputSaleStock" class="form-control" min="1" type="number" name="inputSaleStock">
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-1">
+
+
+                                <input type="hidden" name="inputSalePriceProduct" id="inputSalePriceProduct" class="form-control efectivoFormat" placeholder="Dejar en blanco si no quieres cambiar el costo de producto">
+                            </div>
+                            <div class="col-12 mb-1">
+
+
+                                <input type="hidden" name="inputSalePriceSale" id="inputSalePriceSale" class="form-control efectivoFormat" placeholder="Dejar en blanco si no quieres cambiar el precio de venta">
+                            </div>
+                            <div class="col-12 mb-1">
+
+
+                                <input type="hidden" name="inputSalePriceMayoreo" id="inputSalePriceMayoreo" class="form-control efectivoFormat" placeholder="Dejar en blanco si no quieres cambiar el precio de mayoreo">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-dark btnGuardarP">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<?php endif ?>
+
+
+
+
+<script>
+    $(".mdlAddSale").on("click", function() {
+        var datos = new FormData();
+        datos.append("allProducts", true)
+        $.ajax({
+            url: "ajax/productos.ajax.php",
+            method: "POST",
+            data: datos,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            beforeSend: function() {
+                $(".load-product").html("Cargando...")
+            },
+            success: function(respuesta) {
+                $(".load-product").html("")
+
+                respuesta.forEach(pdt => {
+                    let $option = $('<option />', {
+                        text: pdt.codigo + "-" + pdt.descripcion,
+                        value: pdt.codigo,
+                    });
+                    $('#inputSaleSelectedCode').prepend($option);
+
+                });
+
+                $('#inputSaleSelectedCode').value("1");
+
+
+            }
+
+        })
+    })
+
+    var precios = new Array(3);
+    var stock = 0;
+
+    $("#inputSaleSelectedCode").on("change", function() {
+
+        var datos = new FormData();
+        datos.append("idBarras", $("#inputSaleSelectedCode").val())
+        $.ajax({
+            url: "ajax/productos.ajax.php",
+            method: "POST",
+            data: datos,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            beforeSend: function() {
+                $(".load-product").html("Cargando...")
+            },
+            success: function(respuesta) {
+                $(".load-product").html()
+                $("#inputSaleCode").val(respuesta.codigo);
+                precios[0] = respuesta.precio_compra;
+                precios[1] = respuesta.precio_venta;
+                precios[2] = respuesta.precio_mayoreo;
+                stock = respuesta.stock;
+
+            }
+        })
+    })
+
+    $(document).on("submit", "#formNewSale", function(e) {
+        e.preventDefault();
+        if ($("#inputSaleSelectedCode").val() == "1") {
+            toastr.warning('Selecciona un código valido', 'Error')
+            return;
+        }
+        if ($("#inputSaleStock").val() <= 0) {
+            toastr.warning('Introduce una nueva cantidad valida', 'Error')
+            return;
+        }
+
+        //console.log($("#inputSalePriceProduct").val())
+
+        var precioP, precioV, precioM;
+
+        if ($("#inputSalePriceProduct").val() > 0) {
+            precioP = $("#inputSalePriceProduct").val();
+
+        } else {
+            precioP = precios[0];
+        }
+        if ($("#inputSalePriceSale").val() > 0) {
+            precioV = $("#inputSalePriceSale").val();
+
+        } else {
+            precioV = precios[1]
+        }
+        if ($("#inputSalePriceMayoreo").val() > 0) {
+            precioM = $("#inputSalePriceMayoreo").val();
+
+        } else {
+            precioM = precios[2]
+        }
+
+        var nuevoStock = Number($("#inputSaleStock").val()) + Number(stock);
+
+        var data = new FormData();
+
+        data.append("codigoP", $("#inputSaleSelectedCode").val())
+        data.append("stockP", nuevoStock)
+        data.append("precioP", precioP)
+        data.append("precioV", precioV)
+        data.append("precioM", precioM)
+        data.append("btnChangeP", precioM)
+
+        $.ajax({
+            url: "ajax/productos.ajax.php",
+            method: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            beforeSend: function() {
+                $(".btnGuardarP").attr("disabled", true)
+                $(".btnGuardarP").html("Guardando producto...")
+            },
+            success: function(respuesta) {
+                $(".btnGuardarP").attr("disabled", false)
+                $(".btnGuardarP").html("Guardar producto")
+                if (respuesta) {
+                    toastr.success('Producto guardado', 'Muy bien')
+                }
+
+                $("#inputSaleStock").val("")
+                $('#inputSaleCode').val("");
+                $('#inputSalePriceProduct').val("");
+                $('#inputSalePriceSale').val("");
+                $('#inputSalePriceMayoreo').val("")
+                $('#inputSaleSelectedCode').val("1");
+
+            }
+        })
+
+    })
+
+
+    function limpiarCampos() {
+        //
+    }
+</script>
