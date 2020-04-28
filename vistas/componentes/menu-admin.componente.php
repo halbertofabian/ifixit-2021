@@ -82,22 +82,48 @@
     </ul>
 </li>
 
-<li class="nav-item">
-    <a href="<?php echo $url ?>categorias" class="nav-link">
-        <i class="nav-icon fa fa-th"></i>
+
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class=" nav-icon  fas fa-dolly-flatbed"></i>
         <p>
-            Categorías
+            Inventario
+            <i class="right fas fa-angle-left"></i>
         </p>
     </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="<?php echo $url ?>productos" class="nav-link">
+                <i class="nav-icon fas fa-plus"></i>
+                <p>Nuevo producto</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#newSale" class="nav-link mdlAddSale" data-toggle="modal" data-target="#mdlAddSale">
+
+                <i class="nav-icon fas fa-cart-plus"></i>
+                <p>Nueva compra</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="<?php echo $url ?>categorias" class="nav-link">
+                <i class="nav-icon fa fa-th"></i>
+                <p>
+                    Categorías
+                </p>
+            </a>
+        </li>
+    </ul>
 </li>
-<li class="nav-item">
-    <a href="<?php echo $url ?>productos" class="nav-link">
+<!-- <li class="nav-item">
+    <a href="<?php //echo $url 
+                ?>productos" class="nav-link">
         <i class="nav-icon fa fa-cart-plus"></i>
         <p>
             Productos
         </p>
     </a>
-</li>
+</li> -->
 <li class="nav-item">
     <a href="<?php echo $url ?>intercambios" class="nav-link">
         <i class="nav-icon fa fa-truck text-primary"></i>
@@ -295,3 +321,6 @@
                         </p>
                     </a>
                 </li> -->
+
+
+

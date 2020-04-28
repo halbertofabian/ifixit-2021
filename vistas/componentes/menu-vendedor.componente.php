@@ -27,7 +27,55 @@
                         </li>
                     </ul>
                 </li> -->
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fa fa-cog"></i>
+        <p>
+            Personalizar
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="<?php echo $url ?>textos" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Personalizar mensajes</p>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class=" nav-icon  fas fa-dolly-flatbed"></i>
+        <p>
+            Inventario
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <!-- <li class="nav-item">
+            <a href="<?php // echo $url ?>productos" class="nav-link">
+                <i class="nav-icon fas fa-plus"></i>
+                <p>Nuevo producto</p>
+            </a>
+        </li> -->
+        <li class="nav-item">
+            <a href="#newSale" class="nav-link mdlAddSale" data-toggle="modal" data-target="#mdlAddSaleV">
 
+                <i class="nav-icon fas fa-cart-plus"></i>
+                <p>Nueva compra</p>
+            </a>
+        </li>
+        <!-- <li class="nav-item">
+            <a href="<?php // echo $url ?>categorias" class="nav-link">
+                <i class="nav-icon fa fa-th"></i>
+                <p>
+                    Categorías
+                </p>
+            </a>
+        </li> -->
+    </ul>
+</li>
 
 <li class="nav-item">
     <a href="<?php echo $url ?>caja" class="nav-link">
@@ -65,7 +113,7 @@
                 <p>Gastos</p>
             </a>
         </li>
-        
+
     </ul>
 </li>
 
@@ -198,3 +246,5 @@
                         </p>
                     </a>
                 </li> -->
+
+

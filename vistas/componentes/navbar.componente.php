@@ -131,7 +131,7 @@
             <li class="nav-item ">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#mdlActualizaciones">
                     <i class="far fa-bell"></i>
-                    <span class="badge badge-danger navbar-badge">1</span>
+                    <span class="badge badge-success navbar-badge">1</span>
                 </a>
             </li>
 
@@ -211,7 +211,7 @@
                             </div>
                             <ul class="list-group list-group-flush mt-2">
 
-                                <li class="list-group-item text-dark"><i class="fas fa-check text-success"></i> Caja rapida ya funciona de manera correcta <a href="<?php echo $url?>caja">ir a caja</a> </li>
+                                <li class="list-group-item text-dark"><i class="fas fa-check text-success"></i> Agrega de manera rápida una nueva compra, editando su existencia y precios de un producto.  </li>
 
 
                             </ul>
@@ -224,7 +224,7 @@
                 <div class="row justify-content-center">
                     <div class="col-auto ">
                         <p class="text-center text-dark">Estamos actualizando el sistema cada semana para ofrecerte un servicio de calidad, gracias por las sugerencias que nos has hecho. Si tienes una observación u otra sugerencia con mucho gusto nos gustaría escucharte</p>
-                        
+
                         <h5 class="" style="text-align: left"> <strong>¿Te gustaría dejarnos una reseña?</strong></h5>
                         <form action="" id="form-calif" method="post">
                             <textarea name="resena_text" id="resena_text" cols="30" rows="5" class="form-control" placeholder="Escribe aquí tu reseña, nos ayudarías mucho a crecer 😚"></textarea>
@@ -261,7 +261,7 @@
 
                             ?>
                         </form>
-                       
+
                     </div>
                 </div>
 

@@ -139,7 +139,7 @@ $('#mySelect2').select2({
 });
 $('.mySelect2').select2({
     // dropdownParent: $('#myModal')
-    placeholder: 'Select an option'
+    placeholder: 'Seleccione una opción'
 
 
 });

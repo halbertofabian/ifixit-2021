@@ -110,7 +110,7 @@ class ModeloProductos
 		$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio_mayoreo", $datos["precio_mayoreo"], PDO::PARAM_STR);
 
-		
+
 
 		if ($stmt->execute()) {
 
@@ -124,6 +124,29 @@ class ModeloProductos
 		$stmt = null;
 	}
 
+	// Editar producto rapido 
+	public static function mdlEditarProductoRapido($datos)
+	{
+		try {
+			$sql = "UPDATE productos SET stock = ? , precio_compra = ? , precio_venta = ? , precio_mayoreo = ? WHERE codigo = ? ";
+
+			$con = Conexion::conectar();
+			$pps = $con->prepare($sql);
+			$pps->bindValue(1, $datos['stockP']);
+			$pps->bindValue(2, $datos['precioP']);
+			$pps->bindValue(3, $datos['precioV']);
+			$pps->bindValue(4, $datos['precioM']);
+			$pps->bindValue(5, $datos['codigoP']);
+			$pps->execute();
+			return $pps->rowCount() > 0;
+		} catch (\Throwable $th) {
+			//throw $th;
+			return false;
+		} finally {
+			$pps = null;
+			$con = null;
+		}
+	}
 	/*=============================================
 	BORRAR PRODUCTO
 	=============================================*/
