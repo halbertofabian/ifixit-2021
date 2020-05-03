@@ -16,7 +16,7 @@ class ControladorPlantilla
 	}
 	static function getRuteIndex()
 	{
-		return 'http://localhost/softmor-pj/ifixitmor.com/';
+		return 'https://ifixitmor.com/';
 	}
 
 

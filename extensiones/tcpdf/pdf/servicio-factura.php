@@ -36,6 +36,13 @@ class imprimirFactura
 				</script>
 			';
 		}
+		if($sucursal['tipo_impresora']=="M-CARTA"){
+			echo '
+			<script>
+				window.location.href="'.ControladorPlantilla::getRute().'extensiones/tcpdf/pdf/t-m-carta.php?codigo='.$this->orden.'"
+				</script>
+			';
+		}
 
 
 

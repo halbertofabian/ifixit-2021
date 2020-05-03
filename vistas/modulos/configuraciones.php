@@ -185,9 +185,9 @@ $zona = ControladorSucursal::getZone();
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="T-CARTA"> T-CARTA
                 </label>
-                <!-- <label class="btn btn-secondary">
+                <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="M-CARTA"> M-CARTA
-                </label> -->
+                </label>
 
               <?php endif; ?>
 
@@ -201,9 +201,9 @@ $zona = ControladorSucursal::getZone();
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="T-CARTA"> T-CARTA
                 </label>
-                <!-- <label class="btn btn-secondary">
+                <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="M-CARTA"> M-CARTA
-                </label> -->
+                </label>
 
               <?php endif; ?>
               <?php if ($tipo_impresora == "80mm") : ?>
@@ -216,12 +216,12 @@ $zona = ControladorSucursal::getZone();
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="T-CARTA"> T-CARTA
                 </label>
-                <!-- <label class="btn btn-secondary">
+                <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="M-CARTA"> M-CARTA
-                </label> -->
+                </label>
 
               <?php endif; ?>
-              <?php  if($tipo_impresora == "T-CARTA") : ?>
+              <?php if ($tipo_impresora == "T-CARTA") : ?>
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="58mm"> 58mm
                 </label>
@@ -231,10 +231,10 @@ $zona = ControladorSucursal::getZone();
                 <label class="btn btn-outline-dark">
                   <input type="radio" name="impresion" value="T-CARTA" checked> T-CARTA
                 </label>
-                
+
               <?php endif; ?>
-              <!-- <?php // if ($tipo_impresora == "M-CARTA") : 
-                    ?>
+              <?php if ($tipo_impresora == "M-CARTA") :
+              ?>
                 <label class="btn btn-secondary">
                   <input type="radio" name="impresion" value="58mm"> 58mm
                 </label>
@@ -248,22 +248,21 @@ $zona = ControladorSucursal::getZone();
                   <input type="radio" name="impresion" value="M-CARTA" checked> M-CARTA
                 </label>
 
-              <?php // endif; 
-              ?> -->
+              <?php endif;
+              ?>
 
 
 
 
             </div>
             <div class="row margenes-input">
-              <?php 
-              
-              if($sucursal['margenes']!=""){
-                $margen = explode(",",$sucursal['margenes']);
-            
-              }else{
-                $margen = explode(",",'1,8,0');
-              }        
+              <?php
+
+              if ($sucursal['margenes'] != "") {
+                $margen = explode(",", $sucursal['margenes']);
+              } else {
+                $margen = explode(",", '1,8,0');
+              }
               ?>
               <div class="col-6">
                 <div class="row">

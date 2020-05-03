@@ -1,0 +1,72 @@
+[01-May-2020 14:19:23 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[01-May-2020 14:19:23 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[01-May-2020 14:19:23 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[01-May-2020 14:19:23 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(34): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', NULL, NULL, 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(32): ControladorProductos::ctrMostrarProductos(NULL, NULL, 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/excel/descargar-excel.php(49): ControladorProductos::exportExcelProductos(NULL, NULL, 'id')
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[01-May-2020 14:19:24 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[01-May-2020 14:19:24 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[01-May-2020 14:19:24 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[01-May-2020 14:19:24 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(34): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', NULL, NULL, 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(32): ControladorProductos::ctrMostrarProductos(NULL, NULL, 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/excel/descargar-excel.php(49): ControladorProductos::exportExcelProductos(NULL, NULL, 'id')
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[01-May-2020 14:19:30 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[01-May-2020 14:19:30 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[01-May-2020 14:19:30 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[01-May-2020 14:19:30 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(34): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', NULL, NULL, 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(32): ControladorProductos::ctrMostrarProductos(NULL, NULL, 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/excel/descargar-excel.php(49): ControladorProductos::exportExcelProductos(NULL, NULL, 'id')
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[01-May-2020 14:19:37 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[01-May-2020 14:19:37 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[01-May-2020 14:19:37 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[01-May-2020 14:19:37 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(34): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', NULL, NULL, 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(32): ControladorProductos::ctrMostrarProductos(NULL, NULL, 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/excel/descargar-excel.php(49): ControladorProductos::exportExcelProductos(NULL, NULL, 'id')
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[01-May-2020 14:19:38 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[01-May-2020 14:19:38 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[01-May-2020 14:19:38 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[01-May-2020 14:19:38 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(34): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', NULL, NULL, 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(32): ControladorProductos::ctrMostrarProductos(NULL, NULL, 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/excel/descargar-excel.php(49): ControladorProductos::exportExcelProductos(NULL, NULL, 'id')
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[01-May-2020 14:19:44 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[01-May-2020 14:19:44 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[01-May-2020 14:19:44 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[01-May-2020 14:19:44 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(34): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', NULL, NULL, 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(32): ControladorProductos::ctrMostrarProductos(NULL, NULL, 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/excel/descargar-excel.php(49): ControladorProductos::exportExcelProductos(NULL, NULL, 'id')
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
