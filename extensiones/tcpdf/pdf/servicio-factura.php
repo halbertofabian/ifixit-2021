@@ -62,9 +62,9 @@ class imprimirFactura
 
 		$tipo_impresion = $sucursal['tipo_impresora'];
 
-		$impresion = $tipo_impresion == '58mm' ? 135  : 190;
+		$impresion = $tipo_impresion == '80mm' ? 190  : 135;
 		$impresions2 = ($impresion / 2);
-		$formato = $tipo_impresion == '58mm' ? 'A4' : 'A7';
+		$formato = $tipo_impresion == '80mm' ? 'A7' : 'A4';
 
 		$itemVenta = "orden";
 		$valorVenta = $this->orden;

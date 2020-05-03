@@ -231,6 +231,9 @@ $zona = ControladorSucursal::getZone();
                 <label class="btn btn-outline-dark">
                   <input type="radio" name="impresion" value="T-CARTA" checked> T-CARTA
                 </label>
+                <label class="btn btn-outline-dark">
+                  <input type="radio" name="impresion" value="M-CARTA" checked> M-CARTA
+                </label>
 
               <?php endif; ?>
               <?php if ($tipo_impresora == "M-CARTA") :
