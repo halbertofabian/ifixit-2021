@@ -88,7 +88,7 @@ class TablaProductos{
 				  "'.$barra .'",
 			      "'.$imagen.'",
 			      "'.$productos[$i]["codigo"].'",
-			      "'.$productos[$i]["descripcion"].'",
+			      "'.trim($productos[$i]["descripcion"]).'",
 			      "'.$categorias["categoria"].'",
 			      "'.$stock.'",
 			      "'.$productos[$i]["precio_compra"].'",
