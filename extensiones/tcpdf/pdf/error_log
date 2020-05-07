@@ -1,2 +1,90 @@
 [30-Apr-2020 10:51:02 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
 [30-Apr-2020 10:52:27 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[04-May-2020 11:20:30 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-m-carta.php on line 105
+[04-May-2020 11:21:48 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[04-May-2020 17:06:59 America/Mexico_City] PHP Notice:  Undefined index: nom_suc in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/sucursales.controlador.php on line 16
+[04-May-2020 17:06:59 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[04-May-2020 17:06:59 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[04-May-2020 17:06:59 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[04-May-2020 17:06:59 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(577): ModeloServicios::ctrDetalleServicio('1004')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php(52): ControladorServicios::ctrDetalleServicio('1004')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php(365): imprimirFactura->traerImpresionFactura()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[04-May-2020 17:49:15 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-m-carta.php on line 105
+[04-May-2020 18:39:42 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[04-May-2020 18:57:07 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[04-May-2020 19:07:23 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[04-May-2020 19:24:46 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[04-May-2020 19:45:23 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[04-May-2020 19:48:40 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[04-May-2020 19:52:00 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 10:07:39 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 10:10:42 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 10:20:57 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 13:14:59 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 13:39:40 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 13:43:19 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 15:48:43 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 16:19:06 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 17:43:43 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 18:08:13 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[05-May-2020 18:13:00 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[06-May-2020 13:38:30 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[06-May-2020 13:39:41 America/Mexico_City] PHP Notice:  Undefined offset: 2 in /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/t-carta.php on line 105
+[06-May-2020 14:11:02 America/Mexico_City] PHP Notice:  Undefined index: nom_suc in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/sucursales.controlador.php on line 16
+[06-May-2020 14:11:02 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[06-May-2020 14:11:02 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[06-May-2020 14:11:02 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[06-May-2020 14:11:02 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(577): ModeloServicios::ctrDetalleServicio('1003')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/servicio-factura.php(75): ControladorServicios::ctrDetalleServicio('1003')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/servicio-factura.php(510): imprimirFactura->traerImpresionFactura()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[06-May-2020 14:11:05 America/Mexico_City] PHP Notice:  Undefined index: nom_suc in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/sucursales.controlador.php on line 16
+[06-May-2020 14:11:05 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[06-May-2020 14:11:05 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[06-May-2020 14:11:05 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[06-May-2020 14:11:05 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(577): ModeloServicios::ctrDetalleServicio('1003')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/servicio-factura.php(75): ControladorServicios::ctrDetalleServicio('1003')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/servicio-factura.php(510): imprimirFactura->traerImpresionFactura()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[06-May-2020 19:57:34 America/Mexico_City] PHP Notice:  Undefined index: nom_suc in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/sucursales.controlador.php on line 16
+[06-May-2020 19:57:34 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[06-May-2020 19:57:34 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[06-May-2020 19:57:34 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[06-May-2020 19:57:34 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(577): ModeloServicios::ctrDetalleServicio('1380')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/servicio-factura.php(75): ControladorServicios::ctrDetalleServicio('1380')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/servicio-factura.php(510): imprimirFactura->traerImpresionFactura()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[06-May-2020 19:57:38 America/Mexico_City] PHP Notice:  Undefined index: nom_suc in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/sucursales.controlador.php on line 16
+[06-May-2020 19:57:38 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[06-May-2020 19:57:38 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[06-May-2020 19:57:38 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[06-May-2020 19:57:38 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(577): ModeloServicios::ctrDetalleServicio('1380')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/servicio-factura.php(75): ControladorServicios::ctrDetalleServicio('1380')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/extensiones/tcpdf/pdf/servicio-factura.php(510): imprimirFactura->traerImpresionFactura()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
