@@ -73,12 +73,17 @@ class ControladorServicios
 				$orden = $orden['orden'] + 1;
 			}
 
+			$url  = ControladorPlantilla::getRuteIndex();
+			$nom_suc =  strtolower(str_replace(' ', '-', trim($_SESSION['nom_suc'])));
+			$ruta = $url . 's/' . $nom_suc . '/d/' . $codigo_cliente;
 
 
 			$text = $suc['text_servicio'];
 			//echo $text;
 			$text = str_replace('[NOMBRE]', $_POST['nombre'], $text);
 			$text = str_replace('[ORDEN]', $orden, $text);
+			$text = str_replace('[TICKET-S]', $ruta, $text);
+
 			$text = str_replace('[FACEBOOK]', "https://www.facebook.com/" . $suc['facebook'], $text);
 			$text = str_replace('[INSTAGRAM]', "https://www.instagram.com/" . $suc['instagram'], $text);
 			$text = str_replace('[TWITTER]', "https://twitter.com/" . $suc['twitter'], $text);
