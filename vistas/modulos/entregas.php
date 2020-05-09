@@ -623,7 +623,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
           <form method="post" id="formAbono">
             <label for="abonoInput">Ingrese el abono</label>
             <input type="text" name="abonoInput" class="form-control efectivoFormat" id="abonoInput" value="">
-            <button type="submit" class="btn btn-dark float-right mt-3">Abonar</button>
+            <button type="submit" class="btn btn-dark float-right mt-3 btnAbonarServicio ">Abonar</button>
           </form>
 
         </div>

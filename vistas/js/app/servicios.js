@@ -878,8 +878,12 @@ $(document).on("submit", "#formAbono", function (e) {
 					contentType: false,
 					processData: false,
 					dataType: "json",
+					beforeSend: function () {
+						$(".btnAbonarServicio").attr("disabled", true)
+					},
 					success: function (respuesta) {
 						console.log(respuesta)
+						$(".btnAbonarServicio").attr("disabled", false)
 						if (respuesta.status) {
 							//toastr.success(respuesta.mensaje, 'Bien hecho')
 							swal({
@@ -890,7 +894,7 @@ $(document).on("submit", "#formAbono", function (e) {
 							}).then(function (result) {
 								if (result.value) {
 									window.location = "entregas";
-									window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo="+orden, "_blank");
+									window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo=" + orden, "_blank");
 
 								}
 
@@ -919,8 +923,12 @@ $(document).on("submit", "#formAbono", function (e) {
 					contentType: false,
 					processData: false,
 					dataType: "json",
+					beforeSend: function () {
+						$(".btnAbonarServicio").attr("disabled", true)
+					},
 					success: function (respuesta) {
 						console.log(respuesta)
+						$(".btnAbonarServicio").attr("disabled", false)
 						if (respuesta.status) {
 							swal({
 								type: "success",
@@ -930,7 +938,7 @@ $(document).on("submit", "#formAbono", function (e) {
 							}).then(function (result) {
 								if (result.value) {
 									window.location = "entregas";
-									window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo="+orden, "_blank");
+									window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo=" + orden, "_blank");
 
 								}
 
@@ -961,8 +969,12 @@ $(document).on("submit", "#formAbono", function (e) {
 			contentType: false,
 			processData: false,
 			dataType: "json",
+			beforeSend: function () {
+				$(".btnAbonarServicio").attr("disabled", true)
+			},
 			success: function (respuesta) {
 				console.log(respuesta)
+				$(".btnAbonarServicio").attr("disabled", false)
 				if (respuesta.status) {
 					swal({
 						type: "success",
@@ -972,7 +984,7 @@ $(document).on("submit", "#formAbono", function (e) {
 					}).then(function (result) {
 						if (result.value) {
 							window.location = "entregas";
-							window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo="+orden, "_blank");
+							window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo=" + orden, "_blank");
 
 						}
 
