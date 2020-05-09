@@ -706,9 +706,10 @@ $(document).on('click', '#pasarWP', function () {
 
 
 $(document).on("click", ".btnAbonos", function () {
+
 	var idServicio = $(this).attr("idServicio");
 
-	$("#ordenAbono").val(idServicio);
+	$("#formBurcarServicio").val(idServicio);
 
 
 })
@@ -731,6 +732,263 @@ if ($(".theDate")) {
 	$(".theDate").val(today);
 }
 
+// Abonos 
+
+
+var importe = 0;
+
+$(document).on("submit", "#formBurcarServicio", function (e) {
+	e.preventDefault();
+	var datos = new FormData();
+
+	datos.append("btnBuscarServicio", true)
+	datos.append("id_servicio", $("#abonoServicio").val())
+
+	$.ajax({
+
+		url: "ajax/servicios.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success: function (respuesta) {
+			console.log(respuesta)
+
+
+			if (respuesta) {
+
+				$adeudo = Number(respuesta.importe) - Number(respuesta.anticipo)
+				//console.log($adeudo)
+				$("#ordenServicio").val(respuesta.orden)
+				$("#ordenNombre").val(respuesta.nombre)
+				$("#ordenImporte").val(respuesta.importe)
+				$("#ordenAnticipo").val(respuesta.anticipo)
+				$("#ordenAdeuda").val($adeudo)
+
+				importe = $adeudo;
+
+
+
+				if (respuesta.estado_equipo == "Entregado" || respuesta.estado_equipo == "Entregado no quedo") {
+					$(".contenedor-abono").addClass("d-none")
+					// 		$("#resAbono").html(`
+					// 		<div class="alert alert-danger text-center" role="alert">
+					// 	Este servicio ya fue entregado
+					//   </div>
+					// 		`);
+
+					// 		return;
+
+				} else {
+					$(".contenedor-abono").removeClass("d-none")
+				}
+
+
+				var datos = new FormData();
+				datos.append("btnBuscarAbono", true)
+				datos.append("id_servicio", $("#abonoServicio").val())
+
+				$.ajax({
+
+					url: "ajax/servicios.ajax.php",
+					method: "POST",
+					data: datos,
+					cache: false,
+					contentType: false,
+					processData: false,
+					dataType: "html",
+					success: function (res) {
+
+						$("#resAbono").html(res)
+					}
+				})
+			} else {
+				$("#resAbono").html(`
+				<div class="alert alert-danger text-center" role="alert">
+			Servicio no encontrado
+		  </div>
+				`);
+				$(".contenedor-abono").addClass("d-none")
+
+			}
+
+
+
+			//$("#resAbono").html(respuesta)
+		}
+
+
+	})
+})
+
+
+
+
+$(document).on("submit", "#formAbono", function (e) {
+	e.preventDefault();
+
+
+	var abono = Number($("#abonoInput").val());
+
+
+
+	var orden = $("#ordenServicio").val();
+
+	var estado = "";
+
+	if (abono <= 0) {
+		toastr.error('El abono no puede ser menor igual a 0, intente con otra cantidad', 'Error')
+		return;
+	}
+	if (abono > importe) {
+		toastr.error('El abono supera la cantidad del adeudo, intente con otra cantidad', 'Error')
+		return;
+	}
+
+	if (abono == importe) {
+
+		swal({
+			title: "Detectamos que este servicio está a punto de ser liquidado",
+			text: "¿Quieres marcar el servicio con número de orden " + orden + " como entregado ?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'No',
+			confirmButtonText: 'Si, entregar servicio'
+
+		}).then(function (result) {
+
+			if (result.value) {
+				estado = "Entregado"
+				var datos = new FormData();
+				datos.append('orden', orden)
+				datos.append('estado_equipo', estado)
+				datos.append('abono', abono)
+				datos.append('btnAbonarServicio', true)
+
+				$.ajax({
+
+					url: "ajax/servicios.ajax.php",
+					method: "POST",
+					data: datos,
+					cache: false,
+					contentType: false,
+					processData: false,
+					dataType: "json",
+					success: function (respuesta) {
+						console.log(respuesta)
+						if (respuesta.status) {
+							//toastr.success(respuesta.mensaje, 'Bien hecho')
+							swal({
+								type: "success",
+								title: respuesta.mensaje,
+								showConfirmButton: true,
+								confirmButtonText: "Cerrar"
+							}).then(function (result) {
+								if (result.value) {
+									window.location = "entregas";
+									window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo="+orden, "_blank");
+
+								}
+
+							});
+						} else {
+							toastr.error(respuesta.mensaje, 'Error')
+						}
+					}
+				})
+
+				return;
+
+			} else {
+				var datos = new FormData();
+				datos.append('orden', orden)
+				datos.append('estado_equipo', estado)
+				datos.append('abono', abono)
+				datos.append('btnAbonarServicio', true)
+
+				$.ajax({
+
+					url: "ajax/servicios.ajax.php",
+					method: "POST",
+					data: datos,
+					cache: false,
+					contentType: false,
+					processData: false,
+					dataType: "json",
+					success: function (respuesta) {
+						console.log(respuesta)
+						if (respuesta.status) {
+							swal({
+								type: "success",
+								title: respuesta.mensaje,
+								showConfirmButton: true,
+								confirmButtonText: "Cerrar"
+							}).then(function (result) {
+								if (result.value) {
+									window.location = "entregas";
+									window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo="+orden, "_blank");
+
+								}
+
+							});
+						} else {
+							toastr.error(respuesta.mensaje, 'Error')
+						}
+					}
+				})
+			}
+		})
+
+
+	} else {
+
+		var datos = new FormData();
+		datos.append('orden', orden)
+		datos.append('estado_equipo', estado)
+		datos.append('abono', abono)
+		datos.append('btnAbonarServicio', true)
+
+		$.ajax({
+
+			url: "ajax/servicios.ajax.php",
+			method: "POST",
+			data: datos,
+			cache: false,
+			contentType: false,
+			processData: false,
+			dataType: "json",
+			success: function (respuesta) {
+				console.log(respuesta)
+				if (respuesta.status) {
+					swal({
+						type: "success",
+						title: respuesta.mensaje,
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+					}).then(function (result) {
+						if (result.value) {
+							window.location = "entregas";
+							window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo="+orden, "_blank");
+
+						}
+
+					});
+				} else {
+					toastr.error(respuesta.mensaje, 'Error')
+				}
+			}
+		})
+	}
+
+	/// 
+
+})
+
+
 
 //
 if ($("#theDate")) {
@@ -752,7 +1010,6 @@ if ($("#theDate")) {
 
 
 
-// Abonos 
 
 
 

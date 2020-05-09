@@ -11,6 +11,11 @@ if ($_SESSION['perfil'] == "Tecnico") {
 <div class="jumbotron jumbotron-fluid">
   <div class="container-fluid">
     <h3 class="display-5">Entrega de equipos</h3>
+
+    <button class="btn btn-warning float-left" data-toggle="modal" data-target="#mdlAgregarAbono"><i class="fas fa-money-bill-wave-alt"></i> Abonar servicio</button>
+    <a href="<?php echo $url ?>servicios" class="btn btn-dark float-right"><i class="fas fa-plus"></i> Crear servicio</a>
+
+
   </div>
 </div>
 <!-- Main content -->
@@ -223,7 +228,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
           $wp =  $array[1];
           $array = explode(" ", $array[0]);
           $tel  = $array[0] . $array[1];
-          $correo = $array[2];
+          $correo = isset($array[2]) ? $array[2] : "";
 
           $c1 = $tel . '<br>' . $correo;
           $c2 = '
@@ -535,6 +540,99 @@ if ($_SESSION['perfil'] == "Tecnico") {
           <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="mdlAgregarAbono" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mdlAgregarAbonoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mdlAgregarAbonoLabel">Abonos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" id="formBurcarServicio">
+          <div class="form-group">
+            <label for="abonoServicio">Número de servicio</label>
+            <input id="abonoServicio" class="form-control" placeholder="Número de servicio" type="text">
+          </div>
+          <div class="form-group">
+
+            <!-- <input id="btnAbonarServicio" class="btn btn-dark float-right mb-2 btnAbonarServicio" type="submit" value="Buscar"> -->
+          </div>
+        </form>
+
+
+        <form action="" method="post">
+          <div class="row row-input">
+            <div class="col-md-4 col-12">
+
+              <div class="form-group">
+                <label for="ordenServicio">Número de orden</label>
+                <input id="ordenServicio" class="form-control" type="text" readonly name="ordenServicio">
+              </div>
+
+            </div>
+            <div class="col-md-8 col-12">
+              <div class="form-group">
+                <label for="ordenNombre">Nombre</label>
+                <input id="ordenNombre" class="form-control" type="text" readonly name="ordenNombre">
+              </div>
+
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="form-group">
+                <label for="ordenImporte">Total</label>
+                <input id="ordenImporte" class="form-control" type="text" readonly name="ordenImporte">
+              </div>
+
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="form-group">
+                <label for="ordenAnticipo">Anticipo</label>
+                <input id="ordenAnticipo" class="form-control" type="text" readonly name="ordenAnticipo">
+              </div>
+
+            </div>
+            <div class="col-md-4 col-12">
+              <div class="form-group">
+                <label for="ordenAdeuda">Adeuda</label>
+                <input id="ordenAdeuda" class="form-control" type="text" readonly name="ordenAdeuda">
+              </div>
+
+            </div>
+
+
+          </div>
+        </form>
+
+        <div id="resAbono">
+
+        </div>
+
+        <div class="contenedor-abono d-none">
+
+          <form method="post" id="formAbono">
+            <label for="abonoInput">Ingrese el abono</label>
+            <input type="text" name="abonoInput" class="form-control efectivoFormat" id="abonoInput" value="">
+            <button type="submit" class="btn btn-dark float-right mt-3">Abonar</button>
+          </form>
+
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+
+      </div>
     </div>
   </div>
 </div>

@@ -83,6 +83,70 @@ class AjaxServicio
 		echo json_encode($respuesta);
 	}
 
+	public function ajaxAbonarServicio()
+	{
+
+		$respuesta 	= ControladorMovimientos::ctrAbonarServicio($_POST);
+
+		echo json_encode($respuesta);
+	}
+	public function ajaxMostrarServicio()
+	{
+		$orden = $this->idServicio;
+		$respuesta = ModeloMovimientos::mdlOnetnerOrdenServicio($orden);
+
+		//echo json_encode($respuesta, true);
+		$salida = '
+		<table class="table table-light mt-5">
+			<thead class="thead-light">
+				<tr>
+					<th>Número de movimiento</th>
+					<th>Servicio</th>
+					<th>Concepto</th>
+					<th>Usuario</th>
+					<th>Fecha de movimiento</th>
+					<th>Monto</th>
+				</tr>
+			</thead>
+			<tbody>
+		';
+		$res = "";
+		foreach ($respuesta as $key => $value) {
+			$res .= '
+				<tr>
+					<td>' . $value['id'] . '</td>
+					<td>' . $value['numero_movimiento'] . '</td>
+					<td>' . $value['concepto'] . '</td>
+					<td>' . $value['usuario'] . '</td>
+					<td>' . $value['fecha'] . '</td>
+					<td>' . $value['monto'] . '</td>
+				</tr>
+			';
+		}
+
+		if ($res == "") {
+			$salida = '<div class="alert alert-warning text-center" role="alert">
+			Aún no hay abonos para este servicio
+		  </div>';
+		} else {
+			$salida .= $res . '
+			</tbody>
+			</table>
+			';
+		}
+
+
+
+		echo  $salida . '<br>';
+	}
+
+	public function ajaxMostrarServicioOrden()
+	{
+		$orden = $this->idServicio;
+		//$respuesta = ModeloMovimientos::mdlOnetnerOrdenServicio($orden);
+		$datalle = ControladorServicios::ctrDetalleServicio($orden);
+		echo json_encode($datalle, true);
+	}
 
 	public function ajaxMostrarServicioPrecargado()
 	{
@@ -178,4 +242,21 @@ if (isset($_POST["idServicioPre"])) {
 if (isset($_POST["btnMandarCorreo"])) {
 	$nota = new AjaxServicio();
 	$nota->ajaxMandarCorreo();
+}
+
+if (isset($_POST['btnBuscarAbono'])) {
+	$abonar = new AjaxServicio();
+	$abonar->idServicio = $_POST['id_servicio'];
+	$abonar->ajaxMostrarServicio();
+}
+
+if (isset($_POST['btnBuscarServicio'])) {
+	$abonar = new AjaxServicio();
+	$abonar->idServicio = $_POST['id_servicio'];
+	$abonar->ajaxMostrarServicioOrden();
+}
+
+if (isset($_POST['btnAbonarServicio'])) {
+	$abonar = new AjaxServicio();
+	$abonar->ajaxAbonarServicio();
 }
