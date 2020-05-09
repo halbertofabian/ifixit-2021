@@ -17,9 +17,10 @@ class  ModeloMovimientos
 		$stmt->bindParam(":extra", $datos['extra'], PDO::PARAM_STR);
 		$stmt->bindParam(":corte", $corte);
 
-		return  $stmt->execute();
+		$stmt->execute();
+		return $stmt->rowCount() > 0;
 		//return print_r($stmt->errorInfo());
-		$stmt->close();
+
 		$stmt = null;
 	}
 	/*=============================================
@@ -198,6 +199,54 @@ class  ModeloMovimientos
 			return $pps->rowCount() > 0;
 		} catch (PDOException $th) {
 			//throw $th;
+		}
+	}
+
+
+	// Consultar movimiento de servicio 
+	public static function mdlOnetnerOrdenServicio($orden)
+	{
+		try {
+			$sql = "SELECT * FROM movimientos WHERE numero_movimiento = ? AND tipo = 'SERVICIO' ";
+
+			$con = Conexion::conectar();
+			$pps = $con->prepare($sql);
+			$pps->bindValue(1, $orden);
+			$pps->execute();
+			return $pps->fetchAll();
+		} catch (\Throwable $th) {
+			//throw $th;
+			return false;
+		} finally {
+			$pps = null;
+			$con = null;
+		}
+	}
+
+
+	public static function mdlAbonarServicio($datos)
+	{
+		try {
+			$sql = "UPDATE servicios SET
+			 anticipo = ? ,total = ?,fecha_entrega = ?,
+			 estado_equipo = ?,usuario_entrego = ? WHERE orden = ?
+			 ";
+			$con = Conexion::conectar();
+			$pps = $con->prepare($sql);
+			$pps->bindValue(1, $datos['anticipo']);
+			$pps->bindValue(2, $datos['total']);
+			$pps->bindValue(3, $datos['fecha_entrega']);
+			$pps->bindValue(4, $datos['estado_equipo']);
+			$pps->bindValue(5, $datos['usuario_entrego']);
+			$pps->bindValue(6, $datos['orden']);
+			$pps->execute();
+			return $pps->rowCount() > 0;
+		} catch (\Throwable $th) {
+			//throw $th;
+			return false;
+		} finally {
+			$pps = null;
+			$con = null;
 		}
 	}
 }
