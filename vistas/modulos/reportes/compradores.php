@@ -45,7 +45,7 @@ VENDEDORES
 <div class="card card-primary">
 	
 	<div class="card-header with-border">
-    
+   
     	<h3 class="card-title">Compradores</h3>
   
   	</div>

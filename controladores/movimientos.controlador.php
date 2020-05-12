@@ -39,6 +39,44 @@ class ControladorMovimientos
     return $respuesta;
   }
 
+  public static function ctrEliminarAbono()
+  {
+    if ($_POST['btnEliminarAbono']) {
+
+      $detalle = ModeloServicios::ctrDetalleServicio($_POST['orden']);
+
+      if ($detalle['estado_equipo'] == "Entregado" || $detalle['estado_equipo'] == "Entregado no quedo") {
+        return array("status" => false, "mensaje" => 'Este equipo ya fue entregado, por seguridad no puedes eliminar abonos');
+      }
+
+      $importe = $detalle['importe'];
+      $anticipo = $detalle['anticipo'];
+      // $adeudo = $detalle['total'];
+
+      $eliminarAbono = ModeloMovimientos::mdlEliminarMovimientoId($_POST['id_movimiento']);
+
+      if ($eliminarAbono) {
+
+        $_POST['anticipo'] = str_replace(',', '', $anticipo - $_POST['monto']);
+
+        $_POST['total'] = str_replace(',', '', $importe + $_POST['anticipo']);
+
+        $_POST['usuario_entrego'] = $_SESSION["nombre"];
+        $_POST['estado_equipo'] = $detalle['estado_equipo'];
+        $_POST['fecha_entrega'] = $detalle['fecha_entrega'];
+
+        $status  =  ModeloMovimientos::mdlAbonarServicio($_POST);
+
+        if ($status) {
+          return array("status" => true, "mensaje" => 'Abono eliminado con éxtito');
+        } else {
+          return array("status" => false, "mensaje" => 'Error no esperado, reporté con el administrador');
+        }
+      } else {
+        return array("status" => false, "mensaje" => 'Se produjo un error, intente de nuevo');
+      }
+    }
+  }
   public static function ctrAbonarServicio()
   {
     if (isset($_POST['btnAbonarServicio'])) {
