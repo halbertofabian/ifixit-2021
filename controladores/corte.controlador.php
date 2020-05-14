@@ -73,8 +73,7 @@ class ControladorCorte
 
 
 		// Termina nuevo conte para servicios 
-		$servicio = ModeloCorte::mdlServicioList();
-		$tcs = 0;
+		
 		// foreach ($servicio as $key => $val) {
 		// 	//verificar si no se ha hecho corte
 		// 	if($val['estado_corte']==0){
@@ -119,6 +118,8 @@ class ControladorCorte
 
 		// }
 
+		$servicio = ModeloCorte::mdlServicioList();
+		$tcs = 0;
 		$corte = ControladorCorte::mostrarCorte(0);
 
 	
@@ -285,40 +286,17 @@ class ControladorCorte
 
 		//validar el corte del servicio
 		//totalCorteServicio => tcs
+		
 		$servicio = ModeloCorte::mdlServicioList();
 		$tcs = 0;
-		foreach ($servicio as $key => $val) {
-			//verificar si no se ha hecho corte
-			if ($val['estado_corte'] == 0) {
-				/*if($val['estado_equipo'] == "Entregado"){
-					$tcs = $tcs + $val['importe'];
-				}*/
-				if ($val['anticipo'] != 0 && $val['estado_equipo'] != "Entregado") {
-					$tcs = $tcs + $val['anticipo'];
-				} elseif ($val['anticipo'] == 0 && $val['estado_equipo'] == "Entregado") {
-					$tcs = $tcs + $val['importe'];
-				} elseif ($val['anticipo'] == 0 && $val['estado_equipo'] != "Entregado") {
-					$tcs = $tcs + 0;
-				} elseif ($val['anticipo'] != 0 && $val['estado_equipo'] == "Entregado") {
-					$tcs = $tcs + $val['total'];
-				}
-			} elseif ($val['estado_corte'] == 2) {
+		$corte = ControladorCorte::mostrarCorte(0);
 
-				if ($val['estado_equipo'] == "Entregado") {
-					$tcs = $tcs + $val['importe'];
-				}
-			} elseif ($val['estado_corte'] == 3) {
+	
 
-				if ($val['estado_equipo'] == "Entregado") {
-					$tcs = $tcs + $val['total'];
-				}
-			} elseif ($val['estado_corte'] == 4) {
+		$servicio =  ModeloCorte::mdlObtenerIngresosServicio($corte['id']+1);
 
-				if ($val['anticipo'] != 0 && $val['estado_equipo'] != "Entregado") {
-					$tcs = $tcs + 0;
-					# code...
-				}
-			}
+		foreach ($servicio as $key => $value) {
+			$tcs = $tcs + $value['monto'];
 		}
 
 

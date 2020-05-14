@@ -45,13 +45,13 @@ class  ModeloGastos
     }
     static public function mdlTotalGastos(){	
 
-		$stmt = Conexion::conectar()->prepare("SELECT SUM(cantidad) as totalgastos FROM gastos WHERE estado_corte = 0");
+		$stmt = Conexion::conectar()->prepare(" SELECT SUM(cantidad) as totalgastos FROM gastos WHERE estado_corte = 0");
 
 		$stmt -> execute();
 
 		return $stmt -> fetch();
 
-		$stmt -> close();
+		
 
 		$stmt = null;
 

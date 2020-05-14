@@ -190,6 +190,8 @@ FORO" />
 
   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
 
 
   <!--Estilo de los paquetes -->
