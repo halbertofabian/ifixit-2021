@@ -657,3 +657,384 @@ Stack trace:
 #3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1322', '0', '')
 #4 {main}
   thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[07-May-2020 17:16:33 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[07-May-2020 17:16:33 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 484
+[07-May-2020 17:16:33 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 484
+[07-May-2020 17:16:33 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[07-May-2020 17:16:33 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[07-May-2020 17:16:33 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[07-May-2020 17:16:33 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(490): ModeloServicios::ctrDetalleServicio('1355')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Reparado', NULL, '1355', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[07-May-2020 19:33:23 America/Mexico_City] PHP Deprecated:  Non-static method ControladorServicios::ctrMandarCorreo() should not be called statically in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 81
+[08-May-2020 17:53:40 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[08-May-2020 17:53:40 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 484
+[08-May-2020 17:53:40 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 484
+[08-May-2020 17:53:40 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[08-May-2020 17:53:40 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[08-May-2020 17:53:40 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[08-May-2020 17:53:40 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(490): ModeloServicios::ctrDetalleServicio('1331')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Reparado', NULL, '1331', '650', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[08-May-2020 17:53:44 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[08-May-2020 17:53:44 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 484
+[08-May-2020 17:53:44 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 484
+[08-May-2020 17:53:44 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[08-May-2020 17:53:44 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[08-May-2020 17:53:44 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[08-May-2020 17:53:44 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(490): ModeloServicios::ctrDetalleServicio('1331')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Reparado', NULL, '1331', '650', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[09-May-2020 12:46:45 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[09-May-2020 12:46:45 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 484
+[09-May-2020 12:46:45 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 484
+[09-May-2020 12:46:45 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[09-May-2020 12:46:45 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[09-May-2020 12:46:45 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[09-May-2020 12:46:45 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(490): ModeloServicios::ctrDetalleServicio('1510')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1510', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[09-May-2020 13:46:26 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[09-May-2020 13:46:26 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[09-May-2020 13:46:26 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[09-May-2020 13:46:26 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[09-May-2020 13:46:26 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[09-May-2020 13:46:26 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[09-May-2020 13:46:26 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1376')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1376', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[09-May-2020 13:46:28 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[09-May-2020 13:46:28 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[09-May-2020 13:46:28 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[09-May-2020 13:46:28 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[09-May-2020 13:46:28 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[09-May-2020 13:46:28 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[09-May-2020 13:46:28 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1376')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1376', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[11-May-2020 11:19:24 America/Mexico_City] PHP Deprecated:  Non-static method ControladorServicios::ctrMandarCorreo() should not be called statically in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 81
+[11-May-2020 17:03:18 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[11-May-2020 17:03:18 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[11-May-2020 17:03:18 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[11-May-2020 17:03:18 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[11-May-2020 17:03:18 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[11-May-2020 17:03:18 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[11-May-2020 17:03:18 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1384')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1384', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[11-May-2020 17:03:28 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[11-May-2020 17:03:28 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[11-May-2020 17:03:28 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[11-May-2020 17:03:28 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[11-May-2020 17:03:28 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[11-May-2020 17:03:28 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[11-May-2020 17:03:28 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1384')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1384', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[11-May-2020 19:36:18 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[11-May-2020 19:36:18 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[11-May-2020 19:36:18 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[11-May-2020 19:36:18 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(25): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', 'id', '48', 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/productos.ajax.php(108): ControladorProductos::ctrMostrarProductos('id', '48', 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/productos.ajax.php(135): AjaxProductos->ajaxEditarProducto()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[11-May-2020 19:36:24 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[11-May-2020 19:36:24 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[11-May-2020 19:36:24 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[11-May-2020 19:36:24 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(25): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', 'id', '133', 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/productos.ajax.php(108): ControladorProductos::ctrMostrarProductos('id', '133', 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/productos.ajax.php(135): AjaxProductos->ajaxEditarProducto()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[11-May-2020 19:36:41 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[11-May-2020 19:36:41 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[11-May-2020 19:36:41 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[11-May-2020 19:36:41 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(25): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', 'id', '49', 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/productos.ajax.php(108): ControladorProductos::ctrMostrarProductos('id', '49', 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/productos.ajax.php(135): AjaxProductos->ajaxEditarProducto()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[12-May-2020 13:43:45 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[12-May-2020 13:43:45 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 13:43:45 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 13:43:45 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[12-May-2020 13:43:45 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[12-May-2020 13:43:45 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[12-May-2020 13:43:45 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1385')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1385', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[12-May-2020 14:01:33 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[12-May-2020 14:01:33 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:33 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:33 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[12-May-2020 14:01:33 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[12-May-2020 14:01:33 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[12-May-2020 14:01:33 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1110')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1110', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[12-May-2020 14:01:36 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[12-May-2020 14:01:36 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:36 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:36 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[12-May-2020 14:01:36 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[12-May-2020 14:01:36 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[12-May-2020 14:01:36 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1110')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1110', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[12-May-2020 14:01:43 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[12-May-2020 14:01:43 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:43 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:43 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[12-May-2020 14:01:43 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[12-May-2020 14:01:43 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[12-May-2020 14:01:43 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1110')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1110', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[12-May-2020 14:01:44 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[12-May-2020 14:01:44 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:44 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:44 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[12-May-2020 14:01:44 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[12-May-2020 14:01:44 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[12-May-2020 14:01:44 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1110')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1110', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[12-May-2020 14:01:59 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[12-May-2020 14:01:59 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:59 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 14:01:59 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[12-May-2020 14:01:59 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[12-May-2020 14:01:59 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[12-May-2020 14:01:59 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1110')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1110', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[12-May-2020 19:52:29 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[12-May-2020 19:52:29 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 19:52:29 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[12-May-2020 19:52:29 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[12-May-2020 19:52:29 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[12-May-2020 19:52:29 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[12-May-2020 19:52:29 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1195')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1195', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[12-May-2020 19:59:27 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[12-May-2020 19:59:27 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[12-May-2020 19:59:27 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[12-May-2020 19:59:27 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/productos.modelo.php(25): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/productos.controlador.php(15): ModeloProductos::mdlMostrarProductos('productos', 'id', '885', 'id')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/productos.ajax.php(108): ControladorProductos::ctrMostrarProductos('id', '885', 'id')
+#4 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/productos.ajax.php(135): AjaxProductos->ajaxEditarProducto()
+#5 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[13-May-2020 13:10:01 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[13-May-2020 13:10:01 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:01 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:01 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[13-May-2020 13:10:01 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[13-May-2020 13:10:01 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[13-May-2020 13:10:01 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1011')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Reparado', NULL, '1011', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[13-May-2020 13:10:03 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[13-May-2020 13:10:03 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:03 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:03 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[13-May-2020 13:10:03 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[13-May-2020 13:10:03 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[13-May-2020 13:10:03 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1011')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Reparado', NULL, '1011', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[13-May-2020 13:10:05 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[13-May-2020 13:10:05 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:05 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:05 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[13-May-2020 13:10:05 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[13-May-2020 13:10:05 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[13-May-2020 13:10:05 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1011')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Reparado', NULL, '1011', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[13-May-2020 13:10:06 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1011')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Reparado', NULL, '1011', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[13-May-2020 13:10:06 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[13-May-2020 13:10:06 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1011')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Reparado', NULL, '1011', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[13-May-2020 13:21:07 America/Mexico_City] PHP Deprecated:  Non-static method ControladorServicios::ctrMandarCorreo() should not be called statically in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 81
+[13-May-2020 13:21:07 America/Mexico_City] PHP Fatal error:  Uncaught PHPMailer\PHPMailer\Exception: Invalid address:  (to):  in /home/u203735599/domains/ifixitmor.com/public_html/app/lib/phpMailer/PHPMailer.php:1068
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/lib/phpMailer/PHPMailer.php(990): PHPMailer\PHPMailer\PHPMailer->addOrEnqueueAnAddress('to', '', '')
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(1207): PHPMailer\PHPMailer\PHPMailer->addAddress('', '')
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(81): ControladorServicios::ctrMandarCorreo()
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(258): AjaxServicio->ajaxMandarCorreo()
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/lib/phpMailer/PHPMailer.php on line 1068
+[13-May-2020 15:44:46 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[13-May-2020 15:44:46 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 15:44:46 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 15:44:46 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[13-May-2020 15:44:46 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[13-May-2020 15:44:46 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[13-May-2020 15:44:46 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1188')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1188', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[13-May-2020 18:32:14 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[13-May-2020 18:32:14 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 18:32:14 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 18:32:14 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[13-May-2020 18:32:14 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[13-May-2020 18:32:14 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[13-May-2020 18:32:14 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1388')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('No quedo', NULL, '1388', '200', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[13-May-2020 18:33:14 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[13-May-2020 18:33:14 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 18:33:14 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[13-May-2020 18:33:14 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[13-May-2020 18:33:14 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[13-May-2020 18:33:14 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[13-May-2020 18:33:14 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1388')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('No quedo', NULL, '1388', '200', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32

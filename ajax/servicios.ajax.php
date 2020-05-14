@@ -97,7 +97,7 @@ class AjaxServicio
 
 		//echo json_encode($respuesta, true);
 		$salida = '
-		<table class="table table-light mt-5">
+		<table class="table table-light mt-5 tablasAbono">
 			<thead class="thead-light">
 				<tr>
 					<th>Número de movimiento</th>
@@ -106,6 +106,7 @@ class AjaxServicio
 					<th>Usuario</th>
 					<th>Fecha de movimiento</th>
 					<th>Monto</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -119,7 +120,12 @@ class AjaxServicio
 					<td>' . $value['concepto'] . '</td>
 					<td>' . $value['usuario'] . '</td>
 					<td>' . $value['fecha'] . '</td>
-					<td>' . $value['monto'] . '</td>
+					<td>' . $value['monto'] . '</td>';
+
+			if ($_SESSION['perfil'] == "Administrador")
+				$res .= '<td><button class="btn btn-danger btnEliminarAbono" onclick="eliminarAbono(' . $value['numero_movimiento'] . ',' . $value['id'] . ',' . $value['monto'] . ')"  ><i class="fas fa-trash"></i></button></td>';
+			else
+				$res .= '<td></td>
 				</tr>
 			';
 		}
@@ -146,6 +152,14 @@ class AjaxServicio
 		//$respuesta = ModeloMovimientos::mdlOnetnerOrdenServicio($orden);
 		$datalle = ControladorServicios::ctrDetalleServicio($orden);
 		echo json_encode($datalle, true);
+	}
+
+	public function ajaxEliminarAbono()
+	{
+
+		//$respuesta = ModeloMovimientos::mdlOnetnerOrdenServicio($orden);
+		$eliminarAbono = ControladorMovimientos::ctrEliminarAbono();
+		echo json_encode($eliminarAbono, true);
 	}
 
 	public function ajaxMostrarServicioPrecargado()
@@ -259,4 +273,9 @@ if (isset($_POST['btnBuscarServicio'])) {
 if (isset($_POST['btnAbonarServicio'])) {
 	$abonar = new AjaxServicio();
 	$abonar->ajaxAbonarServicio();
+}
+
+if (isset($_POST['btnEliminarAbono'])) {
+	$abonar = new AjaxServicio();
+	$abonar->ajaxEliminarAbono();
 }

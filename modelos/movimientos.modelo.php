@@ -249,4 +249,22 @@ class  ModeloMovimientos
 			$con = null;
 		}
 	}
+
+	public static function mdlEliminarMovimientoId($id)
+	{
+		try {
+			$sql = "DELETE FROM movimientos WHERE id = ?";
+			$con = Conexion::conectar();
+			$pps = $con->prepare($sql);
+			$pps->bindValue(1, $id);
+			$pps->execute();
+			return $pps->rowCount() > 0;
+		} catch (\Throwable $th) {
+			//throw $th;
+			return false;
+		} finally {
+			$pps = null;
+			$con = null;
+		}
+	}
 }
