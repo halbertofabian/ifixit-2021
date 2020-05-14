@@ -86,7 +86,8 @@ class ControladorPlantilla
 			'modulos',
 			'acceso',
 			'textos',
-			'instalacion'
+			'instalacion'||
+			'servicios-n'
 		);
 
 		return $whitList;

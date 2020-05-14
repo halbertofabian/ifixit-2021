@@ -1,4 +1,5 @@
 <?php
+
 if ($_SESSION['perfil'] == "Tecnico") {
   echo '<script>
 

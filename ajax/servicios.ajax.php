@@ -162,6 +162,12 @@ class AjaxServicio
 		echo json_encode($eliminarAbono, true);
 	}
 
+	public function ajaxEliminarServicio()
+	{
+		$eliminarServicio = ControladorMovimientos::ctrEliminarServicio();
+		echo json_encode($eliminarServicio, true);
+	}
+
 	public function ajaxMostrarServicioPrecargado()
 	{
 
@@ -278,4 +284,9 @@ if (isset($_POST['btnAbonarServicio'])) {
 if (isset($_POST['btnEliminarAbono'])) {
 	$abonar = new AjaxServicio();
 	$abonar->ajaxEliminarAbono();
+}
+
+if (isset($_POST['btnEliminarServicio'])) {
+	$abonar = new AjaxServicio();
+	$abonar->ajaxEliminarServicio();
 }

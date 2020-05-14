@@ -157,4 +157,75 @@ class ControladorMovimientos
       }
     }
   }
+
+  public static function ctrEliminarServicio()
+  {
+    if (isset($_POST['btnEliminarServicio'])) {
+
+      $detalle = ControladorServicios::ctrDetalleServicio($_POST['orden']);
+
+      $datos = array(
+        'b' => 'bl',
+        'orden' => $detalle['orden']
+      );
+
+      date_default_timezone_set($_SESSION["zona"]);
+
+      $fecha = date('Y-m-d');
+
+
+      $hora = date('H:i:s');
+
+      $valor1b = $fecha . ' ' . $hora;
+
+
+      if ($detalle['anticipo'] > 0) {
+        // Reportar a gastos como una cancelación de servicio
+        $mov = array(
+
+          'tipo' => 'GASTO',
+          'numero_movimiento' => $_POST['orden'],
+          'concepto' => 'Cancelación de servicio con número de orden ' . $detalle['orden'],
+          'monto' => str_replace(',', '', $detalle['anticipo']),
+          'cliente' => $detalle['nombre'],
+          'fecha' => $valor1b,
+          'usuario' => $_SESSION["nombre"],
+          'extra' => ''
+
+
+        );
+
+        $movimiento = ControladorMovimientos::ctrRegistrarMovimiento($mov);
+
+        if ($movimiento) {
+
+
+          $borrarServicio = ModeloServicios::MdlBorrarServico($datos);
+          if ($borrarServicio) {
+            ModeloGastos::mdlAgrearGastos(
+              array(
+                'fecha_gasto' => $valor1b,
+                'gasto' => str_replace(',', '', $detalle['anticipo']),
+                'concepto' => 'Cancelación de servicio con número de orden ' . $detalle['orden'],
+                'usuario' => $_SESSION["nombre"]
+              )
+            );
+            return array('status' => true, 'mensaje' => 'Servicio eliminado con exito.');
+          } else {
+            return array('status' => false, 'mensaje' => 'Ocurrio un error inesperado, contacte a soporte.');
+          }
+        } else {
+          return array('status' => false, 'mensaje' => 'No se pudo eliminar este registro, intente de nuevo.');
+        }
+      } else {
+        // Solo borrar el servicio
+        $borrarServicio = ModeloServicios::MdlBorrarServico($datos);
+        if ($borrarServicio) {
+          return array('status' => true, 'mensaje' => 'Servicio eliminado con exito.');
+        } else {
+          return array('status' => false, 'mensaje' => 'No se pudo eliminar este registro, intente de nuevo.');
+        }
+      }
+    }
+  }
 }

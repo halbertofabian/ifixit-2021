@@ -155,7 +155,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
                 <?php if ($value['estado_equipo'] != "Entregado" && $value['estado_equipo'] != "Entregado no quedo") : ?>
                   <a href="index.php?ruta=servicios&editarServicio=<?php echo $value['orden']; ?>" class="btn btn-warning" idServicio="<?php echo $value['orden']; ?>"><i class="fa fa-edit"></i></a>
 
-                  <button class="btn btn-danger  btnEliminarServicio" idServicio="<?php echo $value['orden']; ?>">
+                  <button class="btn btn-danger  btnEliminarOrdenServicio" idServicio="<?php echo $value['orden']; ?>" anticipo="<?php echo $value['anticipo']; ?>">
                     <i class="fa fa-times"></i>
                   </button>
 
@@ -319,8 +319,8 @@ if ($_SESSION['perfil'] == "Tecnico") {
   </table>
 
   <?php
-  $eliminar = new ControladorServicios();
-  $eliminar->ctrBorrarServico();
+  // $eliminar = new ControladorServicios();
+  // $eliminar->ctrBorrarServico();
   ?>
 </section>
 

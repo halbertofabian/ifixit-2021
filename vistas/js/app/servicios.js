@@ -210,31 +210,123 @@ $(".btnImprimirTiket-view").on("click", function () {
 	window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo=" + id, "_blank");
 })
 
-$(".tablas tbody").on("click", ".btnEliminarServicio", function () {
+// $(".tablas tbody").on("click", ".btnEliminarServicio2", function () {
+// 	var id = $(this).attr("idServicio");
+
+
+
+// 	swal({
+// 		title: "¿Estas seguro de eliminar este servicio?",
+// 		text: "Con número de orden " + id + " Al hacer esta operación no podras recuperar",
+// 		type: "warning",
+// 		showCancelButton: true,
+// 		confirmButtonColor: '#3085d6',
+// 		cancelButtonColor: '#d33',
+// 		cancelButtonText: 'Cancelar',
+// 		confirmButtonText: 'Si, borrar orden de servicio!'
+
+// 	}).then(function (result) {
+
+// 		if (result.value) {
+
+// 			window.location = "index.php?ruta=entregas&idServicio=" + id + "&bl=true";
+
+// 		} else {
+
+// 		}
+
+// 	});
+// })
+
+$(".tablas tbody").on("click", ".btnEliminarOrdenServicio", function () {
 	var id = $(this).attr("idServicio");
+	var anticipo = $(this).attr("anticipo");
+	var msj = "Con número de orden " + id + ". Al hacer esta operación no podras recuperar";
+	if (anticipo > 0) {
+		msj = "Este servicio con número de orden "+id+" que intentas eliminar cuenta con un historial de ingresos, si deseas continuar estos mismos serán reportados a gastos como cancelación de servicio";
+	}
 
 	swal({
 		title: "¿Estas seguro de eliminar este servicio?",
-		text: "Con número de orden " + id + " Al hacer esta operación no podras recuperar",
+		text: msj,
 		type: "warning",
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
 		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Si, borrar orden de servicio!'
+		confirmButtonText: 'Si, borrar orden de servicio'
 
 	}).then(function (result) {
 
 		if (result.value) {
 
-			window.location = "index.php?ruta=entregas&idServicio=" + id + "&bl=true";
 
-		} else {
+			var datos = new FormData();
+			datos.append('orden', id)
+			datos.append('btnEliminarServicio', true)
+			$.ajax({
+
+				url: "ajax/servicios.ajax.php",
+				method: "POST",
+				data: datos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				beforeSend: function () {
+					$('.btnEliminarServicio').attr("disabled", true)
+					$('.btnEliminarServicio').html("Eliminado...")
+
+				},
+				success: function (res) {
+					$('.btnEliminarServicio').attr("disabled", false)
+					$('.btnEliminarServicio').html(`<i class="fa fa-times"></i>`)
+
+					console.log(res)
+
+					if (res) {
+						swal({
+							title: "Muy bien",
+							text: res.mensaje,
+							type: "success",
+							buttons: [false, 'Continuar'],
+							dangerMode: true,
+						})
+							.then(function (result) {
+								if (result.value) {
+
+									window.location.href = "entregas"
+
+								} else {
+									window.location.href = "entregas"
+
+								}
+							});
+
+					} else {
+						swal({
+							title: "Error",
+							text: res.mensaje,
+							type: "error",
+							buttons: [false, 'Ok'],
+							dangerMode: true,
+						})
+							.then(function (result) {
+								if (result.value) {
+
+								}
+							});
+					}
+
+				}
+			})
 
 		}
+	})
 
-	});
 })
+
+
 $(".tablas tbody").on("click", ".btnMsjWsp", function () {
 	$("#textwp").val("Cargando...")
 	var codigo = $(this).attr("codigoServicio");
@@ -932,7 +1024,7 @@ function eliminarAbono(idServicio, idMovimiento, monto) {
 				},
 				success: function (respuesta) {
 					$(".btnEliminarAbono").attr("disabled", false)
-				
+
 					if (respuesta.status) {
 						toastr.success(respuesta.mensaje, 'Bien hecho')
 						buscarAbono(idServicio)
