@@ -311,8 +311,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
           <input type="hidden" value="<?php echo $value['orden']; ?>" name="orden">
         </tr>
 
-      <? }
-      ?>
+      <? } ?>
 
     </tbody>
 
@@ -636,3 +635,63 @@ if ($_SESSION['perfil'] == "Tecnico") {
     </div>
   </div>
 </div>
+
+
+<?php
+
+
+if (isset($_GET['orden']) && isset($_GET['estado'])) {
+  $res = ControladorServicios::ctrCambiarEstadoEquipo($_GET['estado'], $_SESSION['nombre'], $_GET['orden'], $_GET['anticipo'], $_GET['nota']);
+
+  if ($res['status']) {
+
+    echo '<script>
+						swal({
+							type: "' . $res['type'] . '",
+							title: "' . $res['mensaje'] . '",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+
+						}).then(function(result){
+
+							if(result.value){
+							
+								window.location = "entregas";	
+
+							}else{
+								window.location = "entregas";	
+
+							}
+
+
+						});
+					
+					</script>';
+  } else {
+
+    echo '<script>
+
+						swal({
+
+							type: "' . $res['type'] . '",
+							title: "' . $res['mensaje'] . '",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+
+						}).then(function(result){
+
+							if(result.value){
+							
+								window.history.back();
+
+							}
+
+						});
+					
+
+					</script>';
+  }
+}
+
+
+?>
