@@ -1726,7 +1726,7 @@ if (isset($_SESSION['presupuesto'])) {
             <div class="row">
               <div class="col-md-2">
                 <label for="">Código</label>
-                <input type="text" class="form-control input-lg" placeholder="52" name="codigo-wp" value="" pattern="\d*" maxlength="2" id="codigo">
+                <input type="text" class="form-control input-lg" placeholder="52" name="codigo-wp" value="" pattern="\d*" maxlength="4" id="codigo">
               </div>
               <div class="col-md-10">
                 <label for="">Número de whatsapp <i class="fab fa-whatsapp text-success" aria-hidden="true"></i></label>

@@ -42,7 +42,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
 
   <div class="conatiner">
-    
+
 
     <div class="row">
       <div class="col-12 col-md-6">
@@ -85,11 +85,12 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
         CABEZA DEL MODAL
         ======================================-->
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
+        <div class="modal-header bg-dark">
 
+        <h4 class="modal-title">Agregar Servicio</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar Servicio</h4>
+          
 
         </div>
 
@@ -107,7 +108,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fas fa-wrench"></i></span>
+                <span class="input-group-text"><i class="fas fa-wrench"></i></span>
 
                 <input type="text" class="form-control input-lg" name="nombre" placeholder="Ingresar nombre" required>
 
@@ -120,7 +121,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-map"></i></span>
+                <span class="input-group-text"><i class="fa fa-map"></i></span>
 
                 <select name="tipo_equipo" id="" class="form-control">
                   <option value="" selected="">Seleccione un tipo de equipo</option>
@@ -139,7 +140,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fab fa-bandcamp"></i></span>
+                <span class="input-group-text"><i class="fab fa-bandcamp"></i></span>
 
                 <input type="text" class="form-control input-lg" name="marca" placeholder="Ingresar la marca" required>
 
@@ -152,7 +153,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fas fa-mobile"></i></span>
+                <span class="input-group-text"><i class="fas fa-mobile"></i></span>
 
                 <input type="text" class="form-control input-lg" name="modelo" placeholder="Ingresar el modelo" required>
 
@@ -165,7 +166,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                <span class="input-group-text"><i class="fa fa-dollar"></i></span>
 
                 <input type="text" class="form-control input-lg" name="precio" placeholder="Ingresar el precio" required>
 
@@ -189,7 +190,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary" name="btnAgregarServicioPrecargado">Guardar servicio</button>
+          <button type="submit" class="btn btn-dark" name="btnAgregarServicioPrecargado">Guardar servicio</button>
 
         </div>
 
@@ -219,11 +220,11 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
         CABEZA DEL MODAL
         ======================================-->
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-
+        <div class="modal-header bg-dark">
+          <h4 class="modal-title">Editar Servicio</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Editar Servicio</h4>
+
 
         </div>
 
@@ -241,7 +242,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fas fa-wrench"></i></span>
+                <span class="input-group-text"><i class="fas fa-wrench"></i></span>
 
                 <input type="text" class="form-control input-lg" name="nombre" placeholder="Ingresar nombre" required id="nuevoNombre">
 
@@ -254,7 +255,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-map"></i></span>
+                <span class="input-group-text"><i class="fa fa-map"></i></span>
 
                 <select name="tipo_equipo" id="nuevoTipo_equipo" class="form-control">
                   <option value="" selected="">Seleccione un tipo de equipo</option>
@@ -273,7 +274,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fab fa-bandcamp"></i></span>
+                <span class="input-group-text"><i class="fab fa-bandcamp"></i></span>
 
                 <input type="text" class="form-control input-lg" name="marca" placeholder="Ingresar la marca" required id="nuevaMarca">
 
@@ -286,7 +287,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fas fa-mobile"></i></span>
+                <span class="input-group-text"><i class="fas fa-mobile"></i></span>
 
                 <input type="text" class="form-control input-lg" name="modelo" placeholder="Ingresar el modelo" required id="nuevoModelo">
 
@@ -299,7 +300,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                <span class="input-group-text"><i class="fa fa-dollar"></i></span>
 
                 <input type="text" class="form-control input-lg" name="precio" placeholder="Ingresar el precio" required id="nuevoPrecio">
                 <input type="hidden" class="form-control input-lg" name="id" placeholder="" required id="id">
@@ -324,7 +325,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == 'Tecnico') {
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary" name="btnActualizarServicioPrecargado">Guardar servicio</button>
+          <button type="submit" class="btn btn-dark" name="btnActualizarServicioPrecargado">Guardar servicio</button>
 
         </div>
 
