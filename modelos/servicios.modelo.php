@@ -312,9 +312,10 @@ class ModeloServicios
 
 		}*/
 
-		$exec = $stmt->execute() > 0;
+		$stmt->execute();
 
-		return $exec;
+
+		return $stmt->rowCount() > 0;
 
 
 

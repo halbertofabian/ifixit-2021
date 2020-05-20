@@ -179,7 +179,7 @@ $(".tablas tbody").on("click", ".btnCambiarEstadoOrden", function () {
 			if (result.value) {
 
 				//window.location = "ajax/servicios.ajax.php";
-				window.location = "ajax/servicios.ajax.php?orden=" + idServicio + "&estado=" + estadoServicio + "&anticipo=" + anticipo + "&nota=" + nota;
+				window.location = "index.php?ruta=entregas&orden=" + idServicio + "&estado=" + estadoServicio + "&anticipo=" + anticipo + "&nota=" + nota;
 
 			} else {
 				window.location = "entregas";

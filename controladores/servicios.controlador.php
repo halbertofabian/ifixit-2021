@@ -482,7 +482,119 @@ class ControladorServicios
 	 * 
 	 * */
 
-	static public function ctrCambiarEstadoEquipo($estado, $usuario, $orden, $anticipo, $nota)
+	public static function ctrCambiarEstadoEquipo($estado, $usuario, $orden, $anticipo, $nota)
+	{
+		$_POST['estado'] = $estado;
+		$_POST['nota'] = $nota;
+		$_POST['orden'] = $orden;
+
+
+
+		date_default_timezone_set($_SESSION["zona"]);
+
+		$fecha = date('Y-m-d');
+		$hora = date('H:i:s');
+		$fecha = $fecha . ' ' . $hora;
+		$detalle = ControladorServicios::ctrDetalleServicio($_POST['orden']);
+		$bandera = "";
+
+		if ($_POST['estado'] == "ENTREGADO" && $detalle['total'] > 0) {
+			$movimiento = ControladorMovimientos::ctrRegistrarMovimiento(
+				array(
+					'tipo' => 'SERVICIO',
+					'numero_movimiento' => $detalle['orden'],
+					'concepto' => 'LIQUIDADO',
+					'monto' => $detalle['total'],
+					'cliente' => $detalle['nombre'],
+					'fecha' => $fecha,
+					'usuario' => $_SESSION["nombre"],
+					'extra' => ''
+				)
+			);
+			if ($movimiento) {
+				$cambiarEstado = ModeloServicios::mdlCambiarEstado($_POST['estado'], $_SESSION["nombre"], $_POST['orden'], $fecha, $detalle['nota']);
+				if ($cambiarEstado) {
+
+					$bandera = array("type" => "success", "status" => true, "mensaje" => "Estado cambiado con éxito. Este servicio fue entregado y hay un adeudo, este mismo se reporta en movimientos como LIQUIDADO");
+				} else {
+					$bandera = array("type" => "warning", "status" => false, "mensaje" => "Ocurrio un error inesperado. Este servicio fue entregado y hay un adeudo, este mismo se reporta en movimientos como LIQUIDADO. Pero no cambio su estado a entregado, si te sale este mensaje toma nota de la orden de servicio y comunicate con soporte.");
+				}
+			} else {
+				$bandera = array("type" => "error", "status" => false, "mensaje" => "Hay problema con tu conexión, no se pudo cambiar el estado. Intenta nuevamente.");
+			}
+		} elseif ($_POST['estado'] == "Entregado no quedo" && $detalle['anticipo'] > 0) {
+			$agregarGasto = ModeloGastos::mdlAgrearGastos(
+				array(
+					'gasto' => $detalle['anticipo'],
+					'concepto' => "Devolución de servicio sin quedar con número de orden " . $_POST['orden'],
+					'fecha_gasto' => $fecha,
+					'usuario' => $_SESSION['nombre']
+				)
+			);
+			if ($agregarGasto) {
+				$movimiento = ControladorMovimientos::ctrRegistrarMovimiento(
+					array(
+						'tipo' => 'SERVICIO',
+						'numero_movimiento' => $detalle['orden'],
+						'concepto' => 'COBRO POR DIAGNOSTICO',
+						'monto' => $detalle['diagnostico'],
+						'cliente' => $detalle['nombre'],
+						'fecha' => $fecha,
+						'usuario' => $_SESSION["nombre"],
+						'extra' => ''
+					)
+				);
+
+				if ($movimiento) {
+					$cambiarEstado = ModeloServicios::mdlCambiarEstado($_POST['estado'], $_SESSION["nombre"], $_POST['orden'], $fecha, $_POST['nota']);
+					if ($cambiarEstado) {
+						$bandera = array("type" => "success", "status" => true, "mensaje" => "Estado cambiado con éxito. Este servicio fue entregado sin ser reparado y hay un anticipo, este mismo se reporta en movimientos de gasto como devolución de servicio. Y entrará a caja el monto denominado cobro por diagnostico ");
+					} else {
+						$bandera = array("type" => "warning", "status" => false, "mensaje" => "Ocurrio un error inesperado. Este servicio fue entregado sin ser reparado y hay un anticipo, este mismo se reporta en movimientos como DEVOLUCIÓN DE SERVICIO. Pero no cambio su estado a entregado sin quedar, si te sale este mensaje toma nota de la orden de servicio y comunicate con soporte.");
+					}
+				} else {
+					$bandera = array("type" => "warning", "status" => false, "mensaje" => "Ocurrio un error inesperado. Este servicio fue entregado y hay un anticipo, este mismo se reporta en gastos como DEVOLUCIÓN DE SERVICIO. Pero no en movimientos, si te sale este mensaje toma nota de la orden de servicio y comunicate con soporte.");
+				}
+			} else {
+				$bandera = array("type" => "error", "status" => false, "mensaje" => "Hay problema con tu conexión, no se pudo cambiar el estado. Intenta nuevamente.");
+			}
+		} elseif ($_POST['estado'] == "Entregado no quedo" && $detalle['anticipo'] == 0) {
+			$movimiento = ControladorMovimientos::ctrRegistrarMovimiento(
+				array(
+					'tipo' => 'SERVICIO',
+					'numero_movimiento' => $detalle['orden'],
+					'concepto' => 'COBRO POR DIAGNOSTICO',
+					'monto' => $detalle['diagnostico'],
+					'cliente' => $detalle['nombre'],
+					'fecha' => $fecha,
+					'usuario' => $_SESSION["nombre"],
+					'extra' => ''
+				)
+			);
+			if ($movimiento) {
+				$cambiarEstado = ModeloServicios::mdlCambiarEstado($_POST['estado'], $_SESSION["nombre"], $_POST['orden'], $fecha, $_POST['nota']);
+				if ($cambiarEstado) {
+					$bandera = array("type" => "success", "status" => true, "mensaje" => "Estado cambiado con éxito. Este servicio fue entregado sin ser reparado,este mismo entrará a caja el monto denominado cobro por diagnostico ");
+				} else {
+					$bandera = array("type" => "warning", "status" => false, "mensaje" => "Ocurrio un error inesperado. Este servicio fue entregado sin ser reparado. Pero no cambio su estado a entregado sin quedar, si te sale este mensaje toma nota de la orden de servicio y comunicate con soporte.");
+				}
+			} else {
+				$bandera = array("type" => "warning", "status" => false, "mensaje" => "Ocurrio un error inesperado. Este servicio fue entregado y hay un anticipo, este mismo se reporta en gastos como DEVOLUCIÓN DE SERVICIO. Pero no en movimientos, si te sale este mensaje toma nota de la orden de servicio y comunicate con soporte.");
+			}
+		} else {
+			$cambiarEstado = ModeloServicios::mdlCambiarEstado($_POST['estado'], $_SESSION["nombre"], $_POST['orden'], $fecha, $detalle['nota']);
+			if ($cambiarEstado) {
+				$bandera = array("type" => "success", "status" => true, "mensaje" => "Estado cambiado con éxito.");
+			} else {
+				$bandera = array("type" => "error", "status" => false, "mensaje" => "Hay problema con tu conexión, no se pudo cambiar el estado. Intenta nuevamente.");
+			}
+		}
+
+		// Mensajes 3 tipos success, warning y error
+
+		return $bandera;
+	}
+	static public function ctrCambiarEstadoEquipoR($estado, $usuario, $orden, $anticipo, $nota)
 	{
 
 		$estado_corte = 0;
