@@ -159,6 +159,87 @@ class ControladorPedidos
 			}
 		}
 	}
+	public static function ctrModificarPedido()
+	{
+		//Filtro de validacion "Campo existente"
+		if (isset($_POST['btnModificarPedido'])) {
+			//2Do filtro verificar si son numeros
+			if (is_numeric($_POST['importe']) && is_numeric($_POST['anticipo'])) {
+
+				$url = ControladorPlantilla::getRute();
+
+				$wspp =  $_POST['numero-wp'];
+
+				date_default_timezone_set($_SESSION["zona"]);
+
+				$fecha = date('Y-m-d');
+
+				$hora = date('H:i:s');
+
+				$valor1b = $fecha . ' ' . $hora;
+
+				$total = $_POST['importe'] - $_POST['anticipo'];
+
+				$datos = array(
+					'pedido' => $_POST['pedido'],
+					'nombre' => $_POST['nombre'],
+					'contacto' => $_POST['contacto'] . " " . $_POST['email'] . "/" . $wspp,
+					'fecha_pedido' => $_POST['fecha_pedido'],
+					'equipo' => $_POST['equipo'],
+					'marca' => $_POST['marca'],
+					'modelo' => $_POST['modelo'],
+
+					'encargo' => $_POST['encargo'],
+					'importe' => $_POST['importe'],
+					'anticipo' => $_POST['anticipo'],
+					'total' => $total,
+					'usuario_entrego' => $_SESSION['nombre']
+				);
+				$modificar = ModeloPedidos::mdlModificarPedido($datos);
+
+
+				
+				if ($modificar) {
+
+					echo '<script>
+						window.location = "'.$url.'lista-pedidos";
+						window.open("'.$url.'extensiones/tcpdf/pdf/pedido-factura.php?codigo=' . $_POST['pedido'] . '", "_blank");	
+					</script>';
+				} else {
+					echo '<script>
+
+			
+					window.location = "'.$url.'lista-pedidos";
+
+
+					</script>';
+				}
+			} else {
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "¡Error, el formato no es valido para importe y anticipo",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+						
+								window.history.back();
+							
+
+						}
+
+					});
+				
+
+					</script>';
+			}
+		}
+	}
 	public static function ctrobtenerId()
 	{
 		return  ModeloPedidos::mdlObtenerId();
