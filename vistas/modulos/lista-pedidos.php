@@ -80,9 +80,12 @@ if ($_SESSION['perfil'] == "Tecnico") {
         <tr>
           <td>
             <div class="btn-group">
-              <!--<button class="btn btn-warning">
-                      <i class="fa fa-pencil"></i>
-                    </button>-->
+
+              <?php if ($value['estado'] != "Entregado" && $value['estado'] != "Sin existencia") : ?>
+                <a href="<?php echo $url . 'pedidos/' . $value['pedido'] ?>" class="btn btn-warning">
+                  <i class="fa fa-edit"></i>
+                </a>
+              <?php endif; ?>
               <?php if ($_SESSION["perfil"] == "Administrador") : ?>
                 <?php if ($value['estado'] != "Entregado" && $value['estado'] != "Sin existencia") : ?>
                   <button class="btn btn-danger btnBorrarP " idPedido="<?php echo $value['pedido']; ?>">
@@ -133,7 +136,8 @@ if ($_SESSION['perfil'] == "Tecnico") {
           ?>
           <td>
             <?php echo $c1 ?> <br>
-            <?php //echo $c2 ?></a>
+            <?php //echo $c2 
+            ?></a>
 
           </td>
 
