@@ -9,7 +9,7 @@ class  ModeloMovimientos
 
 		$stmt->bindParam(":tipo", $datos['tipo'], PDO::PARAM_STR);
 		$stmt->bindParam(":numero_movimiento", $datos['numero_movimiento'], PDO::PARAM_STR);
-		$stmt->bindParam(":concepto", $datos['concepto'], PDO::PARAM_INT);
+		$stmt->bindParam(":concepto", $datos['concepto'], PDO::PARAM_STR);
 		$stmt->bindParam(":monto", $datos['monto']);
 		$stmt->bindParam(":cliente", $datos['cliente'], PDO::PARAM_STR);
 		$stmt->bindParam(":fecha", $datos['fecha'], PDO::PARAM_STR);
