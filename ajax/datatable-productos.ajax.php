@@ -85,7 +85,7 @@ class TablaProductos
 				  "' . trim($barra) . '",
 			      "' . trim($imagen) . '",
 			      "' . trim($productos[$i]["codigo"]) . '",
-			      "Ok",
+			      "' . trim($productos[$i]["descripcion"]) . '",
 			      "' . trim($categorias["categoria"]) . '",
 			      "' . trim($stock) . '",
 			      "' . trim($productos[$i]["precio_compra"]) . '",
