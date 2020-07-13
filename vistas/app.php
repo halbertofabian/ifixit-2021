@@ -147,7 +147,7 @@ FORO" />
 
   <link rel="shortcut icon" href="<?php echo $url ?>vistas/img/plantilla/ifixit_x.png" type="image/x-icon">
 
-    <!-- toastr -->
+  <!-- toastr -->
   <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/toastr-master/toastr.min.css">
 
 
@@ -173,8 +173,17 @@ FORO" />
 
 
   <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href="<?php // echo $url 
+                                    ?>vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php // echo $url 
+                                ?>vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"> -->
+
+  <!-- DataTables -->
+  <link href="<?php echo $url ?>vistas/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo $url ?>vistas/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- Responsive datatable examples -->
+  <link href="<?php echo $url ?>vistas/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="<?php echo $url ?>vistas/plugins/iCheck/all.css">
@@ -233,10 +242,21 @@ FORO" />
 
 
   <!-- DataTables -->
-  <script src="<?php echo $url ?>vistas/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="<?php echo $url ?>vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="<?php echo $url ?>vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="<?php echo $url ?>vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <!-- <script src="<?php // echo $url 
+                    ?>vistas/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="<?php  // echo $url 
+                ?>vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?php // echo $url 
+                ?>vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?php // echo $url 
+                ?>vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script> -->
+
+  <script src="<?php echo $url ?>vistas/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo $url ?>vistas/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+
+
+  <script src="<?php echo $url ?>vistas/plugins/datatables/dataTables.responsive.min.js"></script>
+  <script src="<?php echo $url ?>vistas/plugins/datatables/responsive.bootstrap4.min.js"></script>
 
   <!-- SweetAlert 2 -->
   <script src="<?php echo $url ?>vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
