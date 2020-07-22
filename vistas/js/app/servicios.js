@@ -188,6 +188,160 @@ $(".tablas tbody").on("click", ".btnCambiarEstadoOrden", function () {
 		});
 
 	})
+	$(document).on('submit', '#formEstadoServicioTecnico', function (e) {
+		e.preventDefault();
+		nota = $("#notaServicioEstado").val()
+		swal({
+			title: "¿Estas seguro de módificar el estado de servicio?",
+			text: "Con número de orden " + idServicio,
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Cancelar',
+			confirmButtonText: 'Si, cambiar estado de servicio!'
+
+		}).then(function (result) {
+
+			if (result.value) {
+
+				//window.location = "ajax/servicios.ajax.php";
+				window.location = "index.php?ruta=vista-tecnica&orden=" + idServicio + "&estado=" + estadoServicio + "&anticipo=" + anticipo + "&nota=" + nota;
+
+			} else {
+				window.location = "entregas";
+			}
+
+		});
+
+	})
+
+
+
+
+})
+$(".tablas tbody").on("click", ".btnCambiarEstadoOrdenTecnico", function () {
+
+
+	var estadoServicio = $(this).attr('estadoEquipo')
+
+	var estado = "";
+	var idServicio = $(this).attr('idServicio')
+
+	var anticipo = Number($(this).attr('anticipo'))
+	var importe = Number($(this).attr('importe'))
+
+	var nota = $(this).attr('nota');
+	$("#text-orden").html(idServicio)
+
+
+
+	$(".estado_equipo").val("");
+
+
+
+
+
+
+
+
+	if (estadoServicio == "No quedo") {
+		$(".notaOrdenEstado").removeClass("d-none");
+		$("#notaServicioEstado").val(nota)
+
+	} else {
+
+
+		$(".notaOrdenEstado").addClass("d-none");
+
+	}
+	if (estadoServicio == "Entregado") {
+		$(".pagoOrdenEstado").removeClass("d-none");
+
+
+		//$("#notaServicioEstado").val(nota)
+	} else {
+
+
+		$(".pagoOrdenEstado").addClass("d-none");
+
+	}
+
+	$(".estado_equipo").change(function () {
+
+
+		estadoServicio = $(this).val();
+
+		if (estadoServicio == "No quedo") {
+			$(".notaOrdenEstado").removeClass("d-none");
+			//nota = $("#notaServicioEstado").val()
+		} else {
+			$(".notaOrdenEstado").addClass("d-none");
+
+		}
+
+
+		if ($(this).val() == "Entregado") {
+			$(".pagoOrdenEstado").removeClass("d-none");
+
+			$("#total").val(importe)
+			$("#anticipo").val(anticipo)
+			var adeuda = importe - anticipo;
+			$("#adeuda").val(adeuda)
+
+
+			// $("#pagaCon").val(adeuda)
+			// $("#cambioDe").val(0)
+
+			$("#pagaCon").on("keyup", function () {
+				var paga = Number($(this).val())
+				var cambio = paga - adeuda;
+				$("#cambioDe").val(cambio)
+
+
+			})
+
+
+
+
+
+
+
+		} else {
+			$(".pagoOrdenEstado").addClass("d-none");
+
+		}
+	})
+
+
+
+	$(document).on('submit', '#formEstadoServicioTecnico', function (e) {
+		e.preventDefault();
+		nota = $("#notaServicioEstado").val()
+		swal({
+			title: "¿Estas seguro de módificar el estado de servicio?",
+			text: "Con número de orden " + idServicio,
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Cancelar',
+			confirmButtonText: 'Si, cambiar estado de servicio!'
+
+		}).then(function (result) {
+
+			if (result.value) {
+
+				//window.location = "ajax/servicios.ajax.php";
+				window.location = "index.php?ruta=vista-tecnica&orden=" + idServicio + "&estado=" + estadoServicio + "&anticipo=" + anticipo + "&nota=" + nota;
+
+			} else {
+				window.location = "entregas";
+			}
+
+		});
+
+	})
 
 
 
@@ -243,7 +397,7 @@ $(".tablas tbody").on("click", ".btnEliminarOrdenServicio", function () {
 	var anticipo = $(this).attr("anticipo");
 	var msj = "Con número de orden " + id + ". Al hacer esta operación no podras recuperar";
 	if (anticipo > 0) {
-		msj = "Este servicio con número de orden "+id+" que intentas eliminar cuenta con un historial de ingresos, si deseas continuar estos mismos serán reportados a gastos como cancelación de servicio";
+		msj = "Este servicio con número de orden " + id + " que intentas eliminar cuenta con un historial de ingresos, si deseas continuar estos mismos serán reportados a gastos como cancelación de servicio";
 	}
 
 	swal({
