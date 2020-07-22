@@ -643,14 +643,14 @@ if ($_SESSION['perfil'] == "Tecnico") {
 if (isset($_GET['orden']) && isset($_GET['estado'])) {
   $res = ControladorServicios::ctrCambiarEstadoEquipoR($_GET['estado'], $_SESSION['nombre'], $_GET['orden'], $_GET['anticipo'], $_GET['nota']);
 
-  if ($res['status']) {
+  if ($res) {
 
     echo '<script>
 						swal({
-							type: "' . $res['type'] . '",
-							title: "' . $res['mensaje'] . '",
+							type: "success",
+							title: "Estado de servicio cambiado",
 							showConfirmButton: true,
-							confirmButtonText: "Cerrar"
+							confirmButtonText: "Continuar"
 
 						}).then(function(result){
 
@@ -673,8 +673,8 @@ if (isset($_GET['orden']) && isset($_GET['estado'])) {
 
 						swal({
 
-							type: "' . $res['type'] . '",
-							title: "' . $res['mensaje'] . '",
+							type: "warning",
+							title: "Este servicio cuenta con el mismo estado que intentas cambiar",
 							showConfirmButton: true,
 							confirmButtonText: "Cerrar"
 
