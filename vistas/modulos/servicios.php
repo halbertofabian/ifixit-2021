@@ -179,7 +179,7 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor")
           <div class="col-md-2">
             <br>
             <label for="">IMEI/ Número de Serie</label>
-            <input type="text" class="form-control" placeholder="Imei/Serie" name="imei" value="" value="<?php echo $serv['imei'] ?>">
+            <input type="text" class="form-control" placeholder="Imei/Serie" name="imei"  value="<?php echo $serv['imei'] ?>">
           </div>
           <div class="col-md-2">
             <br>
@@ -899,8 +899,6 @@ endif; ?>
               <input type="number" class="form-control" placeholder="Numero de orden" required="" readonly="" name="orden" value="<?php echo $orden['orden'] + 1 ?>">
             <?php endif; ?>
           </div>
-
-
         </div>
         <div class="col-md-8">
           <label for="">Nombre <span class="text-success">(*)</span></label>
