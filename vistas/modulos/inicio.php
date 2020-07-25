@@ -35,7 +35,7 @@
 
       if ($_SESSION["perfil"] == "Administrador") {
 
-        $app ->getComponents('grafico-total-ventas');
+        $app->getComponents('grafico-total-ventas');
       }
 
       ?>
@@ -83,7 +83,7 @@
              </div>
 
              </div>';
-      } else if ($_SESSION["perfil"] == "Tecnico") {
+      } else if ($_SESSION["perfil"] == "Tecnico" || $_SESSION["perfil"] == "Tecnico-editor") {
         include_once 'vistas/modulos/vista-tecnica.php';
       }
 

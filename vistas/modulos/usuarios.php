@@ -1,6 +1,6 @@
 <?php
 
-if ($_SESSION["perfil"] == "Tecnico" || $_SESSION["perfil"] == "Vendedor") {
+if ($_SESSION["perfil"] == "Tecnico" || $_SESSION["perfil"] == "Vendedor" || $_SESSION["perfil"] == "Tecnico-editor") {
 
   echo '<script>
 
@@ -235,6 +235,8 @@ MODAL AGREGAR USUARIO
                   <option value="Vendedor">Vendedor</option>
 
                   <option value="Tecnico">Tecnico</option>
+                  <option value="Tecnico-editor">Tecnico Editor</option>
+
 
                   <!--<option value="Auxiliar">Auxiliar</option>
 
@@ -403,6 +405,8 @@ MODAL EDITAR USUARIO
                   <option value="Administrador">Administrador</option>
                   <option value="Vendedor">Vendedor</option>
                   <option value="Tecnico">Tecnico</option>
+                  <option value="Tecnico-editor">Tecnico Editor</option>
+
 
                 </select>
 

@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-12 col-md-12">
       <div class="btn-group float-right">
         <button type="button" class="btn btn-secondary">Filtrar por</button>
@@ -50,7 +50,7 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div> -->
   <br>
 
   <table class="table tablaServicios table-bordered table-striped dt-responsive tablas" width="100%">
@@ -129,7 +129,7 @@
           <td>
             <div class="btn-group">
 
-              <?php if ($_SESSION['perfil'] == "Vendedor") : ?>
+              <?php if ($_SESSION['perfil'] == "Vendedor" || $_SESSION['perfil'] == "Tecnico-editor") : ?>
 
 
 
@@ -468,6 +468,22 @@
                 <label for="" class="text-dark">Selecciona el estado en que se encuentra este servicio</label>
                 <select name="estado" class="form-control estado_equipo" id="estado_equipo">
 
+                <?php 
+                
+                    if($_SESSION['perfil']=="Tecnico-editor") :?>
+                  
+                  <option value="" selected>Seleccione un estado</option> -->
+
+                  <option value="Reparado">Reparado</option>
+                  <option value="Entregado">Entregar</option>
+                  <option value="Reparacion">Reparacion</option>
+                  <option value="No quedo">No quedo</option>
+                  <option value="Laboratorio">Laboratorio</option>
+                  <option value="Entregado no quedo">Entregar sin quedar</option>
+
+                  <?php  
+                    else:
+                  ?>
 
 
                   <option value="" selected>Seleccione un estado</option> -->
@@ -478,6 +494,8 @@
                   <option value="No quedo">No quedo</option>
                   <option value="Laboratorio">Laboratorio</option>
                   <!-- <option value="Entregado no quedo">Entregar sin quedar</option> -->
+
+                    <?php endif; ?>
                 </select>
 
               </div>

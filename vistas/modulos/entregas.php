@@ -1,11 +1,13 @@
 <?php
-if ($_SESSION['perfil'] == "Tecnico") {
+if ($_SESSION['perfil'] == "Tecnico" || $_SESSION['perfil'] == "Tecnico-editor" ) {
   echo '<script>
 
 	window.location = "./inicio";
 
 </script>';
   return;
+
+  
 }
 ?>
 <div class="jumbotron jumbotron-fluid">
