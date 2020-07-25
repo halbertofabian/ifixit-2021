@@ -10,7 +10,7 @@ if ($_SESSION['perfil'] == "Tecnico") {
 }
 ?>
 <?php
-if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor") :
+if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor" || $_SESSION['perfil'] == "Tecnico-editor") :
   if (isset($_GET['editarServicio'])) :
     $serv = ControladorServicios::ctrDetalleServicio($_GET['editarServicio']);
     $estado_equipo = $serv['estado_equipo'];
@@ -110,7 +110,7 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor")
 
               $date =  $serv['fecha_prometida'];
 
-              
+
               if ($date != null) {
                 $fecha = array();
 
@@ -179,7 +179,7 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor")
           <div class="col-md-2">
             <br>
             <label for="">IMEI/ Número de Serie</label>
-            <input type="text" class="form-control" placeholder="Imei/Serie" name="imei"  value="<?php echo $serv['imei'] ?>">
+            <input type="text" class="form-control" placeholder="Imei/Serie" name="imei" value="<?php echo $serv['imei'] ?>">
           </div>
           <div class="col-md-2">
             <br>

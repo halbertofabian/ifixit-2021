@@ -74,7 +74,7 @@
                     $app->getComponents('menu-admin');
                 } elseif ($_SESSION['perfil'] == 'Vendedor') {
                     $app->getComponents('menu-vendedor');
-                } elseif ($_SESSION['perfil'] == 'Tecnico') {
+                } elseif ($_SESSION['perfil'] == 'Tecnico' || $_SESSION['perfil'] == 'Tecnico-editor') {
                     $app->getComponents('menu-tecnico');
                 }
                 ?>
