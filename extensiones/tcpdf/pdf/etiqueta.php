@@ -54,7 +54,7 @@ class imprimirFactura
 
 		require_once('tcpdf_include.php');
 
-		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		if ($impresion == '58') {
 			$pdf->SetMargins(2, 4, 4);
 		}
@@ -80,11 +80,18 @@ class imprimirFactura
 <table style="font-size:8px; text-align:right;">
 	<tr>
 	
-		<td style="width:$impresion px; text-align:center; font-size:7px;">
+		<td style="width:$impresion px; text-align:left; font-size:8px;">
 
-		$cliente <br><br>
-
-		<tcpdf style="width:$impresion px; text-align:center;" method="write1DBarcode" params="$bardcode" />
+		Cliente: <strong> $cliente </strong> <br>
+		Contacto: <strong> $servicio[contacto]</strong> <br>
+		Equipo: <strong> $servicio[equipo] $servicio[marca] $servicio[modelo] $servicio[color]</strong> <br>
+		Observaciones: <strong> $servicio[observaciones] </strong> <br>
+		Problema: <strong> $servicio[problema] </strong> <br>
+		Solución: <strong> $servicio[solucion] </strong> <br>
+		Fecha recepción: <strong> $servicio[fecha_reparacion]</strong> <br>
+		Fecha entrega: <strong> $servicio[fecha_prometida]</strong> <br>
+		<br><br>
+		<tcpdf style="width:$impresion px; text-align:left;" method="write1DBarcode" params="$bardcode" />
 		
 		
 		</td>

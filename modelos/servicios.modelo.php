@@ -175,16 +175,59 @@ class ModeloServicios
 		$stmt->bindParam(":fecha_prometida", $datos["fecha_prometida"], PDO::PARAM_STR);
 		$stmt->bindParam(":tecnico", $datos["tecnico"], PDO::PARAM_STR);
 
+		$stmt->execute();
+
+		return $stmt -> rowCount()>0;
 
 
 
-		if ($stmt->execute()) {
+		
+		//print_r($stmt->errorInfo());
 
-			return "ok";
-		} else {
 
-			return "error";
-		}
+		$stmt = null;
+	}
+	static public function mdlIngresarServicioR($datos)
+	{
+		$sql = "INSERT INTO servicios(orden,nombre,contacto,fecha_reparacion, equipo,marca,modelo,color,observaciones,estado_fisico,problema,solucion
+		,desbloqueo,estetica,importe,anticipo,total,usuario_recibio,imei,codigo_cliente,fecha_prometida,tecnico,diagnostico) 
+		VALUES (:orden,:nombre,:contacto,:fecha_reparacion,
+		:equipo,:marca,:modelo,:color,:observaciones,
+		:estado_fisico,:problema,:solucion,:desbloqueo,
+		:estetica,:importe,:anticipo,:total,:usuario_recibio,
+		:imei,:codigo_cliente,:fecha_prometida,:tecnico,:diagnostico)";
+		$stmt = Conexion::conectar()->prepare($sql);
+
+		$stmt->bindParam(":orden", $datos["orden"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+
+		$stmt->bindParam(":contacto", $datos["contacto"], PDO::PARAM_STR);
+		$stmt->bindParam(":fecha_reparacion", $datos["fecha_reparacion"], PDO::PARAM_STR);
+		$stmt->bindParam(":equipo", $datos["equipo"], PDO::PARAM_STR);
+		$stmt->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
+		$stmt->bindParam(":modelo", $datos["modelo"], PDO::PARAM_STR);
+		$stmt->bindParam(":color", $datos["color"], PDO::PARAM_STR);
+		$stmt->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado_fisico", $datos["estado_fisico"], PDO::PARAM_STR);
+		$stmt->bindParam(":problema", $datos["problema"], PDO::PARAM_STR);
+		$stmt->bindParam(":solucion", $datos["solucion"], PDO::PARAM_STR);
+		$stmt->bindParam(":desbloqueo", $datos["desbloqueo"], PDO::PARAM_STR);
+
+		$stmt->bindParam(":estetica", $datos["estetica"], PDO::PARAM_STR);
+		$stmt->bindParam(":importe", $datos["importe"], PDO::PARAM_STR);
+		$stmt->bindParam(":anticipo", $datos["anticipo"], PDO::PARAM_STR);
+		$stmt->bindParam(":total", $datos["total"], PDO::PARAM_STR);
+		$stmt->bindParam(":usuario_recibio", $datos["usuario_recibio"], PDO::PARAM_STR);
+		$stmt->bindParam(":imei", $datos["imei"], PDO::PARAM_STR);
+		$stmt->bindParam(":codigo_cliente", $datos["codigo_cliente"], PDO::PARAM_STR);
+		$stmt->bindParam(":fecha_prometida", $datos["fecha_prometida"], PDO::PARAM_STR);
+		$stmt->bindParam(":tecnico", $datos["tecnico"], PDO::PARAM_STR);
+		$stmt->bindParam(":diagnostico", $datos["diagnostico"], PDO::PARAM_STR);
+
+		$stmt->execute();
+
+		return $stmt->rowCount() > 0;
+
 		//print_r($stmt->errorInfo());
 
 
@@ -420,7 +463,7 @@ class ModeloServicios
 	{
 
 		//$stmt = Conexion::conectar()->prepare("SELECT COUNT(estado_equipo) AS total FROM servicios where estado_equipo != 'Reparado' AND estado_equipo != 'Entregado' ");
-		$stmt = Conexion::conectar()->prepare("SELECT COUNT(estado_equipo) AS total FROM servicios where estado_equipo != 'Reparado' AND estado_equipo != 'Entregado' AND estado_borrado = 1");
+		$stmt = Conexion::conectar()->prepare("SELECT COUNT(estado_equipo) AS total FROM servicios where estado_equipo != 'Reparado' AND estado_equipo != 'Entregado' AND estado_equipo != 'Entregado no quedo'  AND estado_borrado = 1");
 
 
 		$stmt->execute();

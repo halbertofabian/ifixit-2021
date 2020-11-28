@@ -22,31 +22,31 @@ class ControladorClientes
 
 				$wspp = $_POST['codigo-wp'] . "" . $_POST['numero-wp'];
 
-				if (strlen($wspp) > 0 && strlen($wspp) < 12) {
+				// if (strlen($wspp) > 0 && strlen($wspp) < 12) {
 
-					echo '<script>
+				// 	echo '<script>
 	
-						swal({
+				// 		swal({
 	
-							type: "error",
-							title: "Si registrará whatsapp asegúrese de poner código y los 10 dígitos. De lo contrario dejar en blanco ambos campos.",
-							showConfirmButton: true,
-							confirmButtonText: "Cerrar"
+				// 			type: "error",
+				// 			title: "Si registrará whatsapp asegúrese de poner código y los 10 dígitos. De lo contrario dejar en blanco ambos campos.",
+				// 			showConfirmButton: true,
+				// 			confirmButtonText: "Cerrar"
 	
-						}).then(function(result){
+				// 		}).then(function(result){
 	
-							if(result.value){
+				// 			if(result.value){
 							
-								window.history.back();
+				// 				window.history.back();
 	
-							}
+				// 			}
 	
-						});
+				// 		});
 					
 	
-					</script>';
-					return;
-				}
+				// 	</script>';
+				// 	return;
+				// }
 
 				$datos = array(
 					"nombre" => $_POST["nuevoCliente"],
@@ -138,31 +138,31 @@ class ControladorClientes
 				$tabla = "clientes";
 				$wspp = $_POST['codigo-wp'] . "" . $_POST['numero-wp'];
 
-				if (strlen($wspp) > 0 && strlen($wspp) < 12) {
+				// if (strlen($wspp) > 0 && strlen($wspp) < 12) {
 
-					echo '<script>
+				// 	echo '<script>
 	
-						swal({
+				// 		swal({
 	
-							type: "error",
-							title: "Si registrará whatsapp asegúrese de poner código y los 10 dígitos. De lo contrario dejar en blanco ambos campos.",
-							showConfirmButton: true,
-							confirmButtonText: "Cerrar"
+				// 			type: "error",
+				// 			title: "Si registrará whatsapp asegúrese de poner código y los 10 dígitos. De lo contrario dejar en blanco ambos campos.",
+				// 			showConfirmButton: true,
+				// 			confirmButtonText: "Cerrar"
 	
-						}).then(function(result){
+				// 		}).then(function(result){
 	
-							if(result.value){
+				// 			if(result.value){
 							
-								window.history.back();
+				// 				window.history.back();
 	
-							}
+				// 			}
 	
-						});
+				// 		});
 					
 	
-					</script>';
-					return;
-				}
+				// 	</script>';
+				// 	return;
+				// }
 				$datos = array(
 					"id" => $_POST["idCliente"],
 					"nombre" => $_POST["editarCliente"],

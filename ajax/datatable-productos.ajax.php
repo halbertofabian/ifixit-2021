@@ -83,8 +83,8 @@ class TablaProductos
 			$datosJson .= '[
 				  "' . ($i + 1) . '",
 				  "' . trim($barra) . '",
-			      "' . trim($imagen) . '",
-			      "' . trim($productos[$i]["codigo"]) . '",
+			      "' . $imagen . '",
+			      "' . trim($productos[$i]["codigo"]) . ' ",
 			      "' . trim($productos[$i]["descripcion"]) . '",
 			      "' . trim($categorias["categoria"]) . '",
 			      "' . trim($stock) . '",
@@ -94,8 +94,9 @@ class TablaProductos
 			      "' . trim($productos[$i]["fecha"]) . '",
 			      "' . $botones . '"
 			    ],';
-		}
 
+		}
+        //    
 		//' . trim($productos[$i]["codigo"]) . '
 		//' . trim($productos[$i]["descripcion"]) . '
 		$datosJson = substr($datosJson, 0, -1);

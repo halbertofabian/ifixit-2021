@@ -129,7 +129,7 @@ if ($_SESSION["perfil"] == "Auxiliar" || $_SESSION['perfil'] == "Tecnico") {
 
                                     <select class="form-control" id="seleccionarCliente" name="seleccionarCliente" required>
 
-                                        <option value="">Seleccionar cliente</option>
+                                        <option value="1">Mostrador</option>
 
                                         <?php
 

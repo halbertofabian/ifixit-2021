@@ -1038,3 +1038,31 @@ Stack trace:
 #3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('No quedo', NULL, '1388', '200', '')
 #4 {main}
   thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[16-May-2020 14:44:57 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[16-May-2020 14:44:57 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[16-May-2020 14:44:57 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[16-May-2020 14:44:57 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[16-May-2020 14:44:57 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[16-May-2020 14:44:57 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[16-May-2020 14:44:57 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1012')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado', NULL, '1012', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32
+[16-May-2020 16:12:37 America/Mexico_City] PHP Notice:  Undefined index: nombre in /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php on line 23
+[16-May-2020 16:12:37 America/Mexico_City] PHP Notice:  Undefined index: zona in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[16-May-2020 16:12:37 America/Mexico_City] PHP Notice:  date_default_timezone_set(): Timezone ID '' is invalid in /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php on line 489
+[16-May-2020 16:12:37 America/Mexico_City] PHP Notice:  Undefined index: db_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 23
+[16-May-2020 16:12:37 America/Mexico_City] PHP Notice:  Undefined index: user_name in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 24
+[16-May-2020 16:12:37 America/Mexico_City] PHP Notice:  Undefined index: password_db in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 25
+[16-May-2020 16:12:37 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php:32
+Stack trace:
+#0 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php(32): PDO->__construct('mysql:host=loca...', '', NULL)
+#1 /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/servicios.modelo.php(89): Conexion::conectar()
+#2 /home/u203735599/domains/ifixitmor.com/public_html/app/controladores/servicios.controlador.php(495): ModeloServicios::ctrDetalleServicio('1422')
+#3 /home/u203735599/domains/ifixitmor.com/public_html/app/ajax/servicios.ajax.php(23): ControladorServicios::ctrCambiarEstadoEquipo('Entregado no qu...', NULL, '1422', '0', '')
+#4 {main}
+  thrown in /home/u203735599/domains/ifixitmor.com/public_html/app/modelos/conexion.php on line 32

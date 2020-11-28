@@ -229,6 +229,7 @@ MODAL AGREGAR USUARIO
                   <option value="">Selecionar perfil</option>
 
                   <option value="Administrador">Administrador</option>
+                  <option value="Recepcionista">Recepcionista</option>
 
 
 
@@ -403,6 +404,7 @@ MODAL EDITAR USUARIO
                   <option value="" id="editarPerfil"></option>
 
                   <option value="Administrador">Administrador</option>
+                  <option value="Recepcionista">Recepcionista</option>
                   <option value="Vendedor">Vendedor</option>
                   <option value="Tecnico">Tecnico</option>
                   <option value="Tecnico-editor">Tecnico Editor</option>

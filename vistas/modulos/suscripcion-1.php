@@ -106,15 +106,37 @@ if (isset($rutas[0]) && $rutas[0] == 'salir') {
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Detalles</h5>
-                    <p class="card-text">Tú metodo de pago es en efectivo.</p>
-                    <img src="https://cdn.onlinecasino.mx/images/septiembre2018/metodo-de-pago-bancomer_680x279.png" width="200" alt="">
-                    <p><strong>Banco:</strong> BBVA BANCOMER</p>
-                    <p><strong>Número de cuenta:</strong> 152 881 4442</p>
-                    <p><strong>Clabe interbancaria:</strong> 012 180 015288144429</p>
-                    <p><strong>Targeta de débito:</strong> 4152 3135 3557 1454</p>
-                    <p><strong>Titular:</strong> Héctor Alberto López Fabián</p>
-                </div>
+                                                        <strong>Datos de bancarios</strong>
+                                                        <br>
+                                                        <img src="https://cdn.onlinecasino.mx/images/septiembre2018/metodo-de-pago-bancomer_680x279.png" width="200" alt="">
+                                                        <p><strong>Banco:</strong> BBVA BANCOMER</p>
+                                                       
+                                                        
+                                                        <p><strong>Tarjeta de débito:</strong> 4152 3136 7828 3263</p>
+                                                        <p><strong>Titular:</strong> Héctor Alberto López Fabián</p>
+
+                                                        <form action="" method="post">
+                                                            <div>
+                                                                <p>¿Tienes alguna duda?</p>
+                                                                <div class="btn-group" role="group" aria-label="Button group">
+
+                                                                    <a target="_blanck" href="http://bit.ly/3awLZCM" class="btn btn-success"><i class="fab fa-whatsapp"></i></a>
+                                                                    <a target="_blanck" href="https://m.me/LFHALBERTO" class="btn btn-primary"><i class="fab fa-facebook-messenger"></i></a>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <button type="submit" class="btn btn-primary float-right mb-2" name="btnChargePayEfectivo">
+                                                                Crear cuenta
+                                                            </button>
+                                                            <?php
+                                                            $payEfectivo = new StripeCharge();
+                                                            $payEfectivo->efectivoCharge();
+
+                                                            ?>
+                                                        </form>
+
+                                                    </div>
 
                 <div class="card-footer">
                     Puedes enviar el comprobante de pago y el token suc <?php echo $sucursal['token_suc']  ?> a <strong>ventas@ifixitmor.com</strong> o por medio de WhatsApp, Messenger.

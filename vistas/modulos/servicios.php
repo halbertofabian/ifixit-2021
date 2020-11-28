@@ -85,17 +85,17 @@ if ($_SESSION['perfil'] == "Administrador" || $_SESSION['perfil'] == "Vendedor" 
             <label for="">Email</label>
             <input type="text" class="form-control" placeholder="Correo" name="email" value="<?php echo $correo ?>" id="email">
           </div>
-          <div class="col-md-1">
+          <!-- <div class="col-md-1">
             <label for="">Código</label>
-            <input type="text" class="form-control" placeholder="52" name="codigo-wp" pattern="\d*" value="<?php echo substr($wp, 0, 2); ?>" id="codigo">
-          </div>
-          <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="52" name="codigo-wp" pattern="\d*" value="<?php// echo substr($wp, 0, 2); ?>" id="codigo">
+          </div> -->
+          <div class="col-md-3">
             <label for="">Número de whatsapp <i class="fab fa-whatsapp text-success" aria-hidden="true"></i></label>
-            <input type="text" class="form-control" placeholder="0000000000" name="numero-wp" pattern="\d*" value="<?php echo substr($wp, 2, 10); ?>" id="wsp">
+            <input type="text" class="form-control" placeholder="0000000000" name="numero-wp" pattern="\d*" value="<?php echo $wp ?>" id="wsp">
           </div>
           <div class="col-md-3">
             <label for="">Fecha <span class="text-success">(*)</span></label>
-            <input type="date" class="form-control" required="" name="fecha_reparacion" id="theDate">
+            <input type="date" class="form-control" required="" name="fecha_reparacion" value="<?php echo $serv['fecha_reparacion'] ?>" id="">
           </div>
 
         </div>
@@ -396,9 +396,9 @@ endif; ?>
           <label for="">Email</label>
           <input type="text" class="form-control" placeholder="Correo" name="email" id="email">
         </div>
-        <div class="col-md-2">
+        <!-- <div class="col-md-2">
           <label for="">Código</label>
-          <!-- <input type="text" class="form-control" placeholder="52" name="codigo-wp" value="" pattern="\d*" id="codigo"> -->
+          
           <select name="codigo-wp" class="form-control " id="codigo">
             <option value="" selected>Código de país</option>
             <option value="52">Mexico (52)</option>
@@ -612,8 +612,8 @@ endif; ?>
             <option value="260">Zambia (260)</option>
             <option value="263">Zimbabwe (263)</option>
           </select>
-        </div>
-        <div class="col-md-2">
+        </div> -->
+        <div class="col-md-3">
           <label for="">Número de whatsapp <i class="fab fa-whatsapp text-success" aria-hidden="true"></i></label>
           <input type="text" class="form-control" placeholder="0000000000" name="numero-wp" pattern="\d*" id="wsp">
         </div>
@@ -915,11 +915,11 @@ endif; ?>
           <label for="">Email</label>
           <input type="text" class="form-control" placeholder="Correo" name="email" id="email">
         </div>
-        <div class="col-md-1">
+        <!-- <div class="col-md-1">
           <label for="">Código</label>
           <input type="text" class="form-control" placeholder="52" name="codigo-wp" value="" pattern="\d*" id="codigo">
-        </div>
-        <div class="col-md-2">
+        </div> -->
+        <div class="col-md-3">
           <label for="">Número de whatsapp <i class="fab fa-whatsapp text-success" aria-hidden="true"></i></label>
           <input type="text" class="form-control" placeholder="0000000000" name="numero-wp" pattern="\d*" id="wsp">
         </div>
@@ -1172,9 +1172,9 @@ endif; ?>
           <label for="">Email</label>
           <input type="text" class="form-control" placeholder="Correo" name="email" id="email">
         </div>
-        <div class="col-md-2">
+        <!-- <div class="col-md-2">
           <label for="">Código (Lada país)</label>
-          <!-- <input type="text" class="form-control" placeholder="" name="codigo-wp" value="" pattern="\d*" id="codigo"> -->
+         
           <select name="codigo-wp" class="form-control " id="codigo">
             <option value="" selected>Código de país</option>
             <option value="52">Mexico (52)</option>
@@ -1388,8 +1388,8 @@ endif; ?>
             <option value="260">Zambia (260)</option>
             <option value="263">Zimbabwe (263)</option>
           </select>
-        </div>
-        <div class="col-md-2">
+        </div> -->
+        <div class="col-md-3">
           <label for="">Número de whatsapp <i class="fab fa-whatsapp text-success" aria-hidden="true"></i></label>
           <input type="text" class="form-control recibir-wp" placeholder="0000000000" name="numero-wp" pattern="\d*" id="wsp">
         </div>
@@ -1409,18 +1409,20 @@ endif; ?>
         <div class="col-md-3 col-12">
           <div class="form-group">
             <label for="tecnico">Técnico Asignado</label>
-            <select id="tecnico" class="form-control mySelect2" data-placeholder="Seleccione un técnico(Opcional)" name="tecnico">
-              <option value=""></option>
-              <?php
+            
+              <select id="tecnico" class="form-control mySelect2" data-placeholder="Seleccione un técnico(Opcional)" name="tecnico">
+                <option value=""></option>
+                <?php
 
-              $tecnicos = ControladorUsuarios::ctrMostrarUsuariosSuscriptos();
-              foreach ($tecnicos as $key => $value) :
-              ?>
+                $tecnicos = ControladorUsuarios::ctrMostrarUsuariosSuscriptos();
+                foreach ($tecnicos as $key => $value) :
+                ?>
 
-                <option value="<?php echo $value['nombre'] ?>"><?php echo $value['nombre'] ?></option>
+                  <option value="<?php echo $value['nombre'] ?>"><?php echo $value['nombre'] ?></option>
 
-              <?php endforeach; ?>
-            </select>
+                <?php endforeach; ?>
+              </select>
+              
           </div>
         </div>
         <div class="col-md-2 col-12">
@@ -1442,6 +1444,9 @@ endif; ?>
         <div class="col-md-3 col-12">
           <div class="form-group">
             <label for="usuario_recibio">Usuario recibio</label>
+            <?php if($_SESSION["perfil"] == "Recepcionista") :?>
+            <input type="text" class="form-control" name="usuario_recibio" value="<?php echo $_SESSION["nombre"]  ?>" readonly>
+            <?php else: ?>
             <select id="usuario_recibio" class="form-control mySelect2" data-placeholder="Seleccione un vendedor" name="usuario_recibio" required>
               <option value="<?php echo $_SESSION["nombre"] ?>"><?php echo $_SESSION["nombre"] ?></option>
               <?php
@@ -1454,6 +1459,7 @@ endif; ?>
 
               <?php endforeach; ?>
             </select>
+              <?php endif; ?>
           </div>
         </div>
 

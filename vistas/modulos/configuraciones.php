@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION["perfil"] == "Vendedor" || $_SESSION["perfil"] == "Tecnico") {
+if ($_SESSION["perfil"] == "Vendedor" || $_SESSION["perfil"] == "Tecnico" || $_SESSION["perfil"] == "Recepcionista") {
 
   echo '<script>
 

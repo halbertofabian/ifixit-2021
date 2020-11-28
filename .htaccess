@@ -5,12 +5,6 @@ RewriteEngine On
 
 RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?ruta=$1
 
-# DO NOT REMOVE THIS LINE AND THE LINES BELOW SSL_REDIRECT:app.ifixitmor.com
-RewriteEngine on
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} ^app.ifixitmor.com$
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-# DO NOT REMOVE THIS LINE AND THE LINES ABOVE SSL_REDIRECT:app.ifixitmor.com
 =======
 Options +FollowSymLinks
 
@@ -21,3 +15,12 @@ Options All -Indexes
 RewriteEngine On
 RewriteRule ^([-a-zA-Z0-9/ÁÉÍÓÚáéíóú]+)$ index.php?ruta=$1
 >>>>>>> a2b7d5fe8559e3954b531d95a8e25a60b3f0be1f
+
+
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:app.ifixitmor.com
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} (www\.)?app.ifixitmor.com
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:app.ifixitmor.com

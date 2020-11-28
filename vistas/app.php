@@ -1,9 +1,10 @@
 <?php
 
+session_set_cookie_params(60*60*24*14);
 session_start();
 
-
 ?>
+
 <!DOCTYPE html>
 <html>
 

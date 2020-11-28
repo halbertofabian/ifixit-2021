@@ -922,8 +922,8 @@ $("#mySelect2").change(function () {
 
 				//alert(wsp.substring(0, 2)+" "+wsp.substring(2, 12))
 				//$("#codigo").val(wsp.substring(0, 2));
-				$("#codigo option[value=" + wsp.substring(0, 2) + "]").attr("selected", true);
-				$("#wsp").val(wsp.substring(2, 12));
+				//$("#codigo option[value=" + wsp.substring(0, 2) + "]").attr("selected", true);
+				$("#wsp").val(wsp);
 			}
 
 
@@ -941,6 +941,9 @@ $(document).on('click', '#pasarWP', function () {
 	var wp = wp.replace(")", "");
 	var wp = wp.replace(" ", "");
 	var wp = wp.replace("-", "");
+	var wp = wp.replace("__", "");
+	var wp = wp.replace("___", "");
+	var wp = wp.replace("_", "");
 
 	$(".recibir-wp").val(wp);
 

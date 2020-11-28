@@ -29,6 +29,13 @@ class imprimirFactura
 		//TRAEMOS LA INFORMACIÓN DE LA VENTA
 		$sucursal = ControladorSucursal::ctrMostrarSucursal();
 
+		$tipo_hoja = $sucursal['tipo_hoja'];
+
+		$tipo_hoja = explode(",",$tipo_hoja);
+
+		$_80mm = $tipo_hoja[0];
+		$_58mm = $tipo_hoja[0];
+
 		if($sucursal['tipo_impresora']=="T-CARTA"){
 			echo '
 			<script>
@@ -64,7 +71,7 @@ class imprimirFactura
 
 		$impresion = $tipo_impresion == '80mm' ? 190  : 135;
 		$impresions2 = ($impresion / 2);
-		$formato = $tipo_impresion == '80mm' ? 'A7' : 'A4';
+		$formato = $tipo_impresion == '80mm' ? $_80mm : $_58mm;
 
 		$itemVenta = "orden";
 		$valorVenta = $this->orden;
@@ -108,7 +115,7 @@ class imprimirFactura
 		ControladorPlantilla::generarQR($codigo);
 
 		$nom_suc =  strtolower(str_replace(' ', '-', trim($sucursal['nombre'])));
-		$qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.jpg" width="50px" style=""></img>';
+		$qr = '<img src="../../../vistas/img/qr_generator/' . $nom_suc . '/s.jpg" width="120px" style=""></img>';
 
 
 
@@ -454,20 +461,20 @@ $qrType = <<<EOF
 <table>
 <tr>
 	
-<td style="width:$impresions2 px; font-size:9px; text-align: center;" >
+<td style="width:$impresion px; font-size:9px; text-align: center;" >
 	
 	Muchas gracias por su elección
 
 	<div style="font-size:6.9px;">
-	Consulta el estado de tu servicio en la siguiente url 
+	Consulta el estado de tu servicio escaneado el QR
 	<br>
-	<strong>softmormx.com/consulta</strong>
-	<br>
-	Codigo: <strong>$codigo</strong>
 	</div>
 	
 </td>
-<td style="width:$impresions2 px; font-size:9px; text-align: center;" >
+
+</tr>
+<tr>
+<td style="width:$impresion px; font-size:9px; text-align: center;" >
 
 
 	<div style="font-size:6.9px;">
@@ -475,9 +482,6 @@ $qrType = <<<EOF
 	$qr
 	
 </td>
-
-
-
 </tr>
 <tr>
 	<td style="width:$impresion px; font-size:8px; text-align: center;">

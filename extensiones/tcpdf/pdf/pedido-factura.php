@@ -18,6 +18,15 @@ class imprimirFactura
 		//TRAEMOS LA INFORMACIÓN DE LA VENTA
 
 		$sucursal = ControladorSucursal::ctrMostrarSucursal();
+
+		$tipo_hoja = $sucursal['tipo_hoja'];
+
+		$tipo_hoja = explode(",",$tipo_hoja);
+
+		$_80mm = $tipo_hoja[0];
+		$_58mm = $tipo_hoja[0];
+
+		
 		if ($sucursal['margenes'] != "") {
 			$margen = explode(",", $sucursal['margenes']);
 		} else {
@@ -32,7 +41,7 @@ class imprimirFactura
 
 		$impresion = $tipo_impresion == '80mm' ? 190  : 135;
 		$impresions2 = ($impresion / 2);
-		$formato = $tipo_impresion == '80mm' ? 'A7' : 'A4';
+		$formato = $tipo_impresion == '80mm' ? $_80mm : $_58mm;
 
 		$itemVenta = "orden";
 		$valorVenta = $this->orden;

@@ -57,6 +57,39 @@
                                 <p>Notificaciones</p>
                             </a>
                         </li> -->
+                        <?php if ($_SESSION['perfil'] == "Administrador") : ?>
+                <li class="nav-item">
+                    <a class="nav-link"  href="#">
+                        <i class="fa fa-university"></i>
+                        <span class=""><?php echo $_SESSION["nom_suc"]; ?></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form action="#" method="post">
+                                <div class="form-group">
+                                    <label for="my-input">Seleccione una sucursal</label>
+                                    <select name="ingSucursal" class="form-control" id="">
+                                        <?php $susc = ControladorSucursal::ctrMostrarSucursalPropietario($_SESSION["suscriptor"]); ?>
+
+                                        <?php foreach ($susc as $key => $item) : ?>
+                                            <option value="<?php echo $item['nombre'] ?>"><?php echo $item['nombre'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+
+                                    <button type="submit" name="btnCambiarSucursal" class="btn btn-dark  mt-2 mb-2">Acceder</button>
+                                </div>
+                                <?php
+
+                                $login = new ControladorUsuarios();
+                                $login->ctrCambiarSucursal();
+
+                                ?>
+
+                            </form>
+                            </li>
+                
+            <?php endif; ?>
+                        
                         <li class="nav-item">
                             <a href="<?php echo $url ?>salir" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -72,7 +105,7 @@
                 <?php
                 if ($_SESSION['perfil'] == 'Administrador') {
                     $app->getComponents('menu-admin');
-                } elseif ($_SESSION['perfil'] == 'Vendedor') {
+                } elseif ($_SESSION['perfil'] == 'Vendedor' || $_SESSION["perfil"] == "Recepcionista") {
                     $app->getComponents('menu-vendedor');
                 } elseif ($_SESSION['perfil'] == 'Tecnico' || $_SESSION['perfil'] == 'Tecnico-editor') {
                     $app->getComponents('menu-tecnico');
@@ -167,7 +200,7 @@ if ($_SESSION['perfil'] == 'Administrador') : ?>
         </div>
     </div>
 
-<?php elseif ($_SESSION['perfil'] == 'Vendedor') : ?>
+<?php elseif ($_SESSION['perfil'] == 'Vendedor' || $_SESSION['perfil'] == 'Recepcionista') : ?>
     <div class="modal fade" id="mdlAddSaleV" tabindex="-1" role="dialog" aria-labelledby="mdlAddSaleVLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

@@ -18,7 +18,7 @@
   <div class="row">
     <?php
 
-    if ($_SESSION["perfil"] == "Administrador") {
+    if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Recepcionista") {
 
       include "inicio/cajas-superiores.php";
     }
@@ -33,7 +33,7 @@
 
       <?php
 
-      if ($_SESSION["perfil"] == "Administrador") {
+      if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Recepcionista") {
 
         $app->getComponents('grafico-total-ventas');
       }
@@ -46,7 +46,7 @@
 
       <?php
 
-      if ($_SESSION["perfil"] == "Administrador") {
+      if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Recepcionista") {
 
         include "reportes/productos-mas-vendidos.php";
       }
@@ -59,7 +59,7 @@
 
       <?php
 
-      if ($_SESSION["perfil"] == "Administrador") {
+      if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Recepcionista") {
 
         include "inicio/productos-recientes.php";
       }

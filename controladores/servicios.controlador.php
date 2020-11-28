@@ -27,7 +27,9 @@ class ControladorServicios
 
 			$valor1b = $fecha . ' ' . $hora;
 
-			$wspp = $_POST['codigo-wp'] . "" . $_POST['numero-wp'];
+			// $wspp = $_POST['codigo-wp'] . "" . $_POST['numero-wp'];
+			$wspp =  $_POST['numero-wp'];
+
 			//$nombre = $_POST['nombre'];
 			//$orden = $_POST['orden'];
 			//$msj = "Hola querido $nombre, gracias por elegir nuestros servicios. Te mantendremos informado sobre la situación actual de tu servicio con número de orden *$orden*";
@@ -151,7 +153,7 @@ class ControladorServicios
 
 
 
-			if ($res == "ok") {
+			if ($res) {
 				if ($_POST['anticipo'] != 0) {
 					$mov = array(
 						'tipo' => 'SERVICIO',
@@ -271,6 +273,206 @@ class ControladorServicios
 			//print_r($estado_fisico);
 		}
 	}
+	static public function ctrRegistrarServicioR()
+	{
+		if (isset($_POST['btnRegistrarServicio'])) {
+
+
+
+
+
+
+			$_SESSION['presupuesto'] = "";
+			$estado_fisico = "";
+			if (!empty($_POST['estado_fisico'])) {
+				foreach ($_POST['estado_fisico'] as $selected) {
+					$estado_fisico = $estado_fisico . $selected . ",";
+				}
+			}
+			$codigo_cliente = substr(md5($_POST['nombre']), 0, 4) . substr(md5($_POST['orden']), 28, 32);
+
+			date_default_timezone_set($_SESSION["zona"]);
+
+			$fecha = date('Y-m-d');
+
+
+			$hora = date('H:i:s');
+
+			$valor1b = $fecha . ' ' . $hora;
+
+			$wspp = $_POST['numero-wp'];
+
+			$suc = ControladorSucursal::ctrMostrarSucursal();
+
+			$textWp = ModeloConfiguracion::mdlObtenerTextos();
+			$text = $textWp[1]['valor'];
+			$orden = ControladorServicios::orden();
+
+			if ($orden == false) {
+				$orden = '1000';
+			} else {
+				$orden = $orden['orden'] + 1;
+			}
+
+			$url  = ControladorPlantilla::getRuteIndex();
+			$nom_suc =  strtolower(str_replace(' ', '-', trim($_SESSION['nom_suc'])));
+			$ruta = $url . 's/' . $nom_suc . '/d/' . $codigo_cliente;
+
+
+
+			//echo $text;
+			$text = str_replace('[NOMBRE]', $_POST['nombre'], $text);
+			$text = str_replace('[ORDEN]', $orden, $text);
+			$text = str_replace('[TICKET-S]', $ruta, $text);
+
+			$text = str_replace('[FACEBOOK]', "https://www.facebook.com/" . $suc['facebook'], $text);
+			$text = str_replace('[INSTAGRAM]', "https://www.instagram.com/" . $suc['instagram'], $text);
+			$text = str_replace('[TWITTER]', "https://twitter.com/" . $suc['twitter'], $text);
+			$text = str_replace('[YOUTUBE]', "https://www.youtube.com/channel/" . $suc['youtube'], $text);
+			$text = str_replace('[SUCURSAL]', $_SESSION['nom_suc'], $text);
+			$text = str_replace('[CODIGO]', $codigo_cliente, $text);
+			$text = str_replace('[SITO-WB]', $suc['sitio_web'], $text);
+			$text = str_replace('[TEL]', $suc['whatsapp'], $text);
+
+			//echo $text." Hola";
+
+			//}
+
+
+
+			$servicio = array(
+				'orden' => $orden,
+				'nombre' => $_POST['nombre'],
+				'contacto' => $_POST['contacto'] . " " . $_POST['email'] . "/" . $wspp,
+				'fecha_reparacion' => $_POST['fecha_reparacion'] . ' ' . $hora,
+				'equipo' => $_POST['equipo'],
+				'marca' => $_POST['marca'],
+				'modelo' => $_POST['modelo'],
+				'color' => $_POST['color'],
+				'observaciones' => $_POST['observaciones'],
+				'estado_fisico' => $estado_fisico,
+
+
+				'problema' => $_POST['problema'],
+				'solucion' => $_POST['solucion'],
+				'desbloqueo' => $_POST['desbloqueo'], 'estetica' => $_POST['estetica'],
+				'importe' => str_replace(',', '', $_POST['importe']),
+				'anticipo' => str_replace(',', '', $_POST['anticipo']),
+				'total' => str_replace(',', '', $_POST['total']),
+				'fecha_entrega' => NULL,
+				'estado_equipo' => 'Reparacion',
+				'usuario_recibio' => $_POST['usuario_recibio'],
+				'usuario_entrega' => NULL,
+				'imei' => $_POST['imei'],
+				'codigo_cliente' => $codigo_cliente,
+
+				'fecha_prometida' => $_POST['fecha_prometida'] . ' ' . $_POST['hora_prometida'],
+
+				'tecnico' => $_POST['tecnico'],
+				//'inversion' => $_POST['inversion'],
+				'diagnostico' => $_POST['diagnostico']
+
+				//'fecha_prometida' => $fecha_prometida
+
+			);
+			//var_dump($servicio);
+			$concepto = "";
+
+			$concepto = $_POST['total'] == 0 ? 'PAGADO' : 'ANTICIPO';
+
+			//$monto = $_POST['total'] == 0 ? $_POST['importe'] : $_POST['anticipo'];
+
+			$res = ModeloServicios::mdlIngresarServicioR($servicio);
+
+
+
+
+
+
+
+			if ($res) {
+				if ($_POST['anticipo'] != 0) {
+					$mov = array(
+						'tipo' => 'SERVICIO',
+						'numero_movimiento' => $orden,
+						'concepto' => $concepto,
+						'monto' => str_replace(',', '', $_POST['anticipo']),
+						'cliente' => $_POST['nombre'],
+						'fecha' => $valor1b,
+						'usuario' => $_SESSION["nombre"],
+						'extra' => ''
+
+
+					);
+
+					$movimiento = ControladorMovimientos::ctrRegistrarMovimiento($mov);
+				}
+
+
+
+				if (strlen($wspp) > 0) {
+
+
+					echo '<script>
+
+					swal({
+
+						type: "info",
+						title: "¿Quieres mandar WhatsApp?",
+						showCancelButton: true,
+						confirmButtonColor: "#3085d6",
+						cancelButtonColor: "#d33",
+						cancelButtonText: "No",
+						confirmButtonText: "Si, mandar WhatsApp"
+
+					}).then(function(result){
+
+						if(result.value){
+						
+							window.open("https://wa.me/' . $wspp . '?text=' . $text . '", "_blank");
+
+						}
+						window.location = "entregas";
+						window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo=' . $orden . '", "_blank");
+
+					});
+				
+
+				</script>';
+				} else {
+					echo '
+						<script>
+						window.location = "entregas";
+						window.open("extensiones/tcpdf/pdf/servicio-factura.php?codigo=' . $orden . '", "_blank");
+						</script>
+					';
+				}
+			} else {
+
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "¡Recuerde que algunos campos son obligatirios o no puede haber caracteres especiales!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+						
+							window.history.back();
+
+						}
+
+					});
+				
+
+				</script>';
+			}
+		}
+	}
 	//Metodo para modificar el servicio
 	static public function ctrModificarServicio()
 	{
@@ -294,7 +496,7 @@ class ControladorServicios
 
 
 
-			$wspp = $_POST['codigo-wp'] . "" . $_POST['numero-wp'];
+			$wspp =  $_POST['numero-wp'];
 
 			$suc = ControladorSucursal::ctrMostrarSucursal();
 			$text = $suc['text_servicio'];
